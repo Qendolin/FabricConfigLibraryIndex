@@ -18,7 +18,7 @@ public class OwoLib extends ConfigLibrary {
         manualInitialization = InitMode.YES;
         configMethod = ConfigMethod.of(ConfigMethod.TypeOfClass.ANNOTATED, true, ConfigMethod.Waaa.PRIMITIVE);
         guiMethod = GuiMethod.AUTOMATIC;
-        notes = "";
+        notes = "Comes with a lot of additional, sometimes problematic, features.";
         source = "https://github.com/wisp-forest/owo-lib";
     }
 }
