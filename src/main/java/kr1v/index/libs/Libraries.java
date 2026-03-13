@@ -4,6 +4,7 @@ import kr1v.index.util.ConfigLibrary;
 
 public class Libraries {
 	public static final ConfigLibrary BetterConfig = new BetterConfig();
+	public static final ConfigLibrary CarbonConfig = new CarbonConfig();
 	public static final ConfigLibrary ClothConfig = new ClothConfig();
 	public static final ConfigLibrary CompleteConfig = new CompleteConfig();
 	public static final ConfigLibrary ConfigToolKit = new ConfigToolKit();
