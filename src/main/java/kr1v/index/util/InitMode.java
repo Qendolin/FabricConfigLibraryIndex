@@ -5,6 +5,7 @@ public enum InitMode {
 	AT_MOD_INIT("At mod initialization"),
 	OPTIONAL("Optional"),
 	NO("No"),
+	NOT_AVAILABLE("n/a"),
 	;
 
 	public final String name;

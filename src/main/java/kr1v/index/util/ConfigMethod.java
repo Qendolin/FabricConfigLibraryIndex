@@ -7,6 +7,8 @@ public class ConfigMethod {
 	public final Boolean instance;
 	public final List<Waaa> waaas;
 
+	public static final ConfigMethod NOT_AVAILABLE = new ConfigMethod(null, null, null);
+
 	public ConfigMethod(TypeOfClass typeOfClass, Boolean instance, List<Waaa> waaas) {
 		this.typeOfClass = typeOfClass;
 		this.instance = instance;

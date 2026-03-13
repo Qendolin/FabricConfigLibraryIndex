@@ -4,6 +4,7 @@ public enum ConfigFormat {
 	JSON("Json"),
 	TOML("Toml"),
 	YAML("Yaml"),
+	NOT_AVAILABLE("n/a"),
 	;
 
 	public final String name;
