@@ -25,6 +25,7 @@ public class ConfigMethod {
 
 	public enum Waaa {
 		PRIMITIVE("Primitive", "int", "List<String>", "File"),
+		ANNOTATED_PRIMITIVE("Annotated primitive", "@Config int", "@Comment(\"This is a string list\") List<String>", "@Config File"),
 		WRAPPER("Wrapper", "Config<Integer>", "Config<List<String>>", "Config<File>"),
 		SPECIAL("Special", "ConfigInteger", "ConfigList<ConfigString>", "FileConfig")
 		;
