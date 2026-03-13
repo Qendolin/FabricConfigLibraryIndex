@@ -19,6 +19,6 @@ public class BetterConfig extends ConfigLibrary {
         configMethod = ConfigMethod.of(ConfigMethod.TypeOfClass.NORMAL, false, ConfigMethod.Waaa.ANNOTATED_PRIMITIVE);
         guiMethod = GuiMethod.NONE;
         notes = "Uses commands to modify configs";
-        source = "https://github.com/xpple/BetterConfig/";
+        source = "https://github.com/xpple/BetterConfig";
     }
 }
