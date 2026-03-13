@@ -9,7 +9,7 @@ public class Gson extends ConfigLibrary {
         id = "gson";
         name = "Gson";
         side = Side.BOTH;
-        versions = Versions.versions(Versions.ALL);
+        versions = Versions.ALL_LIST;
         type = Type.LOADER;
         dependencies = List.of();
         extraConfigTypes = null;

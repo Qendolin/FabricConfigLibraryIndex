@@ -15,6 +15,7 @@ public class Versions {
 	public static final String[] MC_1_21_X = ver("1.21.0", "1.21.1", "1.21.2", "1.21.3", "1.21.4", "1.21.5", "1.21.6", "1.21.7", "1.21.8", "1.21.9", "1.21.10", "1.21.11");
 
 	public static final String[] ALL = ver(MC_1_14_X, MC_1_15_X, MC_1_16_X, MC_1_17_X, MC_1_18_X, MC_1_19_X, MC_1_20_X, MC_1_21_X);
+	public static final List<String> ALL_LIST = List.of(ALL);
 
 	public static String[] ver(String... strings) {
 		return strings;
@@ -32,6 +33,17 @@ public class Versions {
 			} else {
 				throw new IllegalStateException(o.getClass() + "is not a String/String[]! " + o);
 			}
+		}
+		return list;
+	}
+	public static List<String> versions(Object o) {
+		List<String> list = new ArrayList<>();
+		if (o instanceof String s) {
+			list.add(s);
+		} else if (o instanceof String[] strs) {
+			list.addAll(Arrays.asList(strs));
+		} else {
+			throw new IllegalStateException(o.getClass() + "is not a String/String[]! " + o);
 		}
 		return list;
 	}

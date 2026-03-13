@@ -9,7 +9,7 @@ public class MaLiLib extends ConfigLibrary {
 		id = "malilib";
 		name = "MaLiLib";
 		side = Side.CLIENT;
-		versions = Versions.versions(Versions.ALL);
+		versions = Versions.ALL_LIST;
 		type = Type.BOTH;
 		dependencies = List.of();
 		extraConfigTypes = List.of(ConfigType.COLOR, ConfigType.HOTKEY);

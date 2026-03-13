@@ -9,7 +9,7 @@ public class KaleidoConfig extends ConfigLibrary {
 		id = "kaleido-config";
 		name = "Kaleido config";
 		side = Side.BOTH;
-		versions = Versions.versions(Versions.ALL);
+		versions = Versions.ALL_LIST;
 		type = Type.LOADER;
 		dependencies = List.of();
 		extraConfigTypes = List.of();

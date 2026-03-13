@@ -1,0 +1,30 @@
+{
+  "id": "better-config",
+  "name": "BetterConfig",
+  "side": "BOTH",
+  "versions": [
+    "1.19.3",
+    "1.19.4",
+    "1.20.0",
+    "1.20.1",
+    "1.21.0"
+  ],
+  "type": "LOADER",
+  "dependencies": [],
+  "extraConfigTypes": [],
+  "extraFeatures": [
+    "CUSTOM_CONFIG_TYPES"
+  ],
+  "configFormats": [],
+  "manualInitialization": "YES",
+  "configMethod": {
+    "typeOfClass": "NORMAL",
+    "instance": false,
+    "waaas": [
+      "ANNOTATED_PRIMITIVE"
+    ]
+  },
+  "guiMethod": "NONE",
+  "notes": "Uses commands to modify configs",
+  "source": "https://github.com/xpple/BetterConfig"
+}

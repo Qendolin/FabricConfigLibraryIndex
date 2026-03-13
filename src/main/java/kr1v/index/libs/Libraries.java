@@ -1,6 +1,10 @@
 package kr1v.index.libs;
 
 import kr1v.index.util.ConfigLibrary;
+import kr1v.index.util.Util;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class Libraries {
 	public static final ConfigLibrary BetterConfig = new BetterConfig();
@@ -21,4 +25,6 @@ public class Libraries {
 	public static final ConfigLibrary OwoLib = new OwoLib();
 	public static final ConfigLibrary YAMLConfig = new YAMLConfig();
 	public static final ConfigLibrary YetAnotherConfigLib = new YetAnotherConfigLib();
+
+	public static final List<ConfigLibrary> CONFIG_LIBRARIES() { return Arrays.stream(Libraries.class.getFields()).map(Util::<ConfigLibrary>get).toList(); }
 }
