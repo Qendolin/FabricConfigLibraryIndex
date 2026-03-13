@@ -7,7 +7,10 @@ public enum ConfigType {
 	BUTTON("Button", "A button in the list of configs that does something when pressed"),
 	FILE("File"),
 	PAIR("Pair", "A pair of configs next to each other"),
-	OBJECT("Object", "A \"Json object\" of configs")
+	OBJECT("Object", "A \"Json object\" of configs"),
+    REGISTRY_ENTRY("Registry entry"),
+	IDENTIFIER("Identifier"),
+	DATE_TIME("Date Time"),
 	;
 
 	public final String name;

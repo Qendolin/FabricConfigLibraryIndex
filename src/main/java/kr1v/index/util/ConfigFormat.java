@@ -8,6 +8,8 @@ public enum ConfigFormat {
     UNKNOWN("?"),
 	PROPERTIES(".properties"),
 	INI(".ini"),
+	JSON5("Json5"),
+	HOCON("Hocon"),
 	;
 
 	public final String name;
