@@ -9,6 +9,7 @@ public class Libraries {
 	public static final ConfigLibrary ConfigToolKit = new ConfigToolKit();
 	public static final ConfigLibrary Configurable = new Configurable();
 	public static final ConfigLibrary Configuration = new Configuration();
+	public static final ConfigLibrary CryonicConfig = new CryonicConfig();
 	public static final ConfigLibrary ForgeConfigAPIPort = new ForgeConfigAPIPort();
 	public static final ConfigLibrary FzzyConfig = new FzzyConfig();
 	public static final ConfigLibrary Gson = new Gson();
