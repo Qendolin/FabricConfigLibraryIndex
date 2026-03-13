@@ -5,7 +5,7 @@ public enum ConfigFormat {
 	TOML("Toml"),
 	YAML("Yaml"),
 	NOT_AVAILABLE("n/a"),
-	;
+    UNKNOWN("?");
 
 	public final String name;
 

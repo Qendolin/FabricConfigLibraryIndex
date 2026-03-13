@@ -11,7 +11,7 @@ public class YetAnotherConfigLib extends ConfigLibrary {
         side = Side.BOTH;
         versions = Versions.versions(Versions.MC_1_19_X, Versions.MC_1_20_X, Versions.MC_1_21_X);
         type = Type.BOTH;
-        dependencies = List.of("Fabric API");
+        dependencies = List.of(Dependency.FABRIC_API);
         extraConfigTypes = List.of(ConfigType.BUTTON);
         extraFeatures = List.of();
         configFormat = ConfigFormat.JSON;

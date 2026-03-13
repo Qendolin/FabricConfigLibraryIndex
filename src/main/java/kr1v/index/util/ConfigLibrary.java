@@ -10,7 +10,7 @@ public class ConfigLibrary {
 
 	public List<String> versions;
 	public Type type;
-	public List<String> dependencies;
+	public List<Dependency> dependencies;
 	public List<ConfigType> extraConfigTypes;
 	public List<Feature> extraFeatures;
 	public ConfigFormat configFormat;
