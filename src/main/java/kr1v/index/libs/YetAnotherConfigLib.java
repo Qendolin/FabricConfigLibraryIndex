@@ -14,7 +14,7 @@ public class YetAnotherConfigLib extends ConfigLibrary {
         dependencies = List.of(Dependency.FABRIC_API);
         extraConfigTypes = List.of(ConfigType.BUTTON);
         extraFeatures = List.of();
-        configFormat = ConfigFormat.JSON;
+        configFormats = List.of(ConfigFormat.JSON);
         manualInitialization = InitMode.YES;
         configMethod = ConfigMethod.of(ConfigMethod.TypeOfClass.NORMAL, true, ConfigMethod.Waaa.ANNOTATED_PRIMITIVE);
         guiMethod = GuiMethod.BUILDER;

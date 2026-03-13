@@ -14,7 +14,7 @@ public class OwoLib extends ConfigLibrary {
         dependencies = List.of(Dependency.FABRIC_API);
         extraConfigTypes = List.of();
         extraFeatures = List.of(Feature.CONSTRAINT);
-        configFormat = ConfigFormat.UNKNOWN;
+        configFormats = null;
         manualInitialization = InitMode.YES;
         configMethod = ConfigMethod.of(ConfigMethod.TypeOfClass.ANNOTATED, true, ConfigMethod.Waaa.PRIMITIVE);
         guiMethod = GuiMethod.AUTOMATIC;

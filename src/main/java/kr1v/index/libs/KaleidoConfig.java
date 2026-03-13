@@ -14,7 +14,7 @@ public class KaleidoConfig extends ConfigLibrary {
 		dependencies = List.of();
 		extraConfigTypes = List.of();
 		extraFeatures = List.of();
-		configFormat = ConfigFormat.TOML;
+		configFormats = List.of(ConfigFormat.TOML);
 		manualInitialization = InitMode.YES;
 		configMethod = ConfigMethod.of(ConfigMethod.TypeOfClass.EXTENDING, true, ConfigMethod.Waaa.ANNOTATED_PRIMITIVE);
 		guiMethod = GuiMethod.NONE;

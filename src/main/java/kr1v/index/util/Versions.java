@@ -1,5 +1,6 @@
 package kr1v.index.util;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -21,7 +22,17 @@ public class Versions {
 	public static String[] ver(String[]... strings) {
 		return Arrays.stream(strings).flatMap(Arrays::stream).toArray(String[]::new);
 	}
-	public static List<String> versions(String[]... strings) {
-		return Arrays.stream(strings).flatMap(Arrays::stream).toList();
+	public static List<String> versions(Object... vers) {
+		List<String> list = new ArrayList<>();
+		for (Object o : vers) {
+			if (o instanceof String s) {
+				list.add(s);
+			} else if (o instanceof String[] strs) {
+				list.addAll(Arrays.asList(strs));
+			} else {
+				throw new IllegalStateException(o.getClass() + "is not a String/String[]! " + o);
+			}
+		}
+		return list;
 	}
 }

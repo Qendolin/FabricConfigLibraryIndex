@@ -14,7 +14,7 @@ public class MidnightLib extends ConfigLibrary {
         dependencies = List.of(Dependency.FABRIC_API);
         extraConfigTypes = List.of(ConfigType.FILE);
         extraFeatures = List.of(Feature.SLIDER, Feature.MOD_MENU_INTEGRATION);
-        configFormat = ConfigFormat.UNKNOWN;
+        configFormats = null;
         manualInitialization = InitMode.YES;
         configMethod = ConfigMethod.of(ConfigMethod.TypeOfClass.EXTENDING, false, ConfigMethod.Waaa.ANNOTATED_PRIMITIVE);
         guiMethod = GuiMethod.AUTOMATIC;

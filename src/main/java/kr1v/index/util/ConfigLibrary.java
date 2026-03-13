@@ -13,7 +13,7 @@ public class ConfigLibrary {
 	public List<Dependency> dependencies;
 	public List<ConfigType> extraConfigTypes;
 	public List<Feature> extraFeatures;
-	public ConfigFormat configFormat;
+	public List<ConfigFormat> configFormats;
 	public InitMode manualInitialization;
 	public ConfigMethod configMethod;
 	public GuiMethod guiMethod;

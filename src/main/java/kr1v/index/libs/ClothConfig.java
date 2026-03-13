@@ -16,7 +16,7 @@ public class ClothConfig extends ConfigLibrary {
 		dependencies = List.of();
 		extraConfigTypes = List.of(ConfigType.COLOR, ConfigType.DROPDOWN);
 		extraFeatures = List.of(Feature.MOD_MENU_INTEGRATION);
-		configFormat = ConfigFormat.NOT_AVAILABLE;
+		configFormats = List.of();
 		manualInitialization = InitMode.NOT_AVAILABLE;
 		configMethod = ConfigMethod.NOT_AVAILABLE;
 		guiMethod = GuiMethod.BUILDER;

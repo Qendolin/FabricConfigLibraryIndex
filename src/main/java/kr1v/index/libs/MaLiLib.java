@@ -14,7 +14,7 @@ public class MaLiLib extends ConfigLibrary {
 		dependencies = List.of();
 		extraConfigTypes = List.of(ConfigType.COLOR, ConfigType.HOTKEY);
 		extraFeatures = List.of(Feature.SLIDER);
-		configFormat = ConfigFormat.JSON;
+		configFormats = List.of(ConfigFormat.JSON);
 		manualInitialization = InitMode.AT_MOD_INIT;
 		configMethod = ConfigMethod.of(ConfigMethod.TypeOfClass.NORMAL, false, ConfigMethod.Waaa.SPECIAL);
 		guiMethod = GuiMethod.CUSTOM_SCREEN_CLASS;
