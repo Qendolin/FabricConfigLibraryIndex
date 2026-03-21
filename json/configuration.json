@@ -24,13 +24,12 @@
   ],
   "type": "BOTH",
   "dependencies": [],
-  "extraConfigTypes": [
-    "OBJECT"
-  ],
+  "extraConfigTypes": [],
   "extraFeatures": [
     "CUSTOM_CONFIG_TYPES",
     "CONSTRAINT",
-    "MOD_MENU_INTEGRATION"
+    "MOD_MENU_INTEGRATION",
+    "SECTIONS"
   ],
   "configFormats": [
     "JSON",

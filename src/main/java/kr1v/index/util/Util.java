@@ -9,11 +9,12 @@ public class Util {
 		try {
 			return (T) f.get(null);
 		} catch (IllegalAccessException e) {
-			throw new RuntimeException(e);
+			throw rethrow(e);
 		}
 	}
 
-	public static <T extends Throwable> T rethrow(IOException e) throws T {
-		throw (T) e;
+	@SuppressWarnings("unchecked")
+	public static <T extends Throwable> T rethrow(Throwable t) throws T {
+		throw (T) t;
 	}
 }

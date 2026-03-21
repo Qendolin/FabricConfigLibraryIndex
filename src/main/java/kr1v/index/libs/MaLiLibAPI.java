@@ -12,8 +12,8 @@ public class MaLiLibAPI extends ConfigLibrary {
         versions = Versions.ALL_LIST;
         type = Type.BOTH;
         dependencies = List.of(Dependency.MALILIB);
-        extraConfigTypes = List.of(ConfigType.COLOR, ConfigType.HOTKEY, ConfigType.PAIR, ConfigType.OBJECT);
-        extraFeatures = List.of(Feature.SLIDER, Feature.CUSTOM_CONFIG_TYPES, Feature.MOD_MENU_INTEGRATION);
+        extraConfigTypes = List.of(ConfigType.COLOR, ConfigType.HOTKEY, ConfigType.PAIR);
+        extraFeatures = List.of(Feature.SLIDER, Feature.CUSTOM_CONFIG_TYPES, Feature.MOD_MENU_INTEGRATION, Feature.SECTIONS);
         configFormats = List.of(ConfigFormat.JSON);
         manualInitialization = InitMode.OPTIONAL;
         configMethod = ConfigMethod.of(ConfigMethod.TypeOfClass.ANNOTATED, false, ConfigMethod.Waaa.SPECIAL);

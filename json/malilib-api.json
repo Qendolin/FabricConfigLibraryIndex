@@ -54,13 +54,13 @@
   "extraConfigTypes": [
     "COLOR",
     "HOTKEY",
-    "PAIR",
-    "OBJECT"
+    "PAIR"
   ],
   "extraFeatures": [
     "SLIDER",
     "CUSTOM_CONFIG_TYPES",
-    "MOD_MENU_INTEGRATION"
+    "MOD_MENU_INTEGRATION",
+    "SECTIONS"
   ],
   "configFormats": [
     "JSON"

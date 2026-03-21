@@ -5,7 +5,8 @@ public enum Feature {
 	CONSTRAINT("Constraint", "Constraints for configs. For example, only allowing string configs that matches a certain regex"),
 	MOD_MENU_INTEGRATION("Mod menu integration"),
 	CUSTOM_CONFIG_TYPES("Custom config types", "Allows you to add your own config types"),
-	CODEC_BASED_CONFIGS("Codec based configs")
+	CODEC_BASED_CONFIGS("Codec based configs"),
+	SECTIONS("Config section", "Sections of configs. May also be referred to as a 'config object' or ''")
 	;
 
 	public final String name;

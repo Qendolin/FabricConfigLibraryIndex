@@ -22,11 +22,10 @@
   ],
   "type": "BOTH",
   "dependencies": [],
-  "extraConfigTypes": [
-    "OBJECT"
-  ],
+  "extraConfigTypes": [],
   "extraFeatures": [
-    "CUSTOM_CONFIG_TYPES"
+    "CUSTOM_CONFIG_TYPES",
+    "SECTIONS"
   ],
   "configFormats": [
     "JSON"
