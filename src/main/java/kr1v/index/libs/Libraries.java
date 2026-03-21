@@ -26,5 +26,7 @@ public class Libraries {
 	public static final ConfigLibrary YAMLConfig = new YAMLConfig();
 	public static final ConfigLibrary YetAnotherConfigLib = new YetAnotherConfigLib();
 
-	public static final List<ConfigLibrary> CONFIG_LIBRARIES() { return Arrays.stream(Libraries.class.getFields()).map(Util::<ConfigLibrary>get).toList(); }
+	public static List<ConfigLibrary> CONFIG_LIBRARIES() {
+		return Arrays.stream(Libraries.class.getFields()).filter(f -> f.getType().isAssignableFrom(ConfigLibrary.class)).map(Util::<ConfigLibrary>get).toList();
+	}
 }
