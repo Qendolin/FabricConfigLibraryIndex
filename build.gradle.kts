@@ -1,5 +1,6 @@
 plugins {
     id("java")
+    application
 }
 
 group = "kr1v.index"
@@ -12,4 +13,8 @@ repositories {
 dependencies {
     // gson
     implementation("com.google.code.gson:gson:2.13.2")
+}
+
+application {
+    mainClass.set("kr1v.index.Main")
 }

@@ -153,11 +153,10 @@
     ],
     "type": "BOTH",
     "dependencies": [],
-    "extraConfigTypes": [
-      "OBJECT"
-    ],
+    "extraConfigTypes": [],
     "extraFeatures": [
-      "CUSTOM_CONFIG_TYPES"
+      "CUSTOM_CONFIG_TYPES",
+      "SECTIONS"
     ],
     "configFormats": [
       "JSON"
@@ -286,13 +285,12 @@
     ],
     "type": "BOTH",
     "dependencies": [],
-    "extraConfigTypes": [
-      "OBJECT"
-    ],
+    "extraConfigTypes": [],
     "extraFeatures": [
       "CUSTOM_CONFIG_TYPES",
       "CONSTRAINT",
-      "MOD_MENU_INTEGRATION"
+      "MOD_MENU_INTEGRATION",
+      "SECTIONS"
     ],
     "configFormats": [
       "JSON",
@@ -722,13 +720,13 @@
     "extraConfigTypes": [
       "COLOR",
       "HOTKEY",
-      "PAIR",
-      "OBJECT"
+      "PAIR"
     ],
     "extraFeatures": [
       "SLIDER",
       "CUSTOM_CONFIG_TYPES",
-      "MOD_MENU_INTEGRATION"
+      "MOD_MENU_INTEGRATION",
+      "SECTIONS"
     ],
     "configFormats": [
       "JSON"
