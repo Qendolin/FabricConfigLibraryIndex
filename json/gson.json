@@ -49,8 +49,8 @@
   ],
   "type": "LOADER",
   "dependencies": [],
-  "extraConfigTypes": null,
-  "extraFeatures": null,
+  "extraConfigTypes": [],
+  "extraFeatures": [],
   "configFormats": [
     "JSON"
   ],

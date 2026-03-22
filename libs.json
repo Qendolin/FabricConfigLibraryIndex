@@ -196,7 +196,7 @@
     "dependencies": [
       "FABRIC_API"
     ],
-    "extraConfigTypes": null,
+    "extraConfigTypes": [],
     "extraFeatures": [
       "CODEC_BASED_CONFIGS"
     ],
@@ -400,11 +400,15 @@
     ],
     "type": "LOADER",
     "dependencies": [],
-    "extraConfigTypes": null,
-    "extraFeatures": null,
-    "configFormats": null,
-    "manualInitialization": null,
-    "configMethod": null,
+    "extraConfigTypes": [],
+    "extraFeatures": [],
+    "configFormats": [],
+    "manualInitialization": "UNKNOWN",
+    "configMethod": {
+      "typeOfClass": null,
+      "instance": null,
+      "waaas": null
+    },
     "guiMethod": "AUTOMATIC",
     "notes": "",
     "source": "https://github.com/Fuzss/forgeconfigapiport"
@@ -436,8 +440,8 @@
       "FABRIC_API",
       "FABRIC_LANGUAGE_KOTLIN"
     ],
-    "extraConfigTypes": null,
-    "extraFeatures": null,
+    "extraConfigTypes": [],
+    "extraFeatures": [],
     "configFormats": [
       "JSON",
       "TOML"
@@ -506,8 +510,8 @@
     ],
     "type": "LOADER",
     "dependencies": [],
-    "extraConfigTypes": null,
-    "extraFeatures": null,
+    "extraConfigTypes": [],
+    "extraFeatures": [],
     "configFormats": [
       "JSON"
     ],
@@ -789,7 +793,7 @@
       "SLIDER",
       "MOD_MENU_INTEGRATION"
     ],
-    "configFormats": null,
+    "configFormats": [],
     "manualInitialization": "YES",
     "configMethod": {
       "typeOfClass": "EXTENDING",
@@ -845,7 +849,7 @@
     "extraFeatures": [
       "CONSTRAINT"
     ],
-    "configFormats": null,
+    "configFormats": [],
     "manualInitialization": "YES",
     "configMethod": {
       "typeOfClass": "ANNOTATED",

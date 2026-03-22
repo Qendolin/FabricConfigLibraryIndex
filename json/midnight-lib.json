@@ -44,7 +44,7 @@
     "SLIDER",
     "MOD_MENU_INTEGRATION"
   ],
-  "configFormats": null,
+  "configFormats": [],
   "manualInitialization": "YES",
   "configMethod": {
     "typeOfClass": "EXTENDING",

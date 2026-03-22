@@ -1,5 +1,7 @@
 package kr1v.index.util;
 
+import java.util.List;
+
 public enum Feature {
 	SLIDER("Slider"),
 	CONSTRAINT("Constraint", "Constraints for configs. For example, only allowing string configs that matches a certain regex"),
@@ -9,6 +11,7 @@ public enum Feature {
 	SECTIONS("Config section", "Sections of configs. May also be referred to as a 'config object' or ''")
 	;
 
+	public static final List<Feature> UNKNOWN = List.of();
 	public final String name;
 	public final String description;
 

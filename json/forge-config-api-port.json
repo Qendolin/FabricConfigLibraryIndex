@@ -36,11 +36,15 @@
   ],
   "type": "LOADER",
   "dependencies": [],
-  "extraConfigTypes": null,
-  "extraFeatures": null,
-  "configFormats": null,
-  "manualInitialization": null,
-  "configMethod": null,
+  "extraConfigTypes": [],
+  "extraFeatures": [],
+  "configFormats": [],
+  "manualInitialization": "UNKNOWN",
+  "configMethod": {
+    "typeOfClass": null,
+    "instance": null,
+    "waaas": null
+  },
   "guiMethod": "AUTOMATIC",
   "notes": "",
   "source": "https://github.com/Fuzss/forgeconfigapiport"

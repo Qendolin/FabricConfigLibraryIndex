@@ -12,7 +12,7 @@ public class ConfigToolKit extends ConfigLibrary {
         versions = Versions.versions("1.20.6", Versions.MC_1_21_X);
         type = Type.LOADER;
         dependencies = List.of(Dependency.FABRIC_API);
-        extraConfigTypes = null;
+        extraConfigTypes = ConfigType.UNKNOWN;
         extraFeatures = List.of(Feature.CODEC_BASED_CONFIGS);
         configFormats = List.of(ConfigFormat.JSON);
         manualInitialization = InitMode.AT_MOD_INIT;

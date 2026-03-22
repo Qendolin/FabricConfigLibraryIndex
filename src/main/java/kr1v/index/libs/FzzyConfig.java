@@ -12,8 +12,8 @@ public class FzzyConfig extends ConfigLibrary {
         versions = Versions.versions("1.20.1", "1.20.4", "1.20.5", "1.20.6", Versions.MC_1_21_X);
         type = Type.BOTH;
         dependencies = List.of(Dependency.FABRIC_API, Dependency.FABRIC_LANGUAGE_KOTLIN);
-        extraConfigTypes = null;
-        extraFeatures = null;
+        extraConfigTypes = ConfigType.UNKNOWN;
+        extraFeatures = Feature.UNKNOWN;
         configFormats = List.of(ConfigFormat.JSON, ConfigFormat.TOML);
         manualInitialization = InitMode.YES;
         configMethod = ConfigMethod.of(ConfigMethod.TypeOfClass.EXTENDING, true, List.of(ConfigMethod.Waaa.ANNOTATED_PRIMITIVE, ConfigMethod.Waaa.WRAPPER));

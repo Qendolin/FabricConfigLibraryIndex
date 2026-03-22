@@ -21,7 +21,7 @@
   "dependencies": [
     "FABRIC_API"
   ],
-  "extraConfigTypes": null,
+  "extraConfigTypes": [],
   "extraFeatures": [
     "CODEC_BASED_CONFIGS"
   ],

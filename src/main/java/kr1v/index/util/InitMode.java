@@ -6,7 +6,7 @@ public enum InitMode {
 	OPTIONAL("Optional"),
 	NO("No"),
 	NOT_AVAILABLE("n/a"),
-	;
+	UNKNOWN("?");
 
 	public final String name;
 

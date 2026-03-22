@@ -41,7 +41,7 @@
   "extraFeatures": [
     "CONSTRAINT"
   ],
-  "configFormats": null,
+  "configFormats": [],
   "manualInitialization": "YES",
   "configMethod": {
     "typeOfClass": "ANNOTATED",

@@ -12,8 +12,8 @@ public class Gson extends ConfigLibrary {
         versions = Versions.ALL_LIST;
         type = Type.LOADER;
         dependencies = List.of();
-        extraConfigTypes = null;
-        extraFeatures = null;
+		extraConfigTypes = ConfigType.UNKNOWN;
+		extraFeatures = Feature.UNKNOWN;
         configFormats = List.of(ConfigFormat.JSON);
         manualInitialization = InitMode.YES;
         configMethod = ConfigMethod.of(ConfigMethod.TypeOfClass.NORMAL, true, ConfigMethod.Waaa.PRIMITIVE);
