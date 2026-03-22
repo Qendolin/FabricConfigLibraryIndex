@@ -3,6 +3,7 @@ package kr1v.index.util;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class Versions {
 	public static final String[] MC_1_14_X = ver("1.14.0", "1.14.1", "1.14.2", "1.14.3", "1.14.4");
@@ -16,6 +17,7 @@ public class Versions {
 
 	public static final String[] ALL = ver(MC_1_14_X, MC_1_15_X, MC_1_16_X, MC_1_17_X, MC_1_18_X, MC_1_19_X, MC_1_20_X, MC_1_21_X);
 	public static final List<String> ALL_LIST = List.of(ALL);
+	public static final List<List<String>> ALL_SET = Stream.of(MC_1_14_X, MC_1_15_X, MC_1_16_X, MC_1_17_X, MC_1_18_X, MC_1_19_X, MC_1_20_X, MC_1_21_X).map(Versions::versions).toList();
 
 	public static String[] ver(String... strings) {
 		return strings;

@@ -16,7 +16,7 @@ public class CarbonConfig extends ConfigLibrary {
 		extraFeatures = List.of(Feature.CUSTOM_CONFIG_TYPES, Feature.MOD_MENU_INTEGRATION);
 		configFormats = List.of(ConfigFormat.JSON);
 		manualInitialization = InitMode.YES;
-		configMethod = ConfigMethod.of(ConfigMethod.TypeOfClass.NONE, true, ConfigMethod.Waaa.PRIMITIVE);
+		configMethod = ConfigMethod.of(ConfigMethod.TypeOfClass.NORMAL, true, ConfigMethod.Waaa.PRIMITIVE);
 		guiMethod = GuiMethod.NONE;
 		notes = "";
 		source = "https://github.com/xpple/BetterConfig";

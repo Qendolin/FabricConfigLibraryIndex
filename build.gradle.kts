@@ -1,4 +1,5 @@
 plugins {
+    kotlin("jvm") version "2.3.10"
     id("java")
     application
 }
@@ -11,8 +12,13 @@ repositories {
 }
 
 dependencies {
-    // gson
+    implementation("org.jetbrains.kotlin:kotlin-stdlib")
     implementation("com.google.code.gson:gson:2.13.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-html-jvm:0.9.1")
+}
+
+kotlin {
+    jvmToolchain(25)
 }
 
 application {

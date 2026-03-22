@@ -27,7 +27,7 @@
   ],
   "manualInitialization": "YES",
   "configMethod": {
-    "typeOfClass": "NONE",
+    "typeOfClass": "NORMAL",
     "instance": true,
     "waaas": [
       "PRIMITIVE"

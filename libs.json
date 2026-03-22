@@ -58,7 +58,7 @@
     ],
     "manualInitialization": "YES",
     "configMethod": {
-      "typeOfClass": "NONE",
+      "typeOfClass": "NORMAL",
       "instance": true,
       "waaas": [
         "PRIMITIVE"
@@ -352,7 +352,7 @@
     ],
     "manualInitialization": "AT_MOD_INIT",
     "configMethod": {
-      "typeOfClass": "NONE",
+      "typeOfClass": "NORMAL",
       "instance": true,
       "waaas": [
         "PRIMITIVE"
