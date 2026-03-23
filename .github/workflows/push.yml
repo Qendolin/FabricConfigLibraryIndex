@@ -6,7 +6,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - run: ./gradle run
+      - run: ./gradlew run
       - uses: actions/upload-artifact@v7
         with:
           path: generated
