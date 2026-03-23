@@ -16,16 +16,16 @@ import java.util.Locale
 import java.util.Random
 import kotlin.math.abs
 
-fun ConfigLibrary.tags(): List<String> {
-    val tags = arrayListOf<String>()
+fun ConfigLibrary.tags(): List<Pair<String, String>> {
+    val tags = arrayListOf<Pair<String, String>>()
 
-    if (side.client) tags.add("Client")
-    if (side.server) tags.add("Server")
-    if (type.gui) tags.add("Gui")
-    if (type.loader) tags.add("Loader")
+    if (side.client) tags.add(Pair("Client", ""))
+    if (side.server) tags.add(Pair("Server", ""))
+    if (type.gui) tags.add(Pair("Gui", ""))
+    if (type.loader) tags.add(Pair("Loader", ""))
 
-    extraFeatures.forEach { tags.add(it.name) }
-    configFormats.forEach { tags.add(it.name) }
+    extraFeatures.forEach { tags.add(Pair(it.name, it.description)) }
+    configFormats.forEach { tags.add(Pair(it.name, "")) }
 
     return tags
 }
@@ -185,22 +185,27 @@ fun FlowContent.ConfigLibraryPanel(library: ConfigLibrary) {
                     if (!isFirst) {
                         +", "
                     }
-                    +type.name
+                    span {
+                        if (type.description.isNotEmpty()) {
+                            classes = setOf("hoverable")
+                            title = type.description
+                        }
+                        +type.name
+                    }
                     isFirst = false
                 }
             }
         }
 
         if (library.type.gui) {
-            span {
-                h4 {
-                    if (library.guiMethod.description.isNotEmpty()) {
-                        title = library.guiMethod.description
-                    }
-                    style = "margin-left: 3px;"
-                    +"Gui method: "
-                    +library.guiMethod.name
+            h4 {
+                if (library.guiMethod.description.isNotEmpty()) {
+                    classes = setOf("hoverable")
+                    title = library.guiMethod.description
                 }
+                style = "margin-left: 3px;"
+                +"Gui method: "
+                +library.guiMethod.name
             }
         }
 
@@ -255,8 +260,12 @@ fun FlowContent.ConfigLibraryPanel(library: ConfigLibrary) {
         library.tags().forEach {
             span("tag") {
                 h6 {
+                    if (it.second.isNotEmpty()) {
+                        classes = setOf("hoverable")
+                        title = it.second
+                    }
                     style = "margin: 2px;"
-                    +it
+                    +it.first
                 }
             }
         }
@@ -301,7 +310,7 @@ fun main() {
                 style = "font-size: 13px; color: var(--color-text-primary); margin: 0; display: flex; height: 100%"
 
                 div("sidebar panel") {
-                    style = "flex: 1; margin: 20px; padding: 2px"
+                    style = "flex: 1; margin: 20px; padding: 2px; overflow-y: auto;"
                     h4 {
                         +"Versions"
                     }
@@ -319,6 +328,7 @@ fun main() {
                             }
                         }
                     }
+
                     h4 {
                         +"Side"
                     }
@@ -332,6 +342,98 @@ fun main() {
                         h6 {
                             style = "margin: 2px;"
                             +"Server"
+                        }
+                    }
+
+                    h4 {
+                        +"Config types"
+                    }
+                    for (type in ConfigType.entries) {
+                        span("tag") {
+                            h6 {
+                                if (type.description.isNotEmpty()) {
+                                    classes = setOf("hoverable")
+                                    title = type.description
+                                }
+                                style = "margin: 2px;"
+                                +type.name
+                            }
+                        }
+                    }
+
+                    h4 {
+                        +"Features"
+                    }
+                    for (feature in Feature.entries) {
+                        span("tag") {
+                            h6 {
+                                if (feature.description.isNotEmpty()) {
+                                    classes = setOf("hoverable")
+                                    title = feature.description
+                                }
+                                style = "margin: 2px;"
+                                +feature.name
+                            }
+                        }
+                    }
+
+                    h4 {
+                        +"Config formats"
+                    }
+                    for (configFormat in ConfigFormat.entries) {
+                        if (configFormat == ConfigFormat.NOT_AVAILABLE) continue
+                        span("tag") {
+                            h6 {
+                                style = "margin: 2px;"
+                                +configFormat.name
+                            }
+                        }
+                    }
+
+                    h4 {
+                        +"Init mode"
+                    }
+                    for (mode in InitMode.entries) {
+                        if (mode == InitMode.NOT_AVAILABLE || mode == InitMode.UNKNOWN) continue
+                        span("tag") {
+                            h6 {
+                                style = "margin: 2px;"
+                                +mode.name
+                            }
+                        }
+                    }
+
+                    h4 {
+                        +"Config method"
+                    }
+                    h5 {
+                        style = "margin: 0;"
+                        +"Field kind"
+                        span("tag") {
+                            h6 {
+                                style = "margin: 2px;"
+                                +"instance"
+                            }
+                        }
+                        span("tag") {
+                            h6 {
+                                style = "margin: 2px;"
+                                +"static"
+                            }
+                        }
+                    }
+                    h5 {
+                        style = "margin: 0;"
+                        +"Type of fields"
+                        for (waaa in Waaa.entries) {
+                            span("tag") {
+                                h6 {
+                                    style = "margin: 2px;"
+                                    classes = setOf("hoverable")
+                                    title = waaa.getExampleText()
+                                    +waaa.name
+                                }
+                            }
                         }
                     }
                 }

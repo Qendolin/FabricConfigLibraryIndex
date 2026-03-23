@@ -38,6 +38,15 @@ public class ConfigMethod {
 			this.name = name;
 			this.examples = examples;
 		}
+
+		public String getExampleText() {
+			String s = "Examples: ";
+			for (String example : examples) {
+				s += example + ", ";
+			}
+			s = s.substring(0, s.length() - 2);
+			return s;
+		}
 	}
 
 	public enum TypeOfClass {

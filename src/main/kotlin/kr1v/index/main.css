@@ -35,6 +35,11 @@ code {
     color: #a6adc8;
 }
 
+.hoverable {
+    color: #cba6f7;
+    text-decoration: underline dotted;
+}
+
 .panel {
     background: #181825;
     border-style: solid;
