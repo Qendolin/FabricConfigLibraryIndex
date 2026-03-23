@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - run: ./gradlew run
+      - run: ./gradlew run --no-daemon
       - uses: actions/upload-artifact@v7
         with:
           path: generated
@@ -19,6 +19,7 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v6
         with:
+          repository: kr1viah/site
           ssh-key: '${{ secrets.SITE_DEPLOY_KEY }}'
       - name: Set up user for commit
         run: |
