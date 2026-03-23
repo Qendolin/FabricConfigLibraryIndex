@@ -5,6 +5,8 @@ public enum Dependency {
     FABRIC_LANGUAGE_KOTLIN("Fabric Language Kotlin", "https://github.com/FabricMC/fabric-language-kotlin"),
     MALILIB("MaLiLib", "https://github.com/sakura-ryoko/malilib"),
     UI_LIB("UI Lib", "https://github.com/DAQEM/UILib"),
+    MOD_MENU("Mod Menu", "https://github.com/TerraformersMC/ModMenu"),
+    YET_ANOTHER_CONFIG_LIB("Yacl", "https://github.com/isXander/YetAnotherConfigLib"),
     ;
 
     public final String name;
