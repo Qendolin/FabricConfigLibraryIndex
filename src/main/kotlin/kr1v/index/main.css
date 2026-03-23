@@ -33,6 +33,7 @@ code {
     border-width: 2px;
     margin-bottom: 3px;
     color: #a6adc8;
+    user-select: none;
 }
 
 span.tag.active h6 {
@@ -43,6 +44,7 @@ span.tag.active h6 {
 .hoverable {
     color: #cba6f7;
     text-decoration: underline dotted;
+    cursor: help;
 }
 
 .panel {
