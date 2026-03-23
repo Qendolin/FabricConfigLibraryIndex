@@ -35,6 +35,11 @@ code {
     color: #a6adc8;
 }
 
+span.tag.active h6 {
+    background: #a6adc8;
+    color: #11111b;
+}
+
 .hoverable {
     color: #cba6f7;
     text-decoration: underline dotted;

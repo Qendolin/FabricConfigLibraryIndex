@@ -13,8 +13,8 @@ import kr1v.index.util.ConfigMethod.Waaa
 import java.nio.file.Files
 import java.nio.file.Path
 import java.util.Locale
-import java.util.Random
 import kotlin.math.abs
+import kotlin.random.Random
 
 fun ConfigLibrary.tags(): List<Pair<String, String>> {
     val tags = arrayListOf<Pair<String, String>>()
@@ -156,7 +156,7 @@ fun FlowContent.ConfigLibraryPanel(library: ConfigLibrary) {
 
                 +"Examples: "
 
-                val random = kotlin.random.Random(library.id.hashCode())
+                val random = Random(library.name.hashCode())
                 val length = method.waaas.size
 
                 repeat((1..3).count()) {
@@ -311,6 +311,34 @@ fun main() {
 
                 div("sidebar panel") {
                     style = "flex: 1; margin: 20px; padding: 2px; overflow-y: auto;"
+                    div {
+                        style = """
+                        display: block;
+                        margin-left: auto;
+                        width: fit-content;
+                        """.trimIndent()
+                        onClick = "resetFilters()"
+                        span {
+                            style = """
+                                background: #11111b;
+                                border-style: solid;
+                                border-color: #6c7086;
+                                border-radius: 10px;
+                                display: inline-block;
+                                border-width: 2px;
+                                margin-left: 3px;
+                                padding-left: 2px;
+                                padding-right: 2px;
+                                margin-bottom: 3px;
+                                color: #a6adc8;
+                                height: 1.5em;
+                            """.trimIndent()
+                            h6 {
+                                style = "height: 2em; margin-top: 0.375em"
+                                +"Reset filters"
+                            }
+                        }
+                    }
                     h4 {
                         +"Versions"
                     }
@@ -321,6 +349,7 @@ fun main() {
                         }
                         for (version in versionSet) {
                             span("tag") {
+                                onClick = "toggleFilter('versions', '$version')"
                                 h6 {
                                     style = "margin-left: 4px; margin: 2px;"
                                     +version
@@ -333,12 +362,14 @@ fun main() {
                         +"Side"
                     }
                     span("tag") {
+                        onClick = "toggleFilter('side', 'CLIENT')"
                         h6 {
                             style = "margin: 2px;"
                             +"Client"
                         }
                     }
                     span("tag") {
+                        onClick = "toggleFilter('side', 'SERVER')"
                         h6 {
                             style = "margin: 2px;"
                             +"Server"
@@ -350,6 +381,7 @@ fun main() {
                     }
                     for (type in ConfigType.entries) {
                         span("tag") {
+                            onClick = "toggleFilter('extraConfigTypes', '$type')"
                             h6 {
                                 if (type.description.isNotEmpty()) {
                                     classes = setOf("hoverable")
@@ -366,6 +398,7 @@ fun main() {
                     }
                     for (feature in Feature.entries) {
                         span("tag") {
+                            onClick = "toggleFilter('extraFeatures', '$feature')"
                             h6 {
                                 if (feature.description.isNotEmpty()) {
                                     classes = setOf("hoverable")
@@ -383,6 +416,7 @@ fun main() {
                     for (configFormat in ConfigFormat.entries) {
                         if (configFormat == ConfigFormat.NOT_AVAILABLE) continue
                         span("tag") {
+                            onClick = "toggleFilter('configFormats', '$configFormat')"
                             h6 {
                                 style = "margin: 2px;"
                                 +configFormat.name
@@ -396,6 +430,7 @@ fun main() {
                     for (mode in InitMode.entries) {
                         if (mode == InitMode.NOT_AVAILABLE || mode == InitMode.UNKNOWN) continue
                         span("tag") {
+                            onClick = "toggleFilter('manualInitialization', '$mode')"
                             h6 {
                                 style = "margin: 2px;"
                                 +mode.name
@@ -410,12 +445,14 @@ fun main() {
                         style = "margin: 0;"
                         +"Field kind"
                         span("tag") {
+                            onClick = "toggleFilter('configMethod.instance', 'true')"
                             h6 {
                                 style = "margin: 2px;"
                                 +"instance"
                             }
                         }
                         span("tag") {
+                            onClick = "toggleFilter('configMethod.instance', 'false')"
                             h6 {
                                 style = "margin: 2px;"
                                 +"static"
@@ -427,6 +464,7 @@ fun main() {
                         +"Type of fields"
                         for (waaa in Waaa.entries) {
                             span("tag") {
+                                onClick = "toggleFilter('configMethod.waaas', '$waaa')"
                                 h6 {
                                     style = "margin: 2px;"
                                     classes = setOf("hoverable")
@@ -444,17 +482,15 @@ fun main() {
                         ConfigLibraryPanel(it)
                     }
                 }
+
+                script {
+                    unsafe {
+                        +Files.readString(Path.of("src/main/kotlin/kr1v/index/main.js"))
+                    }
+                }
             }
         }
     }
-
-//    val html = createHTMLDocument().body {
-//        style = "font-size: 13px; color: var(--color-text-primary); margin: 0;"
-//
-//        Libraries.CONFIG_LIBRARIES().forEach {
-//            ConfigLibraryPanel(it)
-//        }
-//    }
 
     Files.writeString(Path.of("index.html"), html)
 }
