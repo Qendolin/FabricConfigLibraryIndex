@@ -159,15 +159,18 @@ fun FlowContent.ConfigLibraryPanel(library: ConfigLibrary) {
                 val random = Random(library.name.hashCode())
                 val length = method.waaas.size
 
-                repeat((1..3).count()) {
+                val examples = HashSet<String>()
+                while (examples.size < 3) {
+                    val exampless = method.waaas[abs(random.nextInt() % length)].examples
+                    examples.add(exampless[abs(random.nextInt() % exampless.size)])
+                }
+                for (example in examples) {
                     span {
                         style = "display: inline-block; margin: 1px;"
                         code {
                             span {
                                 style = "margin: 5px;"
-                                val examples = method.waaas[abs(random.nextInt() % length)].examples
-
-                                +examples[abs(random.nextInt() % examples.size)]
+                                +example
                             }
                         }
                     }
