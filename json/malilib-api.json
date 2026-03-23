@@ -54,7 +54,8 @@
   "extraConfigTypes": [
     "COLOR",
     "HOTKEY",
-    "PAIR"
+    "PAIR",
+    "BUTTON"
   ],
   "extraFeatures": [
     "SLIDER",
