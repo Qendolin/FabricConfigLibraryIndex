@@ -1,0 +1,922 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <style>html, body {
+    background: #1e1e2e;
+    color: #cdd6f4;
+    font-family: helvetica, serif;
+    text-align: left;
+    font-size: 125%;
+}
+
+.hidden {
+	display: none;
+}
+
+a {
+    color: #89b4fa
+}
+
+code {
+    background: #11111b;
+    border-style: solid;
+    border-color: #6c7086;
+    border-radius: 10px;
+    border-width: 2px;
+    color: #a6adc8;
+}
+
+.tag {
+    background: #11111b;
+    border-style: solid;
+    border-color: #6c7086;
+    border-radius: 10px;
+    display: inline-block;
+    margin-left: 3px;
+    border-width: 2px;
+    margin-bottom: 3px;
+    color: #a6adc8;
+    user-select: none;
+}
+
+span.tag.active h6 {
+    background: #a6adc8;
+    color: #11111b;
+}
+
+.hoverable {
+    color: #cba6f7;
+    text-decoration: underline dotted;
+    cursor: help;
+}
+
+.panel {
+    background: #181825;
+    border-style: solid;
+    border-color: #6c7086;
+    border-radius: 10px;
+    margin: 10px
+}
+
+h4 {
+    margin-top: 0;
+    margin-bottom: 0;
+}</style>
+    <title>Config Library Index</title>
+  </head>
+  <body style="font-size: 13px; color: var(--color-text-primary); margin: 0; display: flex; height: 100%">
+    <div class="sidebar panel" style="flex: 1; margin: 20px; padding: 2px; overflow-y: auto;">
+      <div style="display: block;
+margin-left: auto;
+width: fit-content;" onclick="resetFilters()"><span style="background: #11111b;
+border-style: solid;
+border-color: #6c7086;
+border-radius: 10px;
+display: inline-block;
+border-width: 2px;
+margin-left: 3px;
+padding-left: 2px;
+padding-right: 2px;
+margin-bottom: 3px;
+color: #a6adc8;
+height: 1.5em;">
+          <h6 style="height: 2em; margin-top: 0.375em">Reset filters</h6>
+        </span></div>
+      <h4>Versions</h4>
+      <h5 style="margin-left: 2px; margin: 0">1.21</h5>
+<span class="tag" onclick="toggleFilter('versions', '1.21.0')">
+        <h6 style="margin-left: 4px; margin: 2px;">1.21.0</h6>
+      </span><span class="tag" onclick="toggleFilter('versions', '1.21.1')">
+        <h6 style="margin-left: 4px; margin: 2px;">1.21.1</h6>
+      </span><span class="tag" onclick="toggleFilter('versions', '1.21.2')">
+        <h6 style="margin-left: 4px; margin: 2px;">1.21.2</h6>
+      </span><span class="tag" onclick="toggleFilter('versions', '1.21.3')">
+        <h6 style="margin-left: 4px; margin: 2px;">1.21.3</h6>
+      </span><span class="tag" onclick="toggleFilter('versions', '1.21.4')">
+        <h6 style="margin-left: 4px; margin: 2px;">1.21.4</h6>
+      </span><span class="tag" onclick="toggleFilter('versions', '1.21.5')">
+        <h6 style="margin-left: 4px; margin: 2px;">1.21.5</h6>
+      </span><span class="tag" onclick="toggleFilter('versions', '1.21.6')">
+        <h6 style="margin-left: 4px; margin: 2px;">1.21.6</h6>
+      </span><span class="tag" onclick="toggleFilter('versions', '1.21.7')">
+        <h6 style="margin-left: 4px; margin: 2px;">1.21.7</h6>
+      </span><span class="tag" onclick="toggleFilter('versions', '1.21.8')">
+        <h6 style="margin-left: 4px; margin: 2px;">1.21.8</h6>
+      </span><span class="tag" onclick="toggleFilter('versions', '1.21.9')">
+        <h6 style="margin-left: 4px; margin: 2px;">1.21.9</h6>
+      </span><span class="tag" onclick="toggleFilter('versions', '1.21.10')">
+        <h6 style="margin-left: 4px; margin: 2px;">1.21.10</h6>
+      </span><span class="tag" onclick="toggleFilter('versions', '1.21.11')">
+        <h6 style="margin-left: 4px; margin: 2px;">1.21.11</h6>
+      </span>
+      <h5 style="margin-left: 2px; margin: 0">1.20</h5>
+<span class="tag" onclick="toggleFilter('versions', '1.20.0')">
+        <h6 style="margin-left: 4px; margin: 2px;">1.20.0</h6>
+      </span><span class="tag" onclick="toggleFilter('versions', '1.20.1')">
+        <h6 style="margin-left: 4px; margin: 2px;">1.20.1</h6>
+      </span><span class="tag" onclick="toggleFilter('versions', '1.20.2')">
+        <h6 style="margin-left: 4px; margin: 2px;">1.20.2</h6>
+      </span><span class="tag" onclick="toggleFilter('versions', '1.20.3')">
+        <h6 style="margin-left: 4px; margin: 2px;">1.20.3</h6>
+      </span><span class="tag" onclick="toggleFilter('versions', '1.20.4')">
+        <h6 style="margin-left: 4px; margin: 2px;">1.20.4</h6>
+      </span><span class="tag" onclick="toggleFilter('versions', '1.20.5')">
+        <h6 style="margin-left: 4px; margin: 2px;">1.20.5</h6>
+      </span><span class="tag" onclick="toggleFilter('versions', '1.20.6')">
+        <h6 style="margin-left: 4px; margin: 2px;">1.20.6</h6>
+      </span>
+      <h5 style="margin-left: 2px; margin: 0">1.19</h5>
+<span class="tag" onclick="toggleFilter('versions', '1.19.0')">
+        <h6 style="margin-left: 4px; margin: 2px;">1.19.0</h6>
+      </span><span class="tag" onclick="toggleFilter('versions', '1.19.1')">
+        <h6 style="margin-left: 4px; margin: 2px;">1.19.1</h6>
+      </span><span class="tag" onclick="toggleFilter('versions', '1.19.2')">
+        <h6 style="margin-left: 4px; margin: 2px;">1.19.2</h6>
+      </span><span class="tag" onclick="toggleFilter('versions', '1.19.3')">
+        <h6 style="margin-left: 4px; margin: 2px;">1.19.3</h6>
+      </span><span class="tag" onclick="toggleFilter('versions', '1.19.4')">
+        <h6 style="margin-left: 4px; margin: 2px;">1.19.4</h6>
+      </span>
+      <h5 style="margin-left: 2px; margin: 0">1.18</h5>
+<span class="tag" onclick="toggleFilter('versions', '1.18.0')">
+        <h6 style="margin-left: 4px; margin: 2px;">1.18.0</h6>
+      </span><span class="tag" onclick="toggleFilter('versions', '1.18.1')">
+        <h6 style="margin-left: 4px; margin: 2px;">1.18.1</h6>
+      </span><span class="tag" onclick="toggleFilter('versions', '1.18.2')">
+        <h6 style="margin-left: 4px; margin: 2px;">1.18.2</h6>
+      </span>
+      <h5 style="margin-left: 2px; margin: 0">1.17</h5>
+<span class="tag" onclick="toggleFilter('versions', '1.17.0')">
+        <h6 style="margin-left: 4px; margin: 2px;">1.17.0</h6>
+      </span><span class="tag" onclick="toggleFilter('versions', '1.17.1')">
+        <h6 style="margin-left: 4px; margin: 2px;">1.17.1</h6>
+      </span>
+      <h5 style="margin-left: 2px; margin: 0">1.16</h5>
+<span class="tag" onclick="toggleFilter('versions', '1.16.0')">
+        <h6 style="margin-left: 4px; margin: 2px;">1.16.0</h6>
+      </span><span class="tag" onclick="toggleFilter('versions', '1.16.1')">
+        <h6 style="margin-left: 4px; margin: 2px;">1.16.1</h6>
+      </span><span class="tag" onclick="toggleFilter('versions', '1.16.2')">
+        <h6 style="margin-left: 4px; margin: 2px;">1.16.2</h6>
+      </span><span class="tag" onclick="toggleFilter('versions', '1.16.3')">
+        <h6 style="margin-left: 4px; margin: 2px;">1.16.3</h6>
+      </span><span class="tag" onclick="toggleFilter('versions', '1.16.4')">
+        <h6 style="margin-left: 4px; margin: 2px;">1.16.4</h6>
+      </span><span class="tag" onclick="toggleFilter('versions', '1.16.5')">
+        <h6 style="margin-left: 4px; margin: 2px;">1.16.5</h6>
+      </span>
+      <h5 style="margin-left: 2px; margin: 0">1.15</h5>
+<span class="tag" onclick="toggleFilter('versions', '1.15.0')">
+        <h6 style="margin-left: 4px; margin: 2px;">1.15.0</h6>
+      </span><span class="tag" onclick="toggleFilter('versions', '1.15.1')">
+        <h6 style="margin-left: 4px; margin: 2px;">1.15.1</h6>
+      </span><span class="tag" onclick="toggleFilter('versions', '1.15.2')">
+        <h6 style="margin-left: 4px; margin: 2px;">1.15.2</h6>
+      </span>
+      <h5 style="margin-left: 2px; margin: 0">1.14</h5>
+<span class="tag" onclick="toggleFilter('versions', '1.14.0')">
+        <h6 style="margin-left: 4px; margin: 2px;">1.14.0</h6>
+      </span><span class="tag" onclick="toggleFilter('versions', '1.14.1')">
+        <h6 style="margin-left: 4px; margin: 2px;">1.14.1</h6>
+      </span><span class="tag" onclick="toggleFilter('versions', '1.14.2')">
+        <h6 style="margin-left: 4px; margin: 2px;">1.14.2</h6>
+      </span><span class="tag" onclick="toggleFilter('versions', '1.14.3')">
+        <h6 style="margin-left: 4px; margin: 2px;">1.14.3</h6>
+      </span><span class="tag" onclick="toggleFilter('versions', '1.14.4')">
+        <h6 style="margin-left: 4px; margin: 2px;">1.14.4</h6>
+      </span>
+      <h4>Side</h4>
+<span class="tag" onclick="toggleFilter('side', 'CLIENT')">
+        <h6 style="margin: 2px;">Client</h6>
+      </span><span class="tag" onclick="toggleFilter('side', 'SERVER')">
+        <h6 style="margin: 2px;">Server</h6>
+      </span>
+      <h4>Config types</h4>
+<span class="tag" onclick="toggleFilter('extraConfigTypes', 'COLOR')">
+        <h6 style="margin: 2px;">Color</h6>
+      </span><span class="tag" onclick="toggleFilter('extraConfigTypes', 'HOTKEY')">
+        <h6 style="margin: 2px;">Hotkey</h6>
+      </span><span class="tag" onclick="toggleFilter('extraConfigTypes', 'DROPDOWN')">
+        <h6 style="margin: 2px;">Dropdown</h6>
+      </span><span class="tag" onclick="toggleFilter('extraConfigTypes', 'BUTTON')">
+        <h6 class="hoverable" title="A button in the list of configs that does something when pressed" style="margin: 2px;">Button</h6>
+      </span><span class="tag" onclick="toggleFilter('extraConfigTypes', 'FILE')">
+        <h6 style="margin: 2px;">File</h6>
+      </span><span class="tag" onclick="toggleFilter('extraConfigTypes', 'PAIR')">
+        <h6 class="hoverable" title="A pair of configs next to each other" style="margin: 2px;">Pair</h6>
+      </span><span class="tag" onclick="toggleFilter('extraConfigTypes', 'REGISTRY_ENTRY')">
+        <h6 style="margin: 2px;">Registry entry</h6>
+      </span><span class="tag" onclick="toggleFilter('extraConfigTypes', 'IDENTIFIER')">
+        <h6 style="margin: 2px;">Identifier</h6>
+      </span><span class="tag" onclick="toggleFilter('extraConfigTypes', 'DATE_TIME')">
+        <h6 style="margin: 2px;">Date Time</h6>
+      </span>
+      <h4>Features</h4>
+<span class="tag" onclick="toggleFilter('extraFeatures', 'SLIDER')">
+        <h6 style="margin: 2px;">Slider</h6>
+      </span><span class="tag" onclick="toggleFilter('extraFeatures', 'CONSTRAINT')">
+        <h6 class="hoverable" title="Constraints for configs. For example, only allowing string configs that matches a certain regex" style="margin: 2px;">Constraint</h6>
+      </span><span class="tag" onclick="toggleFilter('extraFeatures', 'MOD_MENU_INTEGRATION')">
+        <h6 style="margin: 2px;">Mod menu integration</h6>
+      </span><span class="tag" onclick="toggleFilter('extraFeatures', 'CUSTOM_CONFIG_TYPES')">
+        <h6 class="hoverable" title="Allows you to add your own config types" style="margin: 2px;">Custom config types</h6>
+      </span><span class="tag" onclick="toggleFilter('extraFeatures', 'CODEC_BASED_CONFIGS')">
+        <h6 style="margin: 2px;">Codec based configs</h6>
+      </span><span class="tag" onclick="toggleFilter('extraFeatures', 'SECTIONS')">
+        <h6 class="hoverable" title="Sections of configs. May also be referred to as a 'config object' or ''" style="margin: 2px;">Config section</h6>
+      </span>
+      <h4>Config formats</h4>
+<span class="tag" onclick="toggleFilter('configFormats', 'JSON')">
+        <h6 style="margin: 2px;">Json</h6>
+      </span><span class="tag" onclick="toggleFilter('configFormats', 'TOML')">
+        <h6 style="margin: 2px;">Toml</h6>
+      </span><span class="tag" onclick="toggleFilter('configFormats', 'YAML')">
+        <h6 style="margin: 2px;">Yaml</h6>
+      </span><span class="tag" onclick="toggleFilter('configFormats', 'PROPERTIES')">
+        <h6 style="margin: 2px;">.properties</h6>
+      </span><span class="tag" onclick="toggleFilter('configFormats', 'INI')">
+        <h6 style="margin: 2px;">.ini</h6>
+      </span><span class="tag" onclick="toggleFilter('configFormats', 'JSON5')">
+        <h6 style="margin: 2px;">Json5</h6>
+      </span><span class="tag" onclick="toggleFilter('configFormats', 'HOCON')">
+        <h6 style="margin: 2px;">Hocon</h6>
+      </span>
+      <h4>Init mode</h4>
+<span class="tag" onclick="toggleFilter('manualInitialization', 'YES')">
+        <h6 style="margin: 2px;">Yes</h6>
+      </span><span class="tag" onclick="toggleFilter('manualInitialization', 'AT_MOD_INIT')">
+        <h6 style="margin: 2px;">At mod initialization</h6>
+      </span><span class="tag" onclick="toggleFilter('manualInitialization', 'OPTIONAL')">
+        <h6 style="margin: 2px;">Optional</h6>
+      </span><span class="tag" onclick="toggleFilter('manualInitialization', 'NO')">
+        <h6 style="margin: 2px;">No</h6>
+      </span>
+      <h4>Config method</h4>
+      <h5 style="margin: 0;">Field kind<span class="tag" onclick="toggleFilter('configMethod.instance', 'true')">
+          <h6 style="margin: 2px;">instance</h6>
+        </span><span class="tag" onclick="toggleFilter('configMethod.instance', 'false')">
+          <h6 style="margin: 2px;">static</h6>
+        </span></h5>
+      <h5 style="margin: 0;">Type of fields<span class="tag" onclick="toggleFilter('configMethod.waaas', 'PRIMITIVE')">
+          <h6 style="margin: 2px;" class="hoverable" title="Examples: int, List&lt;String&gt;, File">Primitive</h6>
+        </span><span class="tag" onclick="toggleFilter('configMethod.waaas', 'ANNOTATED_PRIMITIVE')">
+          <h6 style="margin: 2px;" class="hoverable" title="Examples: @Config int, @Comment(&quot;This is a string list&quot;) List&lt;String&gt;, @Config File">Annotated primitive</h6>
+        </span><span class="tag" onclick="toggleFilter('configMethod.waaas', 'WRAPPER')">
+          <h6 style="margin: 2px;" class="hoverable" title="Examples: Config&lt;Integer&gt;, Config&lt;List&lt;String&gt;&gt;, Config&lt;File&gt;">Wrapper</h6>
+        </span><span class="tag" onclick="toggleFilter('configMethod.waaas', 'SPECIAL')">
+          <h6 style="margin: 2px;" class="hoverable" title="Examples: ConfigInteger, ConfigList&lt;ConfigString&gt;, FileConfig">Special</h6>
+        </span></h5>
+    </div>
+    <div class="library_grid" style="flex: 2; overflow-y: auto; padding: 10px;">
+      <div class="panel" id="kaleido-config">
+        <div style="display: block;
+margin-left: auto;
+width: fit-content;
+   margin-right: 3px;
+   margin-top: 0px;
+   margin-bottom: -20px;"><a href="https://github.com/kr1viah/FabricConfigLibraryIndex/blob/master/src/main/java/kr1v/index/libs/KaleidoConfig.java">View entry</a> <a href="https://github.com/sisby-folk/kaleido-config">Source code</a></div>
+        <h1 style="display: inline-block; margin: 0px; margin-left: 3px;">Kaleido config (</h1>
+        <h2 style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">kaleido-config</span></code></h2>
+        <h1 style="display: inline-block; margin: 0px;">)</h1>
+        <h4 style="margin-left: 3px;">Manual initialization: Yes</h4>
+        <h4 style="margin-left: 3px;">Config method: an extending class with annotated instance members, of primitive type<br>Examples: <span style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">@Comment(&quot;This is a string list&quot;) List&lt;String&gt;</span></code></span><span style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">@Config int</span></code></span><span style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">@Config File</span></code></span></h4>
+        <div style="height: 5px"></div>
+        <h4 style="margin-left: 3px;">Available for versions: 1.14.x, 1.15.x, 1.16.x, 1.17.x, 1.18.x, 1.19.x, 1.20.x, 1.21.x</h4>
+        <div style="height: 5px"></div>
+        <h4 style="margin-left: 3px;">Notes:</h4>
+        <h5 style="margin: 0; margin-left: 3px; ">Not made with minecraft in mind</h5>
+        <div style="height: 5px"></div>
+<span class="tag">
+          <h6 style="margin: 2px;">Client</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Server</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Loader</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Toml</h6>
+        </span></div>
+      <div class="panel" id="complete-config">
+        <div style="display: block;
+margin-left: auto;
+width: fit-content;
+   margin-right: 3px;
+   margin-top: 0px;
+   margin-bottom: -20px;"><a href="https://github.com/kr1viah/FabricConfigLibraryIndex/blob/master/src/main/java/kr1v/index/libs/CompleteConfig.java">View entry</a> <a href="https://github.com/Lortseam/completeconfig">Source code</a></div>
+        <h1 style="display: inline-block; margin: 0px; margin-left: 3px;">CompleteConfig (</h1>
+        <h2 style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">complete-config</span></code></h2>
+        <h1 style="display: inline-block; margin: 0px;">)</h1>
+        <h4 style="margin-left: 3px;">Manual initialization: Yes</h4>
+        <h4 style="margin-left: 3px;">Config method: an extending class with annotated instance members, of primitive type<br>Examples: <span style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">@Comment(&quot;This is a string list&quot;) List&lt;String&gt;</span></code></span><span style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">@Config int</span></code></span><span style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">@Config File</span></code></span></h4>
+        <h4 class="hoverable" title="Build a config screen using a builder class" style="margin-left: 3px;">Gui method: Builder</h4>
+        <div style="height: 5px"></div>
+        <h4 style="margin-left: 3px;">Available for versions: 1.17.x, 1.18.x, 1.19.x, 1.20.0, 1.20.1, 1.20.2, 1.20.3, 1.20.4, 1.20.6</h4>
+        <div style="height: 5px"></div>
+        <div style="height: 5px"></div>
+<span class="tag">
+          <h6 style="margin: 2px;">Client</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Server</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Gui</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Loader</h6>
+        </span><span class="tag">
+          <h6 class="hoverable" title="Allows you to add your own config types" style="margin: 2px;">Custom config types</h6>
+        </span><span class="tag">
+          <h6 class="hoverable" title="Sections of configs. May also be referred to as a 'config object' or ''" style="margin: 2px;">Config section</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Json</h6>
+        </span></div>
+      <div class="panel" id="gson">
+        <div style="display: block;
+margin-left: auto;
+width: fit-content;
+   margin-right: 3px;
+   margin-top: 0px;
+   margin-bottom: -20px;"><a href="https://github.com/kr1viah/FabricConfigLibraryIndex/blob/master/src/main/java/kr1v/index/libs/Gson.java">View entry</a> <a href="https://github.com/google/gson">Source code</a></div>
+        <h1 style="display: inline-block; margin: 0px; margin-left: 3px;">Gson (</h1>
+        <h2 style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">gson</span></code></h2>
+        <h1 style="display: inline-block; margin: 0px;">)</h1>
+        <h4 style="margin-left: 3px;">Manual initialization: Yes</h4>
+        <h4 style="margin-left: 3px;">Config method: a normal class with instance members, of primitive type<br>Examples: <span style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">File</span></code></span><span style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">int</span></code></span><span style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">List&lt;String&gt;</span></code></span></h4>
+        <div style="height: 5px"></div>
+        <h4 style="margin-left: 3px;">Available for versions: 1.14.x, 1.15.x, 1.16.x, 1.17.x, 1.18.x, 1.19.x, 1.20.x, 1.21.x</h4>
+        <div style="height: 5px"></div>
+        <h4 style="margin-left: 3px;">Notes:</h4>
+        <h5 style="margin: 0; margin-left: 3px; ">Not really a config library, but still useful for some</h5>
+        <div style="height: 5px"></div>
+<span class="tag">
+          <h6 style="margin: 2px;">Client</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Server</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Loader</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Json</h6>
+        </span></div>
+      <div class="panel" id="fzzy-config">
+        <div style="display: block;
+margin-left: auto;
+width: fit-content;
+   margin-right: 3px;
+   margin-top: 0px;
+   margin-bottom: -20px;"><a href="https://github.com/kr1viah/FabricConfigLibraryIndex/blob/master/src/main/java/kr1v/index/libs/FzzyConfig.java">View entry</a> <a href="https://github.com/fzzyhmstrs/fconfig">Source code</a></div>
+        <h1 style="display: inline-block; margin: 0px; margin-left: 3px;">Fzzy Config (</h1>
+        <h2 style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">fzzy-config</span></code></h2>
+        <h1 style="display: inline-block; margin: 0px;">)</h1>
+        <h4 style="margin-left: 3px;">Dependencies: <a href="https://github.com/FabricMC/fabric-api">Fabric API</a>, <a href="https://github.com/FabricMC/fabric-language-kotlin">Fabric Language Kotlin</a></h4>
+        <h4 style="margin-left: 3px;">Manual initialization: Yes</h4>
+        <h4 style="margin-left: 3px;">Config method: an extending class with either annotated instance members, of primitive type, or instance members, typed with wrappers<br>Examples: <span style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">@Comment(&quot;This is a string list&quot;) List&lt;String&gt;</span></code></span><span style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">@Config int</span></code></span><span style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">Config&lt;File&gt;</span></code></span></h4>
+        <h4 class="hoverable" title="You don't need to think about the config screen; it is done automatically" style="margin-left: 3px;">Gui method: Automatic</h4>
+        <div style="height: 5px"></div>
+        <h4 style="margin-left: 3px;">Available for versions: 1.20.1, 1.20.4, 1.20.5, 1.20.6, 1.21.x</h4>
+        <div style="height: 5px"></div>
+        <div style="height: 5px"></div>
+<span class="tag">
+          <h6 style="margin: 2px;">Client</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Server</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Gui</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Loader</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Json</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Toml</h6>
+        </span></div>
+      <div class="panel" id="mcqoy">
+        <div style="display: block;
+margin-left: auto;
+width: fit-content;
+   margin-right: 3px;
+   margin-top: 0px;
+   margin-bottom: -20px;"><a href="https://github.com/kr1viah/FabricConfigLibraryIndex/blob/master/src/main/java/kr1v/index/libs/McQoy.java">View entry</a> <a href="https://github.com/sisby-folk/mcqoy">Source code</a></div>
+        <h1 style="display: inline-block; margin: 0px; margin-left: 3px;">McQoy (</h1>
+        <h2 style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">mcqoy</span></code></h2>
+        <h1 style="display: inline-block; margin: 0px;">)</h1>
+        <h4 style="margin-left: 3px;">Dependencies: <a href="https://github.com/TerraformersMC/ModMenu">Mod Menu</a>, <a href="https://github.com/isXander/YetAnotherConfigLib">Yacl</a></h4>
+        <h4 style="margin-left: 3px;">Manual initialization: n/a</h4>
+        <h4 style="margin-left: 3px;">Config method: n/a</h4>
+        <h4 class="hoverable" title="You don't need to think about the config screen; it is done automatically" style="margin-left: 3px;">Gui method: Automatic</h4>
+        <div style="height: 5px"></div>
+        <h4 style="margin-left: 3px;">Available for versions: 1.16.5, 1.17.x, 1.18.x, 1.19.x, 1.20.x, 1.21.x</h4>
+        <div style="height: 5px"></div>
+        <h4 style="margin-left: 3px;">Notes:</h4>
+        <h5 style="margin: 0; margin-left: 3px; ">Makes a YACL config screen for kaleido configs</h5>
+        <div style="height: 5px"></div>
+<span class="tag">
+          <h6 style="margin: 2px;">Client</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Gui</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Mod menu integration</h6>
+        </span></div>
+      <div class="panel" id="carbon-config">
+        <div style="display: block;
+margin-left: auto;
+width: fit-content;
+   margin-right: 3px;
+   margin-top: 0px;
+   margin-bottom: -20px;"><a href="https://github.com/kr1viah/FabricConfigLibraryIndex/blob/master/src/main/java/kr1v/index/libs/CarbonConfig.java">View entry</a> <a href="https://github.com/xpple/BetterConfig">Source code</a></div>
+        <h1 style="display: inline-block; margin: 0px; margin-left: 3px;">Carbon Config (</h1>
+        <h2 style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">carbon-config</span></code></h2>
+        <h1 style="display: inline-block; margin: 0px;">)</h1>
+        <h4 style="margin-left: 3px;">Manual initialization: Yes</h4>
+        <h4 style="margin-left: 3px;">Config method: a normal class with instance members, of primitive type<br>Examples: <span style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">File</span></code></span><span style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">int</span></code></span><span style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">List&lt;String&gt;</span></code></span></h4>
+        <h4 class="hoverable" title="Guis are not officially supported" style="margin-left: 3px;">Gui method: None</h4>
+        <div style="height: 5px"></div>
+        <h4 style="margin-left: 3px;">Available for versions: 1.16.5, 1.18.2, 1.19.2, 1.20.0, 1.20.1, 1.20.2, 1.20.4, 1.20.5, 1.20.6, 1.21.0, 1.21.1</h4>
+        <div style="height: 5px"></div>
+        <div style="height: 5px"></div>
+<span class="tag">
+          <h6 style="margin: 2px;">Client</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Server</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Gui</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Loader</h6>
+        </span><span class="tag">
+          <h6 class="hoverable" title="Allows you to add your own config types" style="margin: 2px;">Custom config types</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Mod menu integration</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Json</h6>
+        </span></div>
+      <div class="panel" id="configurable">
+        <div style="display: block;
+margin-left: auto;
+width: fit-content;
+   margin-right: 3px;
+   margin-top: 0px;
+   margin-bottom: -20px;"><a href="https://github.com/kr1viah/FabricConfigLibraryIndex/blob/master/src/main/java/kr1v/index/libs/Configurable.java">View entry</a> <a href="https://github.com/Bawnorton/Configurable">Source code</a></div>
+        <h1 style="display: inline-block; margin: 0px; margin-left: 3px;">Configurable (</h1>
+        <h2 style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">configurable</span></code></h2>
+        <h1 style="display: inline-block; margin: 0px;">)</h1>
+        <h4 style="margin-left: 3px;">Dependencies: <a href="https://github.com/FabricMC/fabric-api">Fabric API</a></h4>
+        <h4 style="margin-left: 3px;">Manual initialization: No</h4>
+        <h4 style="margin-left: 3px;">Config method: annotated static members, of primitive type<br>Examples: <span style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">@Comment(&quot;This is a string list&quot;) List&lt;String&gt;</span></code></span><span style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">@Config int</span></code></span><span style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">@Config File</span></code></span></h4>
+        <div style="height: 5px"></div>
+        <h4 style="margin-left: 3px;">Available for versions: 1.20.1, 1.21.x</h4>
+        <div style="height: 5px"></div>
+        <div style="height: 5px"></div>
+<span class="tag">
+          <h6 style="margin: 2px;">Client</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Server</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Loader</h6>
+        </span><span class="tag">
+          <h6 class="hoverable" title="Constraints for configs. For example, only allowing string configs that matches a certain regex" style="margin: 2px;">Constraint</h6>
+        </span><span class="tag">
+          <h6 class="hoverable" title="Allows you to add your own config types" style="margin: 2px;">Custom config types</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Json</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Toml</h6>
+        </span></div>
+      <div class="panel" id="malilib-api">
+        <div style="display: block;
+margin-left: auto;
+width: fit-content;
+   margin-right: 3px;
+   margin-top: 0px;
+   margin-bottom: -20px;"><a href="https://github.com/kr1viah/FabricConfigLibraryIndex/blob/master/src/main/java/kr1v/index/libs/MaLiLibAPI.java">View entry</a> <a href="https://github.com/kr1viah/malilib-api">Source code</a></div>
+        <h1 style="display: inline-block; margin: 0px; margin-left: 3px;">MaLiLib API (</h1>
+        <h2 style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">malilib-api</span></code></h2>
+        <h1 style="display: inline-block; margin: 0px;">)</h1>
+        <h4 style="margin-left: 3px;">Dependencies: <a href="https://github.com/sakura-ryoko/malilib">MaLiLib</a></h4>
+        <h4 style="margin-left: 3px;">Manual initialization: Optional</h4>
+        <h4 style="margin-left: 3px;">Config method: an annotated class with static members, typed with special classes<br>Examples: <span style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">FileConfig</span></code></span><span style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">ConfigList&lt;ConfigString&gt;</span></code></span><span style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">ConfigInteger</span></code></span></h4>
+        <h4 style="margin-left: 3px;">Extra config type(s) supported: <span>Color</span>, <span>Hotkey</span>, <span class="hoverable" title="A pair of configs next to each other">Pair</span>, <span class="hoverable" title="A button in the list of configs that does something when pressed">Button</span></h4>
+        <h4 class="hoverable" title="You don't need to think about the config screen; it is done automatically" style="margin-left: 3px;">Gui method: Automatic</h4>
+        <div style="height: 5px"></div>
+        <h4 style="margin-left: 3px;">Available for versions: 1.14.x, 1.15.x, 1.16.x, 1.17.x, 1.18.x, 1.19.x, 1.20.x, 1.21.x</h4>
+        <div style="height: 5px"></div>
+        <div style="height: 5px"></div>
+<span class="tag">
+          <h6 style="margin: 2px;">Client</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Gui</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Loader</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Slider</h6>
+        </span><span class="tag">
+          <h6 class="hoverable" title="Allows you to add your own config types" style="margin: 2px;">Custom config types</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Mod menu integration</h6>
+        </span><span class="tag">
+          <h6 class="hoverable" title="Sections of configs. May also be referred to as a 'config object' or ''" style="margin: 2px;">Config section</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Json</h6>
+        </span></div>
+      <div class="panel" id="configuration">
+        <div style="display: block;
+margin-left: auto;
+width: fit-content;
+   margin-right: 3px;
+   margin-top: 0px;
+   margin-bottom: -20px;"><a href="https://github.com/kr1viah/FabricConfigLibraryIndex/blob/master/src/main/java/kr1v/index/libs/Configuration.java">View entry</a> <a href="https://github.com/Toma1O6/Configuration">Source code</a></div>
+        <h1 style="display: inline-block; margin: 0px; margin-left: 3px;">Configuration (</h1>
+        <h2 style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">configuration</span></code></h2>
+        <h1 style="display: inline-block; margin: 0px;">)</h1>
+        <h4 style="margin-left: 3px;">Manual initialization: Yes</h4>
+        <h4 style="margin-left: 3px;">Config method: an annotated class with annotated instance members, of primitive type<br>Examples: <span style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">@Comment(&quot;This is a string list&quot;) List&lt;String&gt;</span></code></span><span style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">@Config int</span></code></span><span style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">@Config File</span></code></span></h4>
+        <h4 class="hoverable" title="You don't need to think about the config screen; it is done automatically" style="margin-left: 3px;">Gui method: Automatic</h4>
+        <div style="height: 5px"></div>
+        <h4 style="margin-left: 3px;">Available for versions: 1.16.5, 1.18.2, 1.19.2, 1.19.3, 1.19.4, 1.20.1, 1.21.x</h4>
+        <div style="height: 5px"></div>
+        <div style="height: 5px"></div>
+<span class="tag">
+          <h6 style="margin: 2px;">Client</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Server</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Gui</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Loader</h6>
+        </span><span class="tag">
+          <h6 class="hoverable" title="Allows you to add your own config types" style="margin: 2px;">Custom config types</h6>
+        </span><span class="tag">
+          <h6 class="hoverable" title="Constraints for configs. For example, only allowing string configs that matches a certain regex" style="margin: 2px;">Constraint</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Mod menu integration</h6>
+        </span><span class="tag">
+          <h6 class="hoverable" title="Sections of configs. May also be referred to as a 'config object' or ''" style="margin: 2px;">Config section</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Json</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Yaml</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">.properties</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">.ini</h6>
+        </span></div>
+      <div class="panel" id="better-config">
+        <div style="display: block;
+margin-left: auto;
+width: fit-content;
+   margin-right: 3px;
+   margin-top: 0px;
+   margin-bottom: -20px;"><a href="https://github.com/kr1viah/FabricConfigLibraryIndex/blob/master/src/main/java/kr1v/index/libs/BetterConfig.java">View entry</a> <a href="https://github.com/xpple/BetterConfig">Source code</a></div>
+        <h1 style="display: inline-block; margin: 0px; margin-left: 3px;">BetterConfig (</h1>
+        <h2 style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">better-config</span></code></h2>
+        <h1 style="display: inline-block; margin: 0px;">)</h1>
+        <h4 style="margin-left: 3px;">Manual initialization: Yes</h4>
+        <h4 style="margin-left: 3px;">Config method: a normal class with annotated static members, of primitive type<br>Examples: <span style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">@Comment(&quot;This is a string list&quot;) List&lt;String&gt;</span></code></span><span style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">@Config int</span></code></span><span style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">@Config File</span></code></span></h4>
+        <div style="height: 5px"></div>
+        <h4 style="margin-left: 3px;">Available for versions: 1.19.3, 1.19.4, 1.20.0, 1.20.1, 1.21.0</h4>
+        <div style="height: 5px"></div>
+        <h4 style="margin-left: 3px;">Notes:</h4>
+        <h5 style="margin: 0; margin-left: 3px; ">Uses commands to modify configs</h5>
+        <div style="height: 5px"></div>
+<span class="tag">
+          <h6 style="margin: 2px;">Client</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Server</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Loader</h6>
+        </span><span class="tag">
+          <h6 class="hoverable" title="Allows you to add your own config types" style="margin: 2px;">Custom config types</h6>
+        </span></div>
+      <div class="panel" id="forge-config-api-port">
+        <div style="display: block;
+margin-left: auto;
+width: fit-content;
+   margin-right: 3px;
+   margin-top: 0px;
+   margin-bottom: -20px;"><a href="https://github.com/kr1viah/FabricConfigLibraryIndex/blob/master/src/main/java/kr1v/index/libs/ForgeConfigAPIPort.java">View entry</a> <a href="https://github.com/Fuzss/forgeconfigapiport">Source code</a></div>
+        <h1 style="display: inline-block; margin: 0px; margin-left: 3px;">Forge Config API Port (</h1>
+        <h2 style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">forge-config-api-port</span></code></h2>
+        <h1 style="display: inline-block; margin: 0px;">)</h1>
+        <h4 style="margin-left: 3px;">Manual initialization: ?</h4>
+        <h4 style="margin-left: 3px;">Config method: Unknown</h4>
+        <div style="height: 5px"></div>
+        <h4 style="margin-left: 3px;">Available for versions: 1.16.x, 1.18.x, 1.19.x, 1.20.0, 1.20.1, 1.20.2, 1.20.4, 1.20.6, 1.21.0, 1.21.1, 1.21.3, 1.21.4, 1.21.5, 1.21.6, 1.21.7, 1.21.8, 1.21.9, 1.21.10, 1.21.11</h4>
+        <div style="height: 5px"></div>
+        <div style="height: 5px"></div>
+<span class="tag">
+          <h6 style="margin: 2px;">Client</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Server</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Loader</h6>
+        </span></div>
+      <div class="panel" id="configtoolkit">
+        <div style="display: block;
+margin-left: auto;
+width: fit-content;
+   margin-right: 3px;
+   margin-top: 0px;
+   margin-bottom: -20px;"><a href="https://github.com/kr1viah/FabricConfigLibraryIndex/blob/master/src/main/java/kr1v/index/libs/ConfigToolKit.java">View entry</a> <a href="https://github.com/MattiDragon/ConfigToolkit">Source code</a></div>
+        <h1 style="display: inline-block; margin: 0px; margin-left: 3px;">ConfigToolKit (</h1>
+        <h2 style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">configtoolkit</span></code></h2>
+        <h1 style="display: inline-block; margin: 0px;">)</h1>
+        <h4 style="margin-left: 3px;">Dependencies: <a href="https://github.com/FabricMC/fabric-api">Fabric API</a></h4>
+        <h4 style="margin-left: 3px;">Manual initialization: At mod initialization</h4>
+        <h4 style="margin-left: 3px;">Config method: a record class with instance members, of primitive type<br>Examples: <span style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">File</span></code></span><span style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">int</span></code></span><span style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">List&lt;String&gt;</span></code></span></h4>
+        <div style="height: 5px"></div>
+        <h4 style="margin-left: 3px;">Available for versions: 1.20.6, 1.21.x</h4>
+        <div style="height: 5px"></div>
+        <div style="height: 5px"></div>
+<span class="tag">
+          <h6 style="margin: 2px;">Client</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Server</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Loader</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Codec based configs</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Json</h6>
+        </span></div>
+      <div class="panel" id="owo-lib">
+        <div style="display: block;
+margin-left: auto;
+width: fit-content;
+   margin-right: 3px;
+   margin-top: 0px;
+   margin-bottom: -20px;"><a href="https://github.com/kr1viah/FabricConfigLibraryIndex/blob/master/src/main/java/kr1v/index/libs/OwoLib.java">View entry</a> <a href="https://github.com/wisp-forest/owo-lib">Source code</a></div>
+        <h1 style="display: inline-block; margin: 0px; margin-left: 3px;">oωo (</h1>
+        <h2 style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">owo-lib</span></code></h2>
+        <h1 style="display: inline-block; margin: 0px;">)</h1>
+        <h4 style="margin-left: 3px;">Dependencies: <a href="https://github.com/FabricMC/fabric-api">Fabric API</a></h4>
+        <h4 style="margin-left: 3px;">Manual initialization: Yes</h4>
+        <h4 style="margin-left: 3px;">Config method: an annotated class with instance members, of primitive type<br>Examples: <span style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">File</span></code></span><span style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">int</span></code></span><span style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">List&lt;String&gt;</span></code></span></h4>
+        <h4 class="hoverable" title="You don't need to think about the config screen; it is done automatically" style="margin-left: 3px;">Gui method: Automatic</h4>
+        <div style="height: 5px"></div>
+        <h4 style="margin-left: 3px;">Available for versions: 1.17.x, 1.18.x, 1.19.x, 1.20.x, 1.21.x</h4>
+        <div style="height: 5px"></div>
+        <h4 style="margin-left: 3px;">Notes:</h4>
+        <h5 style="margin: 0; margin-left: 3px; ">Comes with a lot of additional, sometimes problematic, features.</h5>
+        <div style="height: 5px"></div>
+<span class="tag">
+          <h6 style="margin: 2px;">Client</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Server</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Gui</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Loader</h6>
+        </span><span class="tag">
+          <h6 class="hoverable" title="Constraints for configs. For example, only allowing string configs that matches a certain regex" style="margin: 2px;">Constraint</h6>
+        </span></div>
+      <div class="panel" id="malilib">
+        <div style="display: block;
+margin-left: auto;
+width: fit-content;
+   margin-right: 3px;
+   margin-top: 0px;
+   margin-bottom: -20px;"><a href="https://github.com/kr1viah/FabricConfigLibraryIndex/blob/master/src/main/java/kr1v/index/libs/MaLiLib.java">View entry</a> <a href="https://github.com/sakura-ryoko/malilib">Source code</a></div>
+        <h1 style="display: inline-block; margin: 0px; margin-left: 3px;">MaLiLib (</h1>
+        <h2 style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">malilib</span></code></h2>
+        <h1 style="display: inline-block; margin: 0px;">)</h1>
+        <h4 style="margin-left: 3px;">Manual initialization: At mod initialization</h4>
+        <h4 style="margin-left: 3px;">Config method: a normal class with static members, typed with special classes<br>Examples: <span style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">FileConfig</span></code></span><span style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">ConfigList&lt;ConfigString&gt;</span></code></span><span style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">ConfigInteger</span></code></span></h4>
+        <h4 style="margin-left: 3px;">Extra config type(s) supported: <span>Color</span>, <span>Hotkey</span></h4>
+        <h4 class="hoverable" title="You build the entire config screen, with helpers" style="margin-left: 3px;">Gui method: Manual</h4>
+        <div style="height: 5px"></div>
+        <h4 style="margin-left: 3px;">Available for versions: 1.14.x, 1.15.x, 1.16.x, 1.17.x, 1.18.x, 1.19.x, 1.20.x, 1.21.x</h4>
+        <div style="height: 5px"></div>
+        <h4 style="margin-left: 3px;">Notes:</h4>
+        <h5 style="margin: 0; margin-left: 3px; ">Hard to set up</h5>
+        <div style="height: 5px"></div>
+<span class="tag">
+          <h6 style="margin: 2px;">Client</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Gui</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Loader</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Slider</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Json</h6>
+        </span></div>
+      <div class="panel" id="cloth-config">
+        <div style="display: block;
+margin-left: auto;
+width: fit-content;
+   margin-right: 3px;
+   margin-top: 0px;
+   margin-bottom: -20px;"><a href="https://github.com/kr1viah/FabricConfigLibraryIndex/blob/master/src/main/java/kr1v/index/libs/ClothConfig.java">View entry</a> <a href="https://github.com/shedaniel/cloth-config">Source code</a></div>
+        <h1 style="display: inline-block; margin: 0px; margin-left: 3px;">Cloth config (</h1>
+        <h2 style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">cloth-config</span></code></h2>
+        <h1 style="display: inline-block; margin: 0px;">)</h1>
+        <h4 style="margin-left: 3px;">Manual initialization: n/a</h4>
+        <h4 style="margin-left: 3px;">Config method: n/a</h4>
+        <h4 style="margin-left: 3px;">Extra config type(s) supported: <span>Color</span>, <span>Dropdown</span></h4>
+        <h4 class="hoverable" title="Build a config screen using a builder class" style="margin-left: 3px;">Gui method: Builder</h4>
+        <div style="height: 5px"></div>
+        <h4 style="margin-left: 3px;">Available for versions: 1.16.x, 1.17.x, 1.18.x, 1.19.x, 1.20.x, 1.21.x</h4>
+        <div style="height: 5px"></div>
+        <div style="height: 5px"></div>
+<span class="tag">
+          <h6 style="margin: 2px;">Client</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Server</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Gui</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Mod menu integration</h6>
+        </span></div>
+      <div class="panel" id="yacl">
+        <div style="display: block;
+margin-left: auto;
+width: fit-content;
+   margin-right: 3px;
+   margin-top: 0px;
+   margin-bottom: -20px;"><a href="https://github.com/kr1viah/FabricConfigLibraryIndex/blob/master/src/main/java/kr1v/index/libs/YetAnotherConfigLib.java">View entry</a> <a href="https://github.com/isXander/YetAnotherConfigLib">Source code</a></div>
+        <h1 style="display: inline-block; margin: 0px; margin-left: 3px;">YetAnotherConfigLib (</h1>
+        <h2 style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">yacl</span></code></h2>
+        <h1 style="display: inline-block; margin: 0px;">)</h1>
+        <h4 style="margin-left: 3px;">Dependencies: <a href="https://github.com/FabricMC/fabric-api">Fabric API</a></h4>
+        <h4 style="margin-left: 3px;">Manual initialization: Yes</h4>
+        <h4 style="margin-left: 3px;">Config method: a normal class with annotated instance members, of primitive type<br>Examples: <span style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">@Comment(&quot;This is a string list&quot;) List&lt;String&gt;</span></code></span><span style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">@Config int</span></code></span><span style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">@Config File</span></code></span></h4>
+        <h4 style="margin-left: 3px;">Extra config type(s) supported: <span class="hoverable" title="A button in the list of configs that does something when pressed">Button</span></h4>
+        <h4 class="hoverable" title="Build a config screen using a builder class" style="margin-left: 3px;">Gui method: Builder</h4>
+        <div style="height: 5px"></div>
+        <h4 style="margin-left: 3px;">Available for versions: 1.19.x, 1.20.x, 1.21.x</h4>
+        <div style="height: 5px"></div>
+        <div style="height: 5px"></div>
+<span class="tag">
+          <h6 style="margin: 2px;">Client</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Server</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Gui</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Loader</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Json</h6>
+        </span></div>
+      <div class="panel" id="cryonic-config">
+        <div style="display: block;
+margin-left: auto;
+width: fit-content;
+   margin-right: 3px;
+   margin-top: 0px;
+   margin-bottom: -20px;"><a href="https://github.com/kr1viah/FabricConfigLibraryIndex/blob/master/src/main/java/kr1v/index/libs/CryonicConfig.java">View entry</a> <a href="https://github.com/matthewperiut/cryonicconfig">Source code</a></div>
+        <h1 style="display: inline-block; margin: 0px; margin-left: 3px;">Cryonic Config (</h1>
+        <h2 style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">cryonic-config</span></code></h2>
+        <h1 style="display: inline-block; margin: 0px;">)</h1>
+        <h4 style="margin-left: 3px;">Manual initialization: At mod initialization</h4>
+        <h4 style="margin-left: 3px;">Config method: a normal class with instance members, of primitive type<br>Examples: <span style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">File</span></code></span><span style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">int</span></code></span><span style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">List&lt;String&gt;</span></code></span></h4>
+        <div style="height: 5px"></div>
+        <h4 style="margin-left: 3px;">Available for versions: 1.18.x, 1.19.x, 1.20.x, 1.21.x</h4>
+        <div style="height: 5px"></div>
+        <div style="height: 5px"></div>
+<span class="tag">
+          <h6 style="margin: 2px;">Client</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Server</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Loader</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Json</h6>
+        </span></div>
+      <div class="panel" id="midnight-lib">
+        <div style="display: block;
+margin-left: auto;
+width: fit-content;
+   margin-right: 3px;
+   margin-top: 0px;
+   margin-bottom: -20px;"><a href="https://github.com/kr1viah/FabricConfigLibraryIndex/blob/master/src/main/java/kr1v/index/libs/MidnightLib.java">View entry</a> <a href="https://github.com/TeamMidnightDust/MidnightLib">Source code</a></div>
+        <h1 style="display: inline-block; margin: 0px; margin-left: 3px;">MidnightLib (</h1>
+        <h2 style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">midnight-lib</span></code></h2>
+        <h1 style="display: inline-block; margin: 0px;">)</h1>
+        <h4 style="margin-left: 3px;">Dependencies: <a href="https://github.com/FabricMC/fabric-api">Fabric API</a></h4>
+        <h4 style="margin-left: 3px;">Manual initialization: Yes</h4>
+        <h4 style="margin-left: 3px;">Config method: an extending class with annotated static members, of primitive type<br>Examples: <span style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">@Comment(&quot;This is a string list&quot;) List&lt;String&gt;</span></code></span><span style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">@Config int</span></code></span><span style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">@Config File</span></code></span></h4>
+        <h4 style="margin-left: 3px;">Extra config type(s) supported: <span>File</span></h4>
+        <h4 class="hoverable" title="You don't need to think about the config screen; it is done automatically" style="margin-left: 3px;">Gui method: Automatic</h4>
+        <div style="height: 5px"></div>
+        <h4 style="margin-left: 3px;">Available for versions: 1.17.x, 1.18.x, 1.19.x, 1.20.x, 1.21.x</h4>
+        <div style="height: 5px"></div>
+        <div style="height: 5px"></div>
+<span class="tag">
+          <h6 style="margin: 2px;">Client</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Server</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Gui</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Loader</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Slider</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Mod menu integration</h6>
+        </span></div>
+      <div class="panel" id="yaml-config">
+        <div style="display: block;
+margin-left: auto;
+width: fit-content;
+   margin-right: 3px;
+   margin-top: 0px;
+   margin-bottom: -20px;"><a href="https://github.com/kr1viah/FabricConfigLibraryIndex/blob/master/src/main/java/kr1v/index/libs/YAMLConfig.java">View entry</a> <a href="https://github.com/DAQEM/YamlConfig">Source code</a></div>
+        <h1 style="display: inline-block; margin: 0px; margin-left: 3px;">YAML Config (</h1>
+        <h2 style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">yaml-config</span></code></h2>
+        <h1 style="display: inline-block; margin: 0px;">)</h1>
+        <h4 style="margin-left: 3px;">Dependencies: <a href="https://github.com/DAQEM/UILib">UI Lib</a></h4>
+        <h4 style="margin-left: 3px;">Manual initialization: Yes</h4>
+        <h4 style="margin-left: 3px;">Config method: a normal class with static members, typed with special classes<br>Examples: <span style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">FileConfig</span></code></span><span style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">ConfigList&lt;ConfigString&gt;</span></code></span><span style="display: inline-block; margin: 1px;"><code><span style="margin: 5px;">ConfigInteger</span></code></span></h4>
+        <h4 style="margin-left: 3px;">Extra config type(s) supported: <span>Identifier</span>, <span>Registry entry</span>, <span>Date Time</span></h4>
+        <h4 class="hoverable" title="You don't need to think about the config screen; it is done automatically" style="margin-left: 3px;">Gui method: Automatic</h4>
+        <div style="height: 5px"></div>
+        <h4 style="margin-left: 3px;">Available for versions: 1.21.0, 1.21.1, 1.21.5, 1.21.6, 1.21.7, 1.21.8, 1.21.9, 1.21.11</h4>
+        <div style="height: 5px"></div>
+        <div style="height: 5px"></div>
+<span class="tag">
+          <h6 style="margin: 2px;">Client</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Server</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Gui</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Loader</h6>
+        </span><span class="tag">
+          <h6 class="hoverable" title="Allows you to add your own config types" style="margin: 2px;">Custom config types</h6>
+        </span><span class="tag">
+          <h6 class="hoverable" title="Constraints for configs. For example, only allowing string configs that matches a certain regex" style="margin: 2px;">Constraint</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Yaml</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Json5</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Toml</h6>
+        </span><span class="tag">
+          <h6 style="margin: 2px;">Hocon</h6>
+        </span></div>
+    </div>
+    <script>const activeFilters = new Map();
+let libraryData = {};
+
+fetch('https://raw.githubusercontent.com/kr1viah/FabricConfigLibraryIndex/refs/heads/master/generated/libs.json').then(r => r.json()).then(data => { libraryData = data; });
+
+function toggleFilter(category, value) {
+    const span = event.currentTarget;
+    if (!activeFilters.has(category)) activeFilters.set(category, new Set());
+    const set = activeFilters.get(category);
+
+    if (set.has(value)) {
+        set.delete(value);
+        span.classList.remove('active');
+    } else {
+        set.add(value);
+        span.classList.add('active');
+    }
+
+    if (set.size === 0) activeFilters.delete(category);
+    filterPanels();
+}
+
+function resetFilters() {
+    document.querySelectorAll('span.tag.active').forEach(t => t.classList.remove('active'));
+    activeFilters.clear();
+    filterPanels();
+}
+
+function panelMatches(lib, category, values) {
+    switch (category) {
+        case 'versions':
+            return [...values].every(v => lib.versions?.includes(v));
+
+        case 'side':
+            return [...values].every(v => lib.side === v || lib.side === 'BOTH');
+
+        case 'extraConfigTypes':
+            return [...values].every(v => lib.extraConfigTypes?.includes(v));
+
+        case 'extraFeatures':
+            return [...values].every(v => lib.extraFeatures?.includes(v));
+
+        case 'configFormats':
+            return [...values].some(v => lib.configFormats?.includes(v));
+
+        case 'manualInitialization':
+            return values.has(lib.manualInitialization);
+
+        case 'configMethod.instance':
+            if (!lib.configMethod) return false;
+            return values.has(String(lib.configMethod.instance));
+
+        case 'configMethod.waaas':
+            return [...values].some(v => lib.configMethod?.waaas?.includes(v));
+
+        default:
+            return true;
+    }
+}
+
+function filterPanels() {
+    document.querySelectorAll('.library_grid .panel').forEach(panel => {
+        const lib = libraryData[panel.id];
+        if (!lib) return;
+        const visible = [...activeFilters.entries()]
+            .every(([cat, vals]) => panelMatches(lib, cat, vals));
+        panel.style.display = visible ? '' : 'none';
+    });
+}</script>
+  </body>
+</html>

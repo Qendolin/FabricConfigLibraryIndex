@@ -266,7 +266,7 @@ fun FlowContent.ConfigLibraryPanel(library: ConfigLibrary) {
 
 fun main() {
     val gson = GsonBuilder().setPrettyPrinting().serializeNulls().create()
-    val dir = Path.of("json")
+    val dir = Path.of("generated", "json")
 
     Files.createDirectories(dir)
 
@@ -281,7 +281,7 @@ fun main() {
         Files.writeString(path, gson.toJson(library))
     }
 
-    Files.writeString(Path.of("libs.json"), gson.toJson(obj))
+    Files.writeString(Path.of("generated", "libs.json"), gson.toJson(obj))
 
 
     val html = buildString {
@@ -484,5 +484,5 @@ fun main() {
         }
     }
 
-    Files.writeString(Path.of("index.html"), html)
+    Files.writeString(Path.of("generated", "index.html"), html)
 }
