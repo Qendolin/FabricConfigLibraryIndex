@@ -22,5 +22,5 @@ kotlin {
 }
 
 application {
-    mainClass.set("kr1v.index.Main")
+    mainClass.set("kr1v.index.MainKt")
 }
