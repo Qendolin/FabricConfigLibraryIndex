@@ -21,6 +21,7 @@ public class Libraries {
 	public static final ConfigLibrary KaleidoConfig = new KaleidoConfig();
 	public static final ConfigLibrary MaLiLib = new MaLiLib();
 	public static final ConfigLibrary MaLiLibAPI = new MaLiLibAPI();
+	public static final ConfigLibrary McQoy = new McQoy();
 	public static final ConfigLibrary MidnightLib = new MidnightLib();
 	public static final ConfigLibrary OwoLib = new OwoLib();
 	public static final ConfigLibrary YAMLConfig = new YAMLConfig();
