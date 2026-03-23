@@ -35,17 +35,6 @@ fun FlowContent.ConfigLibraryPanel(library: ConfigLibrary) {
         classes = setOf("panel")
 
         attributes["id"] = library.id
-        attributes["versions"] = library.versions.joinToString { it }
-
-        attributes["side_client"] = library.side.client.toString()
-        attributes["side_server"] = library.side.server.toString()
-        attributes["type_loader"] = library.type.loader.toString()
-        attributes["type_gui"] = library.type.gui.toString()
-
-        attributes["config_types"] = library.extraConfigTypes.joinToString(",", transform = { it.name + (if (it.description.isEmpty())  "" else ("$" + it.description)) })
-        attributes["features"] = library.extraFeatures.joinToString(",", transform = { it.name + (if (it.description.isEmpty())  "" else ("$" + it.description)) })
-        attributes["config_formats"] = library.configFormats.joinToString(",", transform = { it.name })
-        attributes["init_mode"] = library.manualInitialization.name
 
         // links
         div {
