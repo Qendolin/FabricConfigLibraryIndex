@@ -59,28 +59,27 @@ fun FlowContent.ConfigLibraryPanel(library: ConfigLibrary) {
 
         // title
         h1 {
-            style = "display: inline-block; margin: 0px; margin-left: 3px;"
+            style = "display: inline-block; margin: 0;"
             +library.name
             +" ("
         }
         h2 {
-            style = "display: inline-block; margin: 1px;"
+            style = "display: inline-block; margin: 0;"
             code {
                 span {
-                    style = "margin: 5px;"
+                    style = "padding: 3px;"
                     +library.id
                 }
             }
         }
         h1 {
-            style = "display: inline-block; margin: 0px;"
+            style = "display: inline-block; margin: 0;"
             +")"
         }
 
         // dependencies
         if (library.dependencies.isNotEmpty()) {
             h4 {
-                style = "margin-left: 3px;"
                 var isFirst = true
                 +"Dependencies: "
                 for (dep in library.dependencies) {
@@ -98,14 +97,12 @@ fun FlowContent.ConfigLibraryPanel(library: ConfigLibrary) {
 
         // init mode
         h4 {
-            style = "margin-left: 3px;"
             +"Manual initialization: "
             +library.manualInitialization.name
         }
 
         // config format
         h4 {
-            style = "margin-left: 3px;"
             +"Config method: "
             if (library.configMethod == ConfigMethod.UNKNOWN) {
                 +"Unknown"
@@ -170,7 +167,6 @@ fun FlowContent.ConfigLibraryPanel(library: ConfigLibrary) {
         // config types
         if (library.extraConfigTypes.isNotEmpty()) {
             h4 {
-                style = "margin-left: 3px;"
                 var isFirst = true
                 +"Extra config type(s) supported: "
                 for (type in library.extraConfigTypes) {
@@ -195,7 +191,6 @@ fun FlowContent.ConfigLibraryPanel(library: ConfigLibrary) {
                     classes = setOf("hoverable")
                     title = library.guiMethod.description
                 }
-                style = "margin-left: 3px;"
                 +"Gui method: "
                 +library.guiMethod.name
             }
@@ -205,7 +200,6 @@ fun FlowContent.ConfigLibraryPanel(library: ConfigLibrary) {
 
         // versions
         h4 {
-            style = "margin-left: 3px;"
             var isFirst = true
             +"Available for versions: "
 
@@ -236,11 +230,10 @@ fun FlowContent.ConfigLibraryPanel(library: ConfigLibrary) {
 
         if (library.notes.isNotEmpty()) {
             h4 {
-                style = "margin-left: 3px;"
                 +"Notes:"
             }
             h5 {
-                style = "margin: 0; margin-left: 3px; "
+                style = "margin: 0;"
                 +library.notes
             }
         }
