@@ -281,7 +281,7 @@ fun main() {
         appendHTML().html {
             lang = "en"
             head {
-                meta (charset = "UTF-8")
+                meta(charset = "UTF-8")
                 style {
                     unsafe {
                         +Files.readString(Path.of("src/main/kotlin/kr1v/index/main.css"))
@@ -292,19 +292,31 @@ fun main() {
                 }
             }
             body {
-                style = "font-size: 13px; color: #cdd6f4; margin: 0; display: flex; height: 100%"
+                style = "font-size: 13px; color: #cdd6f4; margin: 0px; display: flex; height: 100%"
 
-                div("sidebar panel") {
-                    style = "flex: 1; margin: 20px; padding: 2px; overflow-y: auto;"
-                    div {
-                        style = """
+                div("sidebar") {
+                    style = "flex: 1; display: flex; flex-direction: column-reverse; padding: 10px"
+
+                    div("panel") {
+                        style = "height: fit-content;"
+                        a {
+                            href = "https://kr1v.net/libs/libs.json"
+                            +"View json"
+                        }
+                    }
+
+                    div("panel") {
+                        style = "overflow-y: auto; height: max;"
+
+                        div {
+                            style = """
                         display: block;
                         margin-left: auto;
                         width: fit-content;
                         """.trimIndent()
-                        onClick = "resetFilters()"
-                        span {
-                            style = """
+                            onClick = "resetFilters()"
+                            span {
+                                style = """
                                 background: #11111b;
                                 border-style: solid;
                                 border-color: #6c7086;
@@ -318,143 +330,144 @@ fun main() {
                                 color: #a6adc8;
                                 height: 1em;
                             """.trimIndent()
-                            h6 {
-                                style = "margin-top: 0.25em"
-                                +"Reset filters"
-                            }
-                        }
-                    }
-                    h4 {
-                        +"Versions"
-                    }
-                    for (versionSet in Versions.ALL_SET.reversed()) {
-                        h5 {
-                            style = "margin-left: 2px; margin: 0"
-                            +versionSet.first().removeSuffix(".0")
-                        }
-                        for (version in versionSet) {
-                            span("tag") {
-                                onClick = "toggleFilter('versions', '$version')"
                                 h6 {
-                                    style = "margin-left: 4px; margin: 2px;"
-                                    +version
+                                    style = "margin-top: 0.25em"
+                                    +"Reset filters"
                                 }
                             }
                         }
-                    }
-
-                    h4 {
-                        +"Side"
-                    }
-                    span("tag") {
-                        onClick = "toggleFilter('side', 'CLIENT')"
-                        h6 {
-                            style = "margin: 2px;"
-                            +"Client"
+                        h4 {
+                            +"Versions"
                         }
-                    }
-                    span("tag") {
-                        onClick = "toggleFilter('side', 'SERVER')"
-                        h6 {
-                            style = "margin: 2px;"
-                            +"Server"
-                        }
-                    }
-
-                    h4 {
-                        +"Config types"
-                    }
-                    for (type in ConfigType.entries) {
-                        span("tag") {
-                            onClick = "toggleFilter('extraConfigTypes', '$type')"
-                            h6 {
-                                if (type.description.isNotEmpty()) {
-                                    classes = setOf("hoverable")
-                                    title = type.description
+                        for (versionSet in Versions.ALL_SET.reversed()) {
+                            h5 {
+                                style = "margin-left: 2px; margin: 0"
+                                +versionSet.first().removeSuffix(".0")
+                            }
+                            for (version in versionSet) {
+                                span("tag") {
+                                    onClick = "toggleFilter('versions', '$version')"
+                                    h6 {
+                                        style = "margin-left: 4px; margin: 2px;"
+                                        +version
+                                    }
                                 }
-                                style = "margin: 2px;"
-                                +type.name
                             }
                         }
-                    }
 
-                    h4 {
-                        +"Features"
-                    }
-                    for (feature in Feature.entries) {
+                        h4 {
+                            +"Side"
+                        }
                         span("tag") {
-                            onClick = "toggleFilter('extraFeatures', '$feature')"
+                            onClick = "toggleFilter('side', 'CLIENT')"
                             h6 {
-                                if (feature.description.isNotEmpty()) {
-                                    classes = setOf("hoverable")
-                                    title = feature.description
-                                }
                                 style = "margin: 2px;"
-                                +feature.name
+                                +"Client"
                             }
                         }
-                    }
+                        span("tag") {
+                            onClick = "toggleFilter('side', 'SERVER')"
+                            h6 {
+                                style = "margin: 2px;"
+                                +"Server"
+                            }
+                        }
 
-                    h4 {
-                        +"Config formats"
-                    }
-                    for (configFormat in ConfigFormat.entries) {
-                        if (configFormat == ConfigFormat.NOT_AVAILABLE) continue
-                        span("tag") {
-                            onClick = "toggleFilter('configFormats', '$configFormat')"
-                            h6 {
-                                style = "margin: 2px;"
-                                +configFormat.name
-                            }
+                        h4 {
+                            +"Config types"
                         }
-                    }
-
-                    h4 {
-                        +"Init mode"
-                    }
-                    for (mode in InitMode.entries) {
-                        if (mode == InitMode.NOT_AVAILABLE || mode == InitMode.UNKNOWN) continue
-                        span("tag") {
-                            onClick = "toggleFilter('manualInitialization', '$mode')"
-                            h6 {
-                                style = "margin: 2px;"
-                                +mode.name
-                            }
-                        }
-                    }
-
-                    h4 {
-                        +"Config method"
-                    }
-                    h5 {
-                        style = "margin: 0;"
-                        +"Field kind"
-                        span("tag") {
-                            onClick = "toggleFilter('configMethod.instance', 'true')"
-                            h6 {
-                                style = "margin: 2px;"
-                                +"instance"
-                            }
-                        }
-                        span("tag") {
-                            onClick = "toggleFilter('configMethod.instance', 'false')"
-                            h6 {
-                                style = "margin: 2px;"
-                                +"static"
-                            }
-                        }
-                    }
-                    h5 {
-                        style = "margin: 0;"
-                        +"Type of fields"
-                        for (waaa in Waaa.entries) {
+                        for (type in ConfigType.entries) {
                             span("tag") {
-                                onClick = "toggleFilter('configMethod.waaas', '$waaa')"
+                                onClick = "toggleFilter('extraConfigTypes', '$type')"
+                                h6 {
+                                    if (type.description.isNotEmpty()) {
+                                        classes = setOf("hoverable")
+                                        title = type.description
+                                    }
+                                    style = "margin: 2px;"
+                                    +type.name
+                                }
+                            }
+                        }
+
+                        h4 {
+                            +"Features"
+                        }
+                        for (feature in Feature.entries) {
+                            span("tag") {
+                                onClick = "toggleFilter('extraFeatures', '$feature')"
+                                h6 {
+                                    if (feature.description.isNotEmpty()) {
+                                        classes = setOf("hoverable")
+                                        title = feature.description
+                                    }
+                                    style = "margin: 2px;"
+                                    +feature.name
+                                }
+                            }
+                        }
+
+                        h4 {
+                            +"Config formats"
+                        }
+                        for (configFormat in ConfigFormat.entries) {
+                            if (configFormat == ConfigFormat.NOT_AVAILABLE) continue
+                            span("tag") {
+                                onClick = "toggleFilter('configFormats', '$configFormat')"
                                 h6 {
                                     style = "margin: 2px;"
-                                    classes = setOf("hoverable")
-                                    title = waaa.getExampleText()
-                                    +waaa.name
+                                    +configFormat.name
+                                }
+                            }
+                        }
+
+                        h4 {
+                            +"Init mode"
+                        }
+                        for (mode in InitMode.entries) {
+                            if (mode == InitMode.NOT_AVAILABLE || mode == InitMode.UNKNOWN) continue
+                            span("tag") {
+                                onClick = "toggleFilter('manualInitialization', '$mode')"
+                                h6 {
+                                    style = "margin: 2px;"
+                                    +mode.name
+                                }
+                            }
+                        }
+
+                        h4 {
+                            +"Config method"
+                        }
+                        h5 {
+                            style = "margin: 0;"
+                            +"Field kind"
+                            span("tag") {
+                                onClick = "toggleFilter('configMethod.instance', 'true')"
+                                h6 {
+                                    style = "margin: 2px;"
+                                    +"instance"
+                                }
+                            }
+                            span("tag") {
+                                onClick = "toggleFilter('configMethod.instance', 'false')"
+                                h6 {
+                                    style = "margin: 2px;"
+                                    +"static"
+                                }
+                            }
+                        }
+                        h5 {
+                            style = "margin: 0;"
+                            +"Type of fields"
+                            for (waaa in Waaa.entries) {
+                                span("tag") {
+                                    onClick = "toggleFilter('configMethod.waaas', '$waaa')"
+                                    h6 {
+                                        style = "margin: 2px;"
+                                        classes = setOf("hoverable")
+                                        title = waaa.getExampleText()
+                                        +waaa.name
+                                    }
                                 }
                             }
                         }

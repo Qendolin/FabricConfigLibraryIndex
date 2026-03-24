@@ -52,7 +52,11 @@ span.tag.active h6 {
     border-style: solid;
     border-color: #6c7086;
     border-radius: 10px;
-    margin: 10px
+    margin: 10px;
+    padding: 3px;
+}
+
+.sidebar {
 }
 
 h4 {
