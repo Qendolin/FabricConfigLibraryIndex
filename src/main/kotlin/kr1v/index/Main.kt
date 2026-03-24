@@ -299,7 +299,7 @@ fun main() {
                 }
             }
             body {
-                style = "font-size: 13px; color: var(--color-text-primary); margin: 0; display: flex; height: 100%"
+                style = "font-size: 13px; color: #cdd6f4; margin: 0; display: flex; height: 100%"
 
                 div("sidebar panel") {
                     style = "flex: 1; margin: 20px; padding: 2px; overflow-y: auto;"
@@ -321,12 +321,12 @@ fun main() {
                                 margin-left: 3px;
                                 padding-left: 2px;
                                 padding-right: 2px;
-                                margin-bottom: 3px;
+                                margin-bottom: -15px;
                                 color: #a6adc8;
-                                height: 1.5em;
+                                height: 1em;
                             """.trimIndent()
                             h6 {
-                                style = "height: 2em; margin-top: 0.375em"
+                                style = "margin-top: 0.25em"
                                 +"Reset filters"
                             }
                         }
