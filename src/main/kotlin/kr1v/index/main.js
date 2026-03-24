@@ -1,7 +1,7 @@
 const activeFilters = new Map();
 let libraryData = {};
 
-fetch('https://raw.githubusercontent.com/kr1viah/FabricConfigLibraryIndex/refs/heads/master/generated/libs.json').then(r => r.json()).then(data => { libraryData = data; });
+fetch('https://kr1v.net/libs/libs.json').then(r => r.json()).then(data => { libraryData = data; });
 
 function toggleFilter(category, value) {
     const span = event.currentTarget;
