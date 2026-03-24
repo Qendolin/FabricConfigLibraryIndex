@@ -2,7 +2,9 @@
   <dictionary name="project">
     <words>
       <w>fzzy</w>
+      <w>jsonc</w>
       <w>kaleido</w>
+      <w>malilib</w>
       <w>ukulib</w>
     </words>
   </dictionary>
