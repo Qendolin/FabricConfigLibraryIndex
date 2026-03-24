@@ -295,18 +295,10 @@ fun main() {
                 style = "font-size: 13px; color: #cdd6f4; margin: 0px; display: flex; height: 100%"
 
                 div("sidebar") {
-                    style = "flex: 1; display: flex; flex-direction: column-reverse; padding: 10px"
+                    style = "flex: 1; display: flex; flex-direction: column; padding: 10px"
 
                     div("panel") {
-                        style = "height: fit-content;"
-                        a {
-                            href = "https://kr1v.net/libs/libs.json"
-                            +"View json"
-                        }
-                    }
-
-                    div("panel") {
-                        style = "overflow-y: auto; height: max;"
+                        style = "overflow-y: auto; height: max-content;"
 
                         div {
                             style = """
@@ -470,6 +462,14 @@ fun main() {
                                     }
                                 }
                             }
+                        }
+                    }
+
+                    div("panel") {
+                        style = "height: fit-content;"
+                        a {
+                            href = "https://kr1v.net/libs/libs.json"
+                            +"View json"
                         }
                     }
                 }
