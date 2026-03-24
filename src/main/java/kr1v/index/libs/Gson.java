@@ -20,5 +20,10 @@ public class Gson extends ConfigLibrary {
         guiMethod = GuiMethod.NONE;
         notes = "Not really a config library, but still useful for some";
         source = "https://github.com/google/gson";
+
+		exampleConfigClass = """
+public class ConfigClass {
+    public boolean exampleBoolean = false;
+}""";
     }
 }

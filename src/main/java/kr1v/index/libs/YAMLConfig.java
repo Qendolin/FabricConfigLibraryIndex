@@ -16,9 +16,12 @@ public class YAMLConfig extends ConfigLibrary {
         extraFeatures = List.of(Feature.CUSTOM_CONFIG_TYPES, Feature.CONSTRAINT);
         configFormats = List.of(ConfigFormat.YAML, ConfigFormat.JSON5, ConfigFormat.TOML, ConfigFormat.HOCON);
         manualInitialization = InitMode.YES;
-        configMethod = ConfigMethod.of(ConfigMethod.TypeOfClass.NORMAL, false, ConfigMethod.Waaa.SPECIAL);
+        configMethod = ConfigMethod.of(ConfigMethod.TypeOfClass.NORMAL, false, ConfigMethod.Waaa.SPECIAL); // TODO: I believe this is wrong, they use a builder
         guiMethod = GuiMethod.AUTOMATIC;
         notes = "";
         source = "https://github.com/DAQEM/YamlConfig";
+
+		// TODO: example config for this
+		exampleConfigClass = "";
     }
 }

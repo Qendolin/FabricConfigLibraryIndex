@@ -16,9 +16,25 @@ public class CarbonConfig extends ConfigLibrary {
 		extraFeatures = List.of(Feature.CUSTOM_CONFIG_TYPES, Feature.MOD_MENU_INTEGRATION);
 		configFormats = List.of(ConfigFormat.JSON);
 		manualInitialization = InitMode.YES;
-		configMethod = ConfigMethod.of(ConfigMethod.TypeOfClass.NORMAL, true, ConfigMethod.Waaa.PRIMITIVE);
+		configMethod = ConfigMethod.of(ConfigMethod.TypeOfClass.NORMAL, true, ConfigMethod.Waaa.PRIMITIVE); // TODO: this is wrong actually. they use a builder
 		guiMethod = GuiMethod.NONE;
 		notes = "";
 		source = "https://github.com/Carbon-Config-Project/CarbonConfigLib";
+
+		exampleConfigClass = """
+public class ConfigClass {
+	public static ConfigHandler CONFIG;
+	public static ConfigSection SECTION;
+	public static BoolValue EXAMPLE_BOOLEAN;
+
+	static {
+		Config config = new Config("example");
+		ConfigSection section = config.add("general");
+		EXAMPLE_BOOLEAN = section.addBool("example_key", false);
+		CONFIG = CarbonConfig.CONFIGS.createConfig(config);
+		CONFIG.register();
+	}
+}
+""";
 	}
 }

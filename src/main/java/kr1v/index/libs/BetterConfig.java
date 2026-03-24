@@ -20,5 +20,12 @@ public class BetterConfig extends ConfigLibrary {
         guiMethod = GuiMethod.NONE;
         notes = "Uses commands to modify configs";
         source = "https://github.com/xpple/BetterConfig";
+
+		exampleConfigClass = """
+public class ConfigClass {
+    @Config
+    public static boolean exampleBoolean = false;
+}
+""";
     }
 }

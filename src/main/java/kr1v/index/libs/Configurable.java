@@ -20,5 +20,12 @@ public class Configurable extends ConfigLibrary {
         guiMethod = GuiMethod.NONE;
         notes = "";
         source = "https://github.com/Bawnorton/Configurable";
+
+		exampleConfigClass = """
+public class ConfigClass {
+	@Configurable
+	public static boolean exampleBoolean = false;
+}
+""";
     }
 }

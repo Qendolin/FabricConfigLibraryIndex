@@ -20,6 +20,12 @@ public class MidnightLib extends ConfigLibrary {
         guiMethod = GuiMethod.AUTOMATIC;
         notes = "";
         source = "https://github.com/TeamMidnightDust/MidnightLib";
+
+		exampleConfigClass = """
+public class ConfigClass extends MidnightConfig {
+	@Entry(category = "Example category") public static boolean exampleBoolean = false;
+}
+""";
     }
 }
 

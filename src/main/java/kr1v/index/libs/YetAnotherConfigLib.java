@@ -20,5 +20,19 @@ public class YetAnotherConfigLib extends ConfigLibrary {
         guiMethod = GuiMethod.BUILDER;
         notes = "";
         source = "https://github.com/isXander/YetAnotherConfigLib";
+
+		exampleConfigClass = """
+
+public class ConfigClass {
+    public static final ConfigClassHandler<ConfigClass> GSON = ConfigClassHandler.createBuilder(ConfigClass.class)
+            .serializer(config -> GsonConfigSerializerBuilder.create(config)
+                    .setPath(YACLPlatform.getConfigDir().resolve("yacl-example.json"))
+                    .build())
+            .build();
+
+    @SerialEntry
+    public boolean exampleBoolean = false;
+}
+""";
     }
 }

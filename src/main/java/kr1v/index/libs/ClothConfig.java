@@ -22,5 +22,7 @@ public class ClothConfig extends ConfigLibrary {
 		guiMethod = GuiMethod.BUILDER;
 		notes = "";
 		source = "https://github.com/shedaniel/cloth-config";
+
+		exampleConfigClass = "";
 	}
 }

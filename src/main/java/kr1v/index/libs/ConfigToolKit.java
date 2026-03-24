@@ -20,5 +20,14 @@ public class ConfigToolKit extends ConfigLibrary {
         guiMethod = GuiMethod.NONE;
         notes = "";
         source = "https://github.com/MattiDragon/ConfigToolkit";
+
+		exampleConfigClass = """
+@GenerateMutable(useFancyMethodNames = true)
+public record ConfigClass(boolean exampleBoolean) implements MutableConfigClass.Source {
+    public static final ConfigClass DEFAULT = new ConfigClass(false);
+    public static final Codec<ConfigClass> CODEC = RecordCodecBuilder.create(instance -> instance.group(
+            AlwaysSerializedOptionalFieldCodec.create(Codec.BOOL, "exampleBoolean", BarrelConfig.DEFAULT.exampleBoolean).forGetter(ConfigClass::exampleBoolean)
+    ).apply(instance, ConfigClass::new));
+}""";
     }
 }

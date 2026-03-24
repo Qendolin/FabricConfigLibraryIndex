@@ -20,5 +20,14 @@ public class CryonicConfig extends ConfigLibrary {
 		guiMethod = GuiMethod.NONE;
 		notes = "";
 		source = "https://github.com/matthewperiut/cryonicconfig";
+
+		exampleConfigClass = """
+public class ConfigClass {
+	static final ConfigStorage config = CryonicConfig.getConfig("mod_id");
+	
+	public static boolean getExampleBoolean() {
+		config.getBoolean("exampleBoolean", false);
+	}
+}""";
 	}
 }

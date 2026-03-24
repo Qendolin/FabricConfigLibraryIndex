@@ -20,5 +20,7 @@ public class McQoy extends ConfigLibrary {
         guiMethod = GuiMethod.AUTOMATIC;
         notes = "Makes a YACL config screen for kaleido configs";
         source = "https://github.com/sisby-folk/mcqoy";
+
+		exampleConfigClass = "";
     }
 }

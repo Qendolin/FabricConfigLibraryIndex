@@ -20,5 +20,10 @@ public class KaleidoConfig extends ConfigLibrary {
 		guiMethod = GuiMethod.NONE;
 		notes = "Not made with minecraft in mind";
 		source = "https://github.com/sisby-folk/kaleido-config";
+
+		exampleConfigClass = """
+public class ExampleModConfig extends ReflectiveConfig {
+    public final TrackedValue<Boolean> exampleBoolean = this.value("Example boolean");
+}""";
 	}
 }

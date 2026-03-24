@@ -20,5 +20,12 @@ public class MaLiLibAPI extends ConfigLibrary {
         guiMethod = GuiMethod.AUTOMATIC;
         notes = "";
         source = "https://github.com/kr1viah/malilib-api";
+
+		exampleConfigClass = """
+@Config("malilib-api-example")
+public class ConfigClass {
+	public static final ConfigBooleanPlus EXAMPLE_BOOLEAN = new ConfigBooleanHotkeyedPlus("Example boolean");
+}
+""";
     }
 }

@@ -11,7 +11,7 @@ public enum ConfigFormat {
 	INI(".ini"),
 	JSON5("Json5"),
 	HOCON("Hocon"),
-	;
+	JSONC("JsonC");
 
 	public static final List<ConfigFormat> UNKNOWN = List.of();
 

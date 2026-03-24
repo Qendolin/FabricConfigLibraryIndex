@@ -1,5 +1,7 @@
 package kr1v.index.util;
 
+import org.intellij.lang.annotations.Language;
+
 import java.util.List;
 
 public class ConfigLibrary {
@@ -19,4 +21,7 @@ public class ConfigLibrary {
 	public GuiMethod guiMethod;
 	public String notes;
 	public String source;
+
+	@Language("java")
+	public String exampleConfigClass;
 }

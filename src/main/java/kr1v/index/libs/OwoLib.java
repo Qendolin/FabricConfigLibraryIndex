@@ -20,5 +20,12 @@ public class OwoLib extends ConfigLibrary {
         guiMethod = GuiMethod.AUTOMATIC;
         notes = "Comes with a lot of additional, sometimes problematic, features.";
         source = "https://github.com/wisp-forest/owo-lib";
+
+		exampleConfigClass = """
+@Config(name = "owo-lib-example", wrapperName = "ConfigClass")
+public class ConfigClassModel {
+    public boolean exampleBoolean = false;
+}
+""";
     }
 }

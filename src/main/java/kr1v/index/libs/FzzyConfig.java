@@ -13,12 +13,21 @@ public class FzzyConfig extends ConfigLibrary {
         type = Type.BOTH;
         dependencies = List.of(Dependency.FABRIC_API, Dependency.FABRIC_LANGUAGE_KOTLIN);
         extraConfigTypes = ConfigType.UNKNOWN;
-        extraFeatures = Feature.UNKNOWN;
-        configFormats = List.of(ConfigFormat.JSON, ConfigFormat.TOML);
+        extraFeatures = List.of(Feature.SECTIONS);
+        configFormats = List.of(ConfigFormat.JSON5, ConfigFormat.TOML, ConfigFormat.JSON, ConfigFormat.JSONC);
         manualInitialization = InitMode.YES;
         configMethod = ConfigMethod.of(ConfigMethod.TypeOfClass.EXTENDING, true, List.of(ConfigMethod.Waaa.ANNOTATED_PRIMITIVE, ConfigMethod.Waaa.WRAPPER));
         guiMethod = GuiMethod.AUTOMATIC;
         notes = "";
         source = "https://github.com/fzzyhmstrs/fconfig";
+
+		exampleConfigClass = """
+public class ConfigClass extends Config {
+	public MyConfig() {
+		super(Identifier.of("fzzy-config-example", "example"));
+	}
+	
+    public boolean exampleBoolean = false;
+}""";
     }
 }

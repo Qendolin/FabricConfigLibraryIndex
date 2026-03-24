@@ -15,10 +15,12 @@ public class ForgeConfigAPIPort extends ConfigLibrary {
         extraConfigTypes = ConfigType.UNKNOWN;
         extraFeatures = Feature.UNKNOWN;
         configFormats = ConfigFormat.UNKNOWN;
-        manualInitialization = InitMode.UNKNOWN;
+        manualInitialization = InitMode.YES;
         configMethod = ConfigMethod.UNKNOWN;
-        guiMethod = GuiMethod.AUTOMATIC;
+        guiMethod = GuiMethod.NONE;
         notes = "";
         source = "https://github.com/Fuzss/forgeconfigapiport";
+
+		// TODO: I tried for ~15 minutes, I can't find a coherent example, maybe later
     }
 }

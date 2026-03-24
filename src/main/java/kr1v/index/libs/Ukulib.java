@@ -20,5 +20,11 @@ public class Ukulib extends ConfigLibrary {
         guiMethod = GuiMethod.BUILDER;
         notes = "";
         source = "https://github.com/uku3lig/ukulib";
+
+		exampleConfigClass = """
+public class ConfigClass implements Serializable {
+    public boolean exampleBoolean = false;
+}
+""";
     }
 }

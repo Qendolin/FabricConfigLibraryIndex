@@ -20,5 +20,13 @@ public class Configuration extends ConfigLibrary {
         guiMethod = GuiMethod.AUTOMATIC;
         notes = "";
         source = "https://github.com/Toma1O6/Configuration";
+
+		exampleConfigClass = """
+@Config(id = "configuration-example")
+public class ConfigClass {
+	@Configurable
+	public boolean exampleBoolean = false;
+}
+""";
     }
 }
