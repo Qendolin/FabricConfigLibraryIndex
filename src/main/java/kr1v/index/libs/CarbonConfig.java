@@ -19,6 +19,6 @@ public class CarbonConfig extends ConfigLibrary {
 		configMethod = ConfigMethod.of(ConfigMethod.TypeOfClass.NORMAL, true, ConfigMethod.Waaa.PRIMITIVE);
 		guiMethod = GuiMethod.NONE;
 		notes = "";
-		source = "https://github.com/xpple/BetterConfig";
+		source = "https://github.com/Carbon-Config-Project/CarbonConfigLib";
 	}
 }
