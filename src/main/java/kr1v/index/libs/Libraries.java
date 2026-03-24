@@ -24,6 +24,7 @@ public class Libraries {
 	public static final ConfigLibrary McQoy = new McQoy();
 	public static final ConfigLibrary MidnightLib = new MidnightLib();
 	public static final ConfigLibrary OwoLib = new OwoLib();
+	public static final ConfigLibrary Ukulib = new Ukulib();
 	public static final ConfigLibrary YAMLConfig = new YAMLConfig();
 	public static final ConfigLibrary YetAnotherConfigLib = new YetAnotherConfigLib();
 
