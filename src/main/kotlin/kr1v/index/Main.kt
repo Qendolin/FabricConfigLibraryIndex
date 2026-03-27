@@ -240,6 +240,62 @@ fun FlowContent.ConfigLibraryPanel(library: ConfigLibrary) {
             }
         }
 
+        if (library.type.loader) {
+            div {
+                h4 {
+                    style = "display: inline; margin: 0;"
+                    +"Example config"
+                }
+
+                span("tag") {
+                    style = "display: inline-block; margin-left: 0px; cursor: pointer;"
+                    onClick = """
+			            const el = document.getElementById("example-config-${library.id}");
+			            el.style.display = el.style.display === "none" ? "block" : "none";
+		            """.trimIndent()
+                    h6 {
+                        style = "margin: 2px;"
+                        +"Show/hide"
+                    }
+                }
+
+                span {
+                    style = "display: inline; margin-left: 4px;"
+                    +":"
+                }
+
+                pre {
+                    id = "example-config-${library.id}"
+                    style = """
+                            margin-top: 8px;
+                            display: none;
+                            font-family: monospace;
+                            color: #cba6f7;
+                            background-color: #11111b;
+                            padding: 3px;
+                            margin: 2px;
+                            width: fit-content;
+                            padding-right: 1em;
+                            border-left: 3px solid #cba6f7;
+                        """.trimIndent()
+                    samp {
+                        if (library.exampleConfigClass == null) {
+                            +"None yet! Contribute by providing an example "
+                            a {
+                                val link = "https://github.com/kr1viah/FabricConfigLibraryIndex/blob/master/src/main/java/kr1v/index/libs/" + library.javaClass.simpleName + ".java"
+                                href = link
+                                +"here"
+                            }
+                            +"."
+                        } else {
+                            unsafe {
+                                +library.exampleConfigClass.replace("\t", "    ")
+                            }
+                        }
+                    }
+                }
+            }
+        }
 
         div { style = "height: 5px" }
 
