@@ -346,7 +346,7 @@ fun main() {
                     }
                 }
                 title {
-                    +"Config Library Index"
+                    +"Fabric Config Library Index"
                 }
             }
             body {
