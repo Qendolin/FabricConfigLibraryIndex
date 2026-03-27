@@ -22,6 +22,5 @@ public class YAMLConfig extends ConfigLibrary {
         source = "https://github.com/DAQEM/YamlConfig";
 
 		// TODO: example config for this
-		exampleConfigClass = "";
     }
 }
