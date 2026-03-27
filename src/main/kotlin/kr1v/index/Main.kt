@@ -210,7 +210,7 @@ fun FlowContent.ConfigLibraryPanel(library: ConfigLibrary) {
 
             for (versionRange in set) {
                 if (versions.containsAll(versionRange)) {
-                    val version = versionRange.first().substring(0, versionRange.first().length-2)
+                    val version = versionRange.first().substring(0, versionRange.first().length-2) + ".x"
                     versions.replaceAll {
                         if (it.equals(versionRange.first())) version
                         else it
