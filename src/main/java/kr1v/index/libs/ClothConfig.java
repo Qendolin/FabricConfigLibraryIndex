@@ -12,14 +12,14 @@ public class ClothConfig extends ConfigLibrary {
 		name = "Cloth config";
 		side = Side.BOTH;
 		versions = Versions.versions(MC_1_16_X, MC_1_17_X, MC_1_18_X, MC_1_19_X, MC_1_20_X, MC_1_21_X);
-		type = Type.GUI;
+		type = Type.UI;
 		dependencies = List.of();
 		extraConfigTypes = List.of(ConfigType.COLOR, ConfigType.DROPDOWN);
 		extraFeatures = List.of(Feature.MOD_MENU_INTEGRATION);
 		configFormats = List.of();
 		manualInitialization = InitMode.NOT_AVAILABLE;
 		configMethod = ConfigMethod.NOT_AVAILABLE;
-		guiMethod = GuiMethod.BUILDER;
+		uiMethod = UiMethod.BUILDER;
 		notes = "";
 		source = "https://github.com/shedaniel/cloth-config";
 

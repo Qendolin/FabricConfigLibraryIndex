@@ -17,7 +17,7 @@ public class KaleidoConfig extends ConfigLibrary {
 		configFormats = List.of(ConfigFormat.TOML);
 		manualInitialization = InitMode.YES;
 		configMethod = ConfigMethod.of(ConfigMethod.TypeOfClass.EXTENDING, true, ConfigMethod.Waaa.ANNOTATED_PRIMITIVE);
-		guiMethod = GuiMethod.NONE;
+		uiMethod = UiMethod.NONE;
 		notes = "Not made with minecraft in mind";
 		source = "https://github.com/sisby-folk/kaleido-config";
 

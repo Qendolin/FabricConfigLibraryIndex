@@ -17,7 +17,7 @@ public class Configurable extends ConfigLibrary {
         configFormats = List.of(ConfigFormat.JSON, ConfigFormat.TOML);
         manualInitialization = InitMode.NO;
         configMethod = ConfigMethod.of(ConfigMethod.TypeOfClass.NONE, false, ConfigMethod.Waaa.ANNOTATED_PRIMITIVE);
-        guiMethod = GuiMethod.NONE;
+        uiMethod = UiMethod.NONE;
         notes = "";
         source = "https://github.com/Bawnorton/Configurable";
 

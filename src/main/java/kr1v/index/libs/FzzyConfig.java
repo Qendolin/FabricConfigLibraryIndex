@@ -17,7 +17,7 @@ public class FzzyConfig extends ConfigLibrary {
         configFormats = List.of(ConfigFormat.JSON5, ConfigFormat.TOML, ConfigFormat.JSON, ConfigFormat.JSONC);
         manualInitialization = InitMode.YES;
         configMethod = ConfigMethod.of(ConfigMethod.TypeOfClass.EXTENDING, true, List.of(ConfigMethod.Waaa.ANNOTATED_PRIMITIVE, ConfigMethod.Waaa.WRAPPER));
-        guiMethod = GuiMethod.AUTOMATIC;
+        uiMethod = UiMethod.AUTOMATIC;
         notes = "";
         source = "https://github.com/fzzyhmstrs/fconfig";
 

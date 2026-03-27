@@ -17,7 +17,7 @@ public class YAMLConfig extends ConfigLibrary {
         configFormats = List.of(ConfigFormat.YAML, ConfigFormat.JSON5, ConfigFormat.TOML, ConfigFormat.HOCON);
         manualInitialization = InitMode.YES;
         configMethod = ConfigMethod.of(ConfigMethod.TypeOfClass.NORMAL, false, ConfigMethod.Waaa.SPECIAL); // TODO: I believe this is wrong, they use a builder
-        guiMethod = GuiMethod.AUTOMATIC;
+        uiMethod = UiMethod.AUTOMATIC;
         notes = "";
         source = "https://github.com/DAQEM/YamlConfig";
 

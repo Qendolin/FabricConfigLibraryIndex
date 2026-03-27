@@ -17,7 +17,7 @@ public class ConfigToolKit extends ConfigLibrary {
         configFormats = List.of(ConfigFormat.JSON);
         manualInitialization = InitMode.AT_MOD_INIT;
         configMethod = ConfigMethod.of(ConfigMethod.TypeOfClass.RECORD, true, ConfigMethod.Waaa.PRIMITIVE);
-        guiMethod = GuiMethod.NONE;
+        uiMethod = UiMethod.NONE;
         notes = "";
         source = "https://github.com/MattiDragon/ConfigToolkit";
 

@@ -17,8 +17,8 @@ public class BetterConfig extends ConfigLibrary {
         configFormats = List.of();
         manualInitialization = InitMode.YES;
         configMethod = ConfigMethod.of(ConfigMethod.TypeOfClass.NORMAL, false, ConfigMethod.Waaa.ANNOTATED_PRIMITIVE);
-        guiMethod = GuiMethod.NONE;
-        notes = "Uses commands to modify configs";
+        uiMethod = UiMethod.COMMANDS;
+        notes = "";
         source = "https://github.com/xpple/BetterConfig";
 
 		exampleConfigClass = """

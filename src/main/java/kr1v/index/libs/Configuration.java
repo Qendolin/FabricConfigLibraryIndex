@@ -17,7 +17,7 @@ public class Configuration extends ConfigLibrary {
         configFormats = List.of(ConfigFormat.JSON, ConfigFormat.YAML, ConfigFormat.PROPERTIES, ConfigFormat.INI);
         manualInitialization = InitMode.YES;
         configMethod = ConfigMethod.of(ConfigMethod.TypeOfClass.ANNOTATED, true, ConfigMethod.Waaa.ANNOTATED_PRIMITIVE);
-        guiMethod = GuiMethod.AUTOMATIC;
+        uiMethod = UiMethod.AUTOMATIC;
         notes = "";
         source = "https://github.com/Toma1O6/Configuration";
 

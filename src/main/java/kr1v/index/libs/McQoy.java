@@ -10,14 +10,14 @@ public class McQoy extends ConfigLibrary {
         name = "McQoy";
         side = Side.CLIENT;
         versions = Versions.versions("1.16.5", Versions.MC_1_17_X, Versions.MC_1_18_X, Versions.MC_1_19_X, Versions.MC_1_20_X, Versions.MC_1_21_X);
-        type = Type.GUI;
+        type = Type.UI;
         dependencies = List.of(Dependency.MOD_MENU, Dependency.YET_ANOTHER_CONFIG_LIB);
         extraConfigTypes = List.of();
         extraFeatures = List.of(Feature.MOD_MENU_INTEGRATION);
         configFormats = List.of();
         manualInitialization = InitMode.NOT_AVAILABLE;
         configMethod = ConfigMethod.NOT_AVAILABLE;
-        guiMethod = GuiMethod.AUTOMATIC;
+        uiMethod = UiMethod.AUTOMATIC;
         notes = "Makes a YACL config screen for kaleido configs";
         source = "https://github.com/sisby-folk/mcqoy";
 

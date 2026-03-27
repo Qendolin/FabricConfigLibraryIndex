@@ -17,7 +17,7 @@ public class CarbonConfig extends ConfigLibrary {
 		configFormats = List.of(ConfigFormat.JSON);
 		manualInitialization = InitMode.YES;
 		configMethod = ConfigMethod.of(ConfigMethod.TypeOfClass.NORMAL, true, ConfigMethod.Waaa.PRIMITIVE); // TODO: this is wrong actually. they use a builder
-		guiMethod = GuiMethod.NONE;
+		uiMethod = UiMethod.NONE;
 		notes = "";
 		source = "https://github.com/Carbon-Config-Project/CarbonConfigLib";
 

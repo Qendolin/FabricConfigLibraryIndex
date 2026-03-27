@@ -17,7 +17,7 @@ public class Gson extends ConfigLibrary {
         configFormats = List.of(ConfigFormat.JSON);
         manualInitialization = InitMode.YES;
         configMethod = ConfigMethod.of(ConfigMethod.TypeOfClass.NORMAL, true, ConfigMethod.Waaa.PRIMITIVE);
-        guiMethod = GuiMethod.NONE;
+        uiMethod = UiMethod.NONE;
         notes = "Not really a config library, but still useful for some";
         source = "https://github.com/google/gson";
 

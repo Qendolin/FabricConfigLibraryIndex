@@ -17,7 +17,7 @@ public class ForgeConfigAPIPort extends ConfigLibrary {
         configFormats = ConfigFormat.UNKNOWN;
         manualInitialization = InitMode.YES;
         configMethod = ConfigMethod.UNKNOWN;
-        guiMethod = GuiMethod.NONE;
+        uiMethod = UiMethod.NONE;
         notes = "";
         source = "https://github.com/Fuzss/forgeconfigapiport";
 

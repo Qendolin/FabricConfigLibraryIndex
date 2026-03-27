@@ -18,7 +18,7 @@ public class ConfigLibrary {
 	public List<ConfigFormat> configFormats;
 	public InitMode manualInitialization;
 	public ConfigMethod configMethod;
-	public GuiMethod guiMethod;
+	public UiMethod uiMethod;
 	public String notes;
 	public String source;
 

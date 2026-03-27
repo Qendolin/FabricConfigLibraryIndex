@@ -17,7 +17,7 @@ public class MaLiLibAPI extends ConfigLibrary {
         configFormats = List.of(ConfigFormat.JSON);
         manualInitialization = InitMode.OPTIONAL;
         configMethod = ConfigMethod.of(ConfigMethod.TypeOfClass.ANNOTATED, false, ConfigMethod.Waaa.SPECIAL);
-        guiMethod = GuiMethod.AUTOMATIC;
+        uiMethod = UiMethod.AUTOMATIC;
         notes = "";
         source = "https://github.com/kr1viah/malilib-api";
 

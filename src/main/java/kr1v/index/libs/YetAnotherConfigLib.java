@@ -17,7 +17,7 @@ public class YetAnotherConfigLib extends ConfigLibrary {
         configFormats = List.of(ConfigFormat.JSON);
         manualInitialization = InitMode.YES;
         configMethod = ConfigMethod.of(ConfigMethod.TypeOfClass.NORMAL, true, ConfigMethod.Waaa.ANNOTATED_PRIMITIVE);
-        guiMethod = GuiMethod.BUILDER;
+        uiMethod = UiMethod.BUILDER;
         notes = "";
         source = "https://github.com/isXander/YetAnotherConfigLib";
 

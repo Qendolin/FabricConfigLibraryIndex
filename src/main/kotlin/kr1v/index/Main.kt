@@ -21,7 +21,7 @@ fun ConfigLibrary.tags(): List<Pair<String, String>> {
 
     if (side.client) tags.add(Pair("Client", ""))
     if (side.server) tags.add(Pair("Server", ""))
-    if (type.gui) tags.add(Pair("Gui", ""))
+    if (type.ui) tags.add(Pair("Ui", ""))
     if (type.loader) tags.add(Pair("Loader", ""))
 
     extraFeatures.forEach { tags.add(Pair(it.name, it.description)) }
@@ -185,15 +185,15 @@ fun FlowContent.ConfigLibraryPanel(library: ConfigLibrary) {
             }
         }
 
-        if (library.type.gui) {
+        if (library.type.ui) {
             h4 {
                 span {
-                    if (library.guiMethod.description.isNotEmpty()) {
+                    if (library.uiMethod.description.isNotEmpty()) {
                         classes = setOf("hoverable")
-                        title = library.guiMethod.description
+                        title = library.uiMethod.description
                     }
-                    +"Gui method: "
-                    +library.guiMethod.name
+                    +"Ui method: "
+                    +library.uiMethod.name
                 }
             }
         }

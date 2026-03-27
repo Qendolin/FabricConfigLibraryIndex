@@ -17,7 +17,7 @@ public class Ukulib extends ConfigLibrary {
         configFormats = List.of(ConfigFormat.JSON, ConfigFormat.TOML);
         manualInitialization = InitMode.YES;
         configMethod = ConfigMethod.of(ConfigMethod.TypeOfClass.EXTENDING, true, ConfigMethod.Waaa.PRIMITIVE);
-        guiMethod = GuiMethod.BUILDER;
+        uiMethod = UiMethod.BUILDER;
         notes = "";
         source = "https://github.com/uku3lig/ukulib";
 
