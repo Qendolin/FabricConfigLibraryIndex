@@ -525,6 +525,17 @@ fun main() {
 
                     div("panel") {
                         style = "height: fit-content;"
+                        div {
+                            style = """
+                                display: block;
+                                margin-left: auto;
+                                width: fit-content;
+                                margin-right: 3px;
+                                margin-top: 0px;
+                                margin-bottom: -20px;
+                            """.trimIndent()
+                            +("Total libraries: " + Libraries.CONFIG_LIBRARIES().size)
+                        }
                         a {
                             href = "https://kr1v.net/libs/libs.json"
                             +"View json"
