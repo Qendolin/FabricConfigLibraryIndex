@@ -23,6 +23,7 @@ public class Libraries {
 	public static final ConfigLibrary MaLiLibAPI = new MaLiLibAPI();
 	public static final ConfigLibrary McQoy = new McQoy();
 	public static final ConfigLibrary MidnightLib = new MidnightLib();
+	public static final ConfigLibrary MonkeyLib538 = new MonkeyLib538();
 	public static final ConfigLibrary OffsetUtils538 = new OffsetUtils538();
 	public static final ConfigLibrary OwoLib = new OwoLib();
 	public static final ConfigLibrary Ukulib = new Ukulib();
