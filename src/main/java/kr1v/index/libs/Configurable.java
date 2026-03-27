@@ -21,11 +21,6 @@ public class Configurable extends ConfigLibrary {
         notes = "";
         source = "https://github.com/Bawnorton/Configurable";
 
-		exampleConfigClass = """
-public class ConfigClass {
-	@Configurable
-	public static boolean exampleBoolean = false;
-}
-""";
+		exampleConfigClass = "/** Example comment */ @Configurable boolean exampleBoolean = false;";
     }
 }
