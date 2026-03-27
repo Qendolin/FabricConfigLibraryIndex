@@ -102,61 +102,61 @@ fun FlowContent.ConfigLibraryPanel(library: ConfigLibrary) {
         }
 
         // config format
-        h4 {
-            +"Config method: "
-            if (library.configMethod == ConfigMethod.UNKNOWN) {
-                +"Unknown"
-            } else if (library.configMethod == ConfigMethod.NOT_AVAILABLE) {
-                +"n/a"
-            } else {
-                val method = library.configMethod
-                if (method.typeOfClass != TypeOfClass.NONE) {
-                    +"a"
-                    if (method.typeOfClass == TypeOfClass.EXTENDING || method.typeOfClass == TypeOfClass.ANNOTATED) +"n"
-                    +" ${method.typeOfClass.name.lowercase(Locale.ROOT)} class with "
-                }
-                if (method.waaas.size != 1) {
-                    +"either "
-                }
-                for (waaa in method.waaas) {
-                    if (waaa == Waaa.ANNOTATED_PRIMITIVE) {
-                        +"annotated "
+        if (library.configMethod != ConfigMethod.NOT_AVAILABLE) {
+            h4 {
+                +"Config method: "
+                if (library.configMethod == ConfigMethod.UNKNOWN) {
+                    +"Unknown"
+                } else {
+                    val method = library.configMethod
+                    if (method.typeOfClass != TypeOfClass.NONE) {
+                        +"a"
+                        if (method.typeOfClass == TypeOfClass.EXTENDING || method.typeOfClass == TypeOfClass.ANNOTATED) +"n"
+                        +" ${method.typeOfClass.name.lowercase(Locale.ROOT)} class with "
                     }
-                    if (method.instance) {
-                        +"instance members"
-                    } else {
-                        +"static members"
+                    if (method.waaas.size != 1) {
+                        +"either "
                     }
-                    when (waaa) {
-                        Waaa.PRIMITIVE, Waaa.ANNOTATED_PRIMITIVE -> +(", of primitive type")
-                        Waaa.WRAPPER -> +(", typed with wrappers")
-                        Waaa.SPECIAL -> +(", typed with special classes")
+                    for (waaa in method.waaas) {
+                        if (waaa == Waaa.ANNOTATED_PRIMITIVE) {
+                            +"annotated "
+                        }
+                        if (method.instance) {
+                            +"instance members"
+                        } else {
+                            +"static members"
+                        }
+                        when (waaa) {
+                            Waaa.PRIMITIVE, Waaa.ANNOTATED_PRIMITIVE -> +(", of primitive type")
+                            Waaa.WRAPPER -> +(", typed with wrappers")
+                            Waaa.SPECIAL -> +(", typed with special classes")
+                        }
+
+                        if (method.waaas.indexOf(waaa) < method.waaas.size-1) {
+                            +", or "
+                        }
                     }
 
-                    if (method.waaas.indexOf(waaa) < method.waaas.size-1) {
-                        +", or "
+                    br()
+
+                    +"Examples: "
+
+                    val random = Random(library.name.hashCode())
+                    val length = method.waaas.size
+
+                    val examples = HashSet<String>()
+                    while (examples.size < 3) {
+                        val exampless = method.waaas[abs(random.nextInt() % length)].examples
+                        examples.add(exampless[abs(random.nextInt() % exampless.size)])
                     }
-                }
-
-                br()
-
-                +"Examples: "
-
-                val random = Random(library.name.hashCode())
-                val length = method.waaas.size
-
-                val examples = HashSet<String>()
-                while (examples.size < 3) {
-                    val exampless = method.waaas[abs(random.nextInt() % length)].examples
-                    examples.add(exampless[abs(random.nextInt() % exampless.size)])
-                }
-                for (example in examples) {
-                    span {
-                        style = "display: inline-block; margin: 1px;"
-                        code {
-                            span {
-                                style = "margin: 5px;"
-                                +example
+                    for (example in examples) {
+                        span {
+                            style = "display: inline-block; margin: 1px;"
+                            code {
+                                span {
+                                    style = "margin: 5px;"
+                                    +example
+                                }
                             }
                         }
                     }
