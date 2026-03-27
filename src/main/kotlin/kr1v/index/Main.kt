@@ -187,12 +187,14 @@ fun FlowContent.ConfigLibraryPanel(library: ConfigLibrary) {
 
         if (library.type.gui) {
             h4 {
-                if (library.guiMethod.description.isNotEmpty()) {
-                    classes = setOf("hoverable")
-                    title = library.guiMethod.description
+                span {
+                    if (library.guiMethod.description.isNotEmpty()) {
+                        classes = setOf("hoverable")
+                        title = library.guiMethod.description
+                    }
+                    +"Gui method: "
+                    +library.guiMethod.name
                 }
-                +"Gui method: "
-                +library.guiMethod.name
             }
         }
 
