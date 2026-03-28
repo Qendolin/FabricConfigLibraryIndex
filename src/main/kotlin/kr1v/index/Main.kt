@@ -441,26 +441,20 @@ fun main() {
                     }
 
                     div("panel") {
-                        style = "height: fit-content;"
+                        style = "height: fit-content; display: flex; justify-content: space-between;"
                         div {
-                            style = """
-                                display: block;
-                                margin-left: auto;
-                                width: fit-content;
-                                margin-right: 3px;
-                                margin-top: 0px;
-                                margin-bottom: -20px;
-                            """.trimIndent()
+                            a {
+                                href = "https://kr1v.net/libs/libs.json"
+                                +"View json"
+                            }
+                            br
+                            a {
+                                href = "https://kr1v.net/libs/facts"
+                                +"View facts"
+                            }
+                        }
+                        div {
                             +("Total libraries: " + Libraries.CONFIG_LIBRARIES().size)
-                        }
-                        a {
-                            href = "https://kr1v.net/libs/libs.json"
-                            +"View json"
-                        }
-                        br
-                        a {
-                            href = "https://kr1v.net/libs/facts"
-                            +"View facts"
                         }
                     }
                 }
