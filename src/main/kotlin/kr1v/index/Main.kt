@@ -64,45 +64,43 @@ fun FlowContent.ConfigLibraryPanel(library: ConfigLibrary) {
 
         attributes["id"] = library.id
 
-        // links
         div {
-            style = """
-                	display: block;
-                	margin-left: auto;
-                	width: fit-content;
-                    margin-right: 3px;
-                    margin-top: 0px;
-                    margin-bottom: -20px;
-            """.trimIndent()
-            a {
-                href = "https://github.com/kr1viah/FabricConfigLibraryIndex/blob/master/src/main/java/kr1v/index/libs/" + library.javaClass.simpleName + ".java"
-                +"View entry"
-            }
-            +" "
-            a {
-                href = library.source
-                +"Source code"
-            }
-        }
-
-        // title
-        h1 {
-            style = "display: inline-block; margin: 0;"
-            +library.name
-            +" ("
-        }
-        h2 {
-            style = "display: inline-block; margin: 0;"
-            code {
-                span {
-                    style = "padding: 3px;"
-                    +library.id
+            style = "height: fit-content; display: flex; justify-content: space-between;"
+            // title
+            div {
+                h1 {
+                    style = "display: inline-block; margin: 0;"
+                    +library.name
+                    +" ("
+                }
+                h2 {
+                    style = "display: inline-block; margin: 0;"
+                    code {
+                        span {
+                            style = "padding: 3px;"
+                            +library.id
+                        }
+                    }
+                }
+                h1 {
+                    style = "display: inline-block; margin: 0;"
+                    +")"
                 }
             }
-        }
-        h1 {
-            style = "display: inline-block; margin: 0;"
-            +")"
+
+            // links
+            div {
+                style = "margin-right: 2px"
+                a {
+                    href = "https://github.com/kr1viah/FabricConfigLibraryIndex/blob/master/src/main/java/kr1v/index/libs/" + library.javaClass.simpleName + ".java"
+                    +"View entry"
+                }
+                br
+                a {
+                    href = library.source
+                    +"Source code"
+                }
+            }
         }
 
         // dependencies
