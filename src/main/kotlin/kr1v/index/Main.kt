@@ -13,6 +13,7 @@ import kr1v.index.util.ConfigMethod.TypeOfClass
 import kr1v.index.util.ConfigMethod.Waaa
 import java.nio.file.Files
 import java.nio.file.Path
+import java.time.format.DateTimeFormatter
 import java.util.Locale
 import kotlin.math.abs
 import kotlin.random.Random
@@ -287,20 +288,8 @@ fun FlowContent.ConfigLibraryPanel(library: ConfigLibrary) {
                     +":"
                 }
 
-                pre {
+                pre("codeSamp") {
                     id = "example-config-${library.id}"
-                    style = """
-                            margin-top: 8px;
-                            display: none;
-                            font-family: monospace;
-                            color: #cba6f7;
-                            background-color: #11111b;
-                            padding: 3px;
-                            margin: 2px;
-                            width: fit-content;
-                            padding-right: 1em;
-                            border-left: 3px solid #cba6f7;
-                        """.trimIndent()
                     samp {
                         if (library.exampleConfigClass == null) {
                             +"None yet! Contribute by providing an example "
@@ -349,7 +338,7 @@ fun main() {
     Files.writeString(Path.of("generated", "libs.json"), gson.toJson(obj))
 
 
-    val html = buildString {
+    val libsHtml = buildString {
         appendHTML().html {
             lang = "en"
             head {
@@ -484,6 +473,11 @@ fun main() {
                             href = "https://kr1v.net/libs/libs.json"
                             +"View json"
                         }
+                        br
+                        a {
+                            href = "https://kr1v.net/libs/facts"
+                            +"View facts"
+                        }
                     }
                 }
 
@@ -503,5 +497,73 @@ fun main() {
         }
     }
 
-    Files.writeString(Path.of("generated", "index.html"), html)
+    Files.writeString(Path.of("generated", "index.html"), libsHtml)
+
+    val dateFormatter = DateTimeFormatter.ofPattern("dd MMM uuuu")
+
+    val factOfTheDayHtml = buildString {
+        appendHTML().html {
+            lang = "en"
+            head {
+                meta(charset = "UTF-8")
+                style {
+                    unsafe {
+                        +Files.readString(Path.of("src/main/kotlin/kr1v/index/main.css"))
+                    }
+                }
+                title {
+                    +"Fabric Config Library Facts"
+                }
+            }
+            body {
+                style = "font-size: 13px; color: #cdd6f4; margin: 0px"
+
+                div("panel") {
+                    style = "width: 66%; align: middle; margin-left: auto; margin-right: auto;"
+                    h4 {
+                        a {
+                            href = "https://kr1v.net/libs"
+                            +"Go to index"
+                        }
+                    }
+                    h4 {
+                        +"Have a suggestion? Send me a dm on discord: "
+                        code {
+                            +".kr1v"
+                        }
+                    }
+                }
+
+                for (fact in Facts.facts().reversed()) {
+                    div("panel") {
+                        style = "width: 66%; align: middle; margin-left: auto; margin-right: auto;"
+                        div {
+                            style = "opacity: 0.75; margin-bottom: 6px;"
+                            h3 {
+                                style = "margin: 0;"
+                                +("Day " + (Facts.facts().indexOf(fact)+1) + " (")
+                                time {
+                                    dateTime = fact.date().toString()
+                                    +fact.date().format(dateFormatter)
+                                }
+                                +")"
+                            }
+                        }
+                        div {
+                            style = """
+                                font: helvetica;
+                                overflow-wrap: anywhere;
+                                word-break: break-word;
+                            """.trimIndent()
+                            unsafe {
+                                +fact.fact()
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    Files.writeString(Path.of("generated", "facts.html"), factOfTheDayHtml)
 }

@@ -20,6 +20,8 @@ code {
     border-color: #6c7086;
     border-radius: 10px;
     border-width: 2px;
+    padding-left: 2px;
+    padding-right: 2px;
     color: #a6adc8;
 }
 
@@ -62,4 +64,16 @@ span.tag.active h6 {
 h4 {
     margin-top: 0;
     margin-bottom: 0;
+}
+
+.codeSamp {
+    margin-top: 8px;
+    font-family: monospace;
+    color: #cba6f7;
+    background-color: #11111b;
+    padding: 3px;
+    margin: 2px;
+    width: fit-content;
+    padding-right: 1em;
+    border-left: 3px solid #cba6f7;
 }
