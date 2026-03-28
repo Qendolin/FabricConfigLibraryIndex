@@ -17,6 +17,7 @@ import java.time.format.DateTimeFormatter
 import java.util.Locale
 import kotlin.math.abs
 import kotlin.random.Random
+import kotlin.text.ifEmpty
 
 fun ConfigLibrary.tags(): List<Pair<String, String>> {
     val tags = arrayListOf<Pair<String, String>>()
@@ -289,6 +290,7 @@ fun FlowContent.ConfigLibraryPanel(library: ConfigLibrary) {
                 }
 
                 pre("codeSamp") {
+                    style = "display: none;"
                     id = "example-config-${library.id}"
                     samp {
                         if (library.exampleConfigClass == null) {
@@ -359,38 +361,20 @@ fun main() {
                     style = "flex: 1; display: flex; flex-direction: column; padding: 10px"
 
                     div("panel") {
-                        style = "overflow-y: auto; height: max-content;"
+                        style = "overflow-y: auto;"
 
                         div {
-                            style = """
-                        display: block;
-                        margin-left: auto;
-                        width: fit-content;
-                        """.trimIndent()
-                            onClick = "resetFilters()"
-                            span {
-                                style = """
-                                background: #11111b;
-                                border-style: solid;
-                                border-color: #6c7086;
-                                border-radius: 10px;
-                                display: inline-block;
-                                border-width: 2px;
-                                margin-left: 3px;
-                                padding-left: 2px;
-                                padding-right: 2px;
-                                margin-bottom: -15px;
-                                color: #a6adc8;
-                                height: 1em;
-                            """.trimIndent()
+                            style = "display: flex; justify-content: space-between; align-items: center"
+                            h4 {
+                                +"Versions"
+                            }
+                            span("tag") {
+                                onClick = "resetFilters()"
                                 h6 {
-                                    style = "margin-top: 0.25em"
+                                    style = "margin: 2px;"
                                     +"Reset filters"
                                 }
                             }
-                        }
-                        h4 {
-                            +"Versions"
                         }
                         for (versionSet in Versions.ALL_SET.reversed()) {
                             h5 {
