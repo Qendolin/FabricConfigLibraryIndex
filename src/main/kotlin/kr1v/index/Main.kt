@@ -511,13 +511,15 @@ fun main() {
                 }
 
                 for (fact in Facts.facts().reversed()) {
+                    val day = (Facts.facts().indexOf(fact)+1)
                     div("panel") {
+                        id = "day-$day"
                         style = "width: 66%; align: middle; margin-left: auto; margin-right: auto;"
                         div {
                             style = "opacity: 0.75; margin-bottom: 6px;"
                             h3 {
                                 style = "margin: 0;"
-                                +("Day " + (Facts.facts().indexOf(fact)+1) + " (")
+                                +"Day $day ("
                                 time {
                                     dateTime = fact.date().toString()
                                     +fact.date().format(dateFormatter)
