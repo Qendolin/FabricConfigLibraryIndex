@@ -22,7 +22,6 @@ public class YetAnotherConfigLib extends ConfigLibrary {
         source = "https://github.com/isXander/YetAnotherConfigLib";
 
 		exampleConfigClass = """
-
 public class ConfigClass {
     public static final ConfigClassHandler<ConfigClass> GSON = ConfigClassHandler.createBuilder(ConfigClass.class)
             .serializer(config -> GsonConfigSerializerBuilder.create(config)
