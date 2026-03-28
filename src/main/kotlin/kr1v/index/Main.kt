@@ -6,6 +6,7 @@ import com.google.gson.GsonBuilder
 import com.google.gson.JsonObject
 import kotlinx.html.*
 import kotlinx.html.stream.appendHTML
+import kotlinx.html.title
 import kr1v.index.libs.Libraries
 import kr1v.index.util.*
 import kr1v.index.util.ConfigMethod.TypeOfClass
@@ -34,8 +35,25 @@ fun Pair(first: String): Pair<String, String> {
     return Pair(first, "")
 }
 
-fun FlowContent.tag(title: String, tooltip: String = "") {
-
+fun FlowContent.tag(titleStr: String, tooltip: String = "", onClickStr: String = "", spanStyle: String = "", h6Style: String = "") {
+    span("tag") {
+        if (spanStyle.isNotEmpty()) {
+            style = spanStyle
+        }
+        if (onClickStr.isNotEmpty()) {
+            onClick = onClickStr
+        }
+        h6 {
+            if (tooltip.isNotEmpty()) {
+                classes = setOf("hoverable")
+                title = tooltip
+            }
+            style = h6Style.ifEmpty {
+                "margin: 2px;"
+            }
+            +titleStr
+        }
+    }
 }
 
 fun FlowContent.ConfigLibraryPanel(library: ConfigLibrary) {
@@ -255,17 +273,14 @@ fun FlowContent.ConfigLibraryPanel(library: ConfigLibrary) {
                     +"Example config"
                 }
 
-                span("tag") {
-                    style = "display: inline-block; margin-left: 0px; cursor: pointer;"
-                    onClick = """
+                tag(
+                    "Show/hide",
+                    onClickStr = """
 			            const el = document.getElementById("example-config-${library.id}");
 			            el.style.display = el.style.display === "none" ? "block" : "none";
-		            """.trimIndent()
-                    h6 {
-                        style = "margin: 2px;"
-                        +"Show/hide"
-                    }
-                }
+		            """.trimIndent(),
+                    spanStyle = "display: inline-block; margin-left: 0px; cursor: pointer;"
+                )
 
                 span {
                     style = "display: inline; margin-left: 4px;"
@@ -309,16 +324,7 @@ fun FlowContent.ConfigLibraryPanel(library: ConfigLibrary) {
 
         // tags
         library.tags().forEach {
-            span("tag") {
-                h6 {
-                    if (it.second.isNotEmpty()) {
-                        classes = setOf("hoverable")
-                        title = it.second
-                    }
-                    style = "margin: 2px;"
-                    +it.first
-                }
-            }
+            tag(it.first, it.second)
         }
     }
 }
@@ -403,66 +409,28 @@ fun main() {
                                 +versionSet.first().substring(0, versionSet.first().length-2)
                             }
                             for (version in versionSet) {
-                                span("tag") {
-                                    onClick = "toggleFilter('versions', '$version')"
-                                    h6 {
-                                        style = "margin-left: 4px; margin: 2px;"
-                                        +version
-                                    }
-                                }
+                                tag(version, onClickStr = "toggleFilter('versions', '$version')", h6Style = "margin-left: 4px; margin: 2px;")
                             }
                         }
 
                         h4 {
                             +"Side"
                         }
-                        span("tag") {
-                            onClick = "toggleFilter('side', 'CLIENT')"
-                            h6 {
-                                style = "margin: 2px;"
-                                +"Client"
-                            }
-                        }
-                        span("tag") {
-                            onClick = "toggleFilter('side', 'SERVER')"
-                            h6 {
-                                style = "margin: 2px;"
-                                +"Server"
-                            }
-                        }
+                        tag("Client", onClickStr = "toggleFilter('side', 'CLIENT')")
+                        tag("Server", onClickStr = "toggleFilter('side', 'SERVER')")
 
                         h4 {
                             +"Config types"
                         }
                         for (type in ConfigType.entries) {
-                            span("tag") {
-                                onClick = "toggleFilter('extraConfigTypes', '$type')"
-                                h6 {
-                                    if (type.description.isNotEmpty()) {
-                                        classes = setOf("hoverable")
-                                        title = type.description
-                                    }
-                                    style = "margin: 2px;"
-                                    +type.name
-                                }
-                            }
+                            tag(type.name, type.description, "toggleFilter('extraConfigTypes', '$type')")
                         }
 
                         h4 {
                             +"Features"
                         }
                         for (feature in Feature.entries) {
-                            span("tag") {
-                                onClick = "toggleFilter('extraFeatures', '$feature')"
-                                h6 {
-                                    if (feature.description.isNotEmpty()) {
-                                        classes = setOf("hoverable")
-                                        title = feature.description
-                                    }
-                                    style = "margin: 2px;"
-                                    +feature.name
-                                }
-                            }
+                            tag(feature.name, feature.description, "toggleFilter('extraFeatures', '$feature')")
                         }
 
                         h4 {
@@ -470,13 +438,7 @@ fun main() {
                         }
                         for (configFormat in ConfigFormat.entries) {
                             if (configFormat == ConfigFormat.NOT_AVAILABLE) continue
-                            span("tag") {
-                                onClick = "toggleFilter('configFormats', '$configFormat')"
-                                h6 {
-                                    style = "margin: 2px;"
-                                    +configFormat.name
-                                }
-                            }
+                            tag(configFormat.name, onClickStr = "toggleFilter('configFormats', '$configFormat')")
                         }
 
                         h4 {
@@ -484,13 +446,7 @@ fun main() {
                         }
                         for (mode in InitMode.entries) {
                             if (mode == InitMode.NOT_AVAILABLE || mode == InitMode.UNKNOWN) continue
-                            span("tag") {
-                                onClick = "toggleFilter('manualInitialization', '$mode')"
-                                h6 {
-                                    style = "margin: 2px;"
-                                    +mode.name
-                                }
-                            }
+                            tag(mode.name, onClickStr = "toggleFilter('manualInitialization', '$mode')")
                         }
 
                         h4 {
@@ -499,34 +455,14 @@ fun main() {
                         h5 {
                             style = "margin: 0;"
                             +"Field kind"
-                            span("tag") {
-                                onClick = "toggleFilter('configMethod.instance', 'true')"
-                                h6 {
-                                    style = "margin: 2px;"
-                                    +"instance"
-                                }
-                            }
-                            span("tag") {
-                                onClick = "toggleFilter('configMethod.instance', 'false')"
-                                h6 {
-                                    style = "margin: 2px;"
-                                    +"static"
-                                }
-                            }
+                            tag("instance", onClickStr = "toggleFilter('configMethod.instance', 'true')")
+                            tag("static", onClickStr = "toggleFilter('configMethod.instance', 'false')")
                         }
                         h5 {
                             style = "margin: 0;"
                             +"Type of fields"
                             for (waaa in Waaa.entries) {
-                                span("tag") {
-                                    onClick = "toggleFilter('configMethod.waaas', '$waaa')"
-                                    h6 {
-                                        style = "margin: 2px;"
-                                        classes = setOf("hoverable")
-                                        title = waaa.getExampleText()
-                                        +waaa.name
-                                    }
-                                }
+                                tag(waaa.name, waaa.exampleText, "toggleFilter('configMethod.waaas', '$waaa')")
                             }
                         }
                     }
