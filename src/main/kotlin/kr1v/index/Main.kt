@@ -19,15 +19,23 @@ import kotlin.random.Random
 fun ConfigLibrary.tags(): List<Pair<String, String>> {
     val tags = arrayListOf<Pair<String, String>>()
 
-    if (side.client) tags.add(Pair("Client", ""))
-    if (side.server) tags.add(Pair("Server", ""))
-    if (type.ui) tags.add(Pair("Ui", ""))
-    if (type.loader) tags.add(Pair("Loader", ""))
+    if (side.client) tags.add(Pair("Client"))
+    if (side.server) tags.add(Pair("Server"))
+    if (type.ui) tags.add(Pair("Ui"))
+    if (type.loader) tags.add(Pair("Loader"))
 
     extraFeatures.forEach { tags.add(Pair(it.name, it.description)) }
-    configFormats.forEach { tags.add(Pair(it.name, "")) }
+    configFormats.forEach { tags.add(Pair(it.name)) }
 
     return tags
+}
+
+fun Pair(first: String): Pair<String, String> {
+    return Pair(first, "")
+}
+
+fun FlowContent.tag(title: String, tooltip: String = "") {
+
 }
 
 fun FlowContent.ConfigLibraryPanel(library: ConfigLibrary) {
