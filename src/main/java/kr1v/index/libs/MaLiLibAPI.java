@@ -9,7 +9,7 @@ public class MaLiLibAPI extends ConfigLibrary {
         id = "malilib-api";
         name = "MaLiLib API";
         side = Side.CLIENT;
-        versions = Versions.ALL_LIST.stream().filter(s -> !s.equals("26.1")).toList();
+        versions = Versions.ALL_LIST;
         type = Type.BOTH;
         dependencies = List.of(Dependency.MALILIB);
         extraConfigTypes = List.of(ConfigType.COLOR, ConfigType.HOTKEY, ConfigType.PAIR, ConfigType.BUTTON);
