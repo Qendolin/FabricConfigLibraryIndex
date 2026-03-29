@@ -8,7 +8,7 @@ public class MonkeyLib538 extends ConfigLibrary {
 	public MonkeyLib538() {
 		id = "monkeylib538";
 		name = "MonkeyLib538";
-		side = Side.BOTH;
+		side = Side.SERVER;
 		versions = Versions.versions(Versions.MC_1_21_X);
 		type = Type.UI;
 		dependencies = List.of(Dependency.FABRIC_API, Dependency.ADVENTURE_PLATFORM_MOD);
