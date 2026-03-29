@@ -75,6 +75,18 @@ Recently, I switched from saying "Gui" to "Ui" on the website and in the index. 
 """
 	);
 
+	public static final Fact day_7 = of(
+			"29/03/2026",
+"""
+In day 4 I mentioned that only 4 indexed config libraries are marked as "client only". This seems like not a lot, but only two config libraries I know of would be marked as "server only"; QoMC and MonkeyLib538 (I know, both of these work in singleplayer too, but neither of them have any functionality for client side).<br>
+QoMC is a config library designed to auto-generate commands based on existing Kaleido Config configs. Just like McQoy, Integration is implicit; you don't need to do anything to get it to work.<br>
+MonkeyLib538 (Mentioned in day 6) does a similar thing, except works with OffsetUtils538 instead of Kaleido Config, though unlike QoMC does need manual initialization.<br>
+<br>
+Bonus fact: The only pure-java config libraries are OffsetUtils538, Kaleido Config, and Gson!<br>
+Bonus bonus fact: The only config libraries that provide a ui and are server-only are MonkeyLib538 and QoMC, because why would you write a config library that is server-only, but doesn't have a ui. Guess you'd make a library to mixin into options.txt :clueless:<br>
+"""
+	);
+
 	public static List<Fact> facts() {
 		return Arrays.stream(Facts.class.getFields())
 				.filter(f -> Fact.class.isAssignableFrom(f.getType()))
