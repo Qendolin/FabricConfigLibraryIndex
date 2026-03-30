@@ -323,6 +323,7 @@ fun main() {
     val dir = Path.of("generated", "json")
 
     Files.createDirectories(dir)
+    Files.createDirectories(Path.of("generated", "facts"))
 
     val obj = JsonObject()
 
@@ -477,7 +478,7 @@ fun main() {
 
     val dateFormatter = DateTimeFormatter.ofPattern("dd MMM uuuu")
 
-    val factOfTheDayHtml = buildString {
+    val factsHtml = buildString {
         appendHTML().html {
             lang = "en"
             head {
@@ -489,6 +490,23 @@ fun main() {
                 }
                 title {
                     +"Fabric Config Library Facts"
+                }
+
+                meta {
+                    attributes["property"] = "og:title"
+                    content = "Fabric Config Library Facts"
+                }
+                meta {
+                    attributes["property"] = "og:description"
+                    content = "\"Daily\" config library facts"
+                }
+                meta {
+                    attributes["property"] = "og:url"
+                    content = "https://kr1v.net/libs/facts"
+                }
+                meta {
+                    attributes["property"] = "og:type"
+                    content = "article"
                 }
             }
             body {
@@ -518,6 +536,105 @@ fun main() {
                         div {
                             style = "opacity: 0.75; margin-bottom: 6px;"
                             h3 {
+                                style = "display: inline-block; margin: 0;"
+                                +"Day $day ("
+                                time {
+                                    dateTime = fact.date().toString()
+                                    +fact.date().format(dateFormatter)
+                                }
+                                +")"
+                            }
+                            h5 {
+                                style = "user-select: none; margin: 0; cursor: pointer; text-decoration: underline; display: inline-block;"
+                                onClick = "navigator.clipboard.writeText('https://kr1v.net/libs/facts/$day')"
+                                +"(Copy permalink)"
+                            }
+                            h5 {
+                                style = "margin: 0; display: inline-block;"
+                                a {
+                                    href = "https://kr1v.net/libs/facts/$day"
+                                    +"(Open permalink)"
+                                }
+                            }
+                        }
+                        div {
+                            style = """
+                                font: helvetica;
+                                overflow-wrap: anywhere;
+                                word-break: break-word;
+                            """.trimIndent()
+                            unsafe {
+                                +fact.fact()
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    Files.writeString(Path.of("generated", "facts.html"), factsHtml)
+
+    for (fact in Facts.facts()) {
+        val day  = Facts.facts().indexOf(fact)+1
+
+        val factOfTheDayHtml = buildString {
+            appendHTML().html {
+                lang = "en"
+                head {
+                    meta(charset = "UTF-8")
+                    style {
+                        unsafe {
+                            +Files.readString(Path.of("src/main/kotlin/kr1v/index/main.css"))
+                        }
+                    }
+                    title {
+                        +"Fabric Config Library Fact Day $day"
+                    }
+
+                    meta {
+                        attributes["property"] = "og:title"
+                        content = "Fabric Config Library Fact Day $day"
+                    }
+                    meta {
+                        attributes["property"] = "og:description"
+                        content = fact.fact()
+                    }
+                    meta {
+                        attributes["property"] = "og:url"
+                        content = "https://kr1v.net/libs/facts/$day"
+                    }
+                    meta {
+                        attributes["property"] = "og:type"
+                        content = "article"
+                    }
+                }
+
+                body {
+                    style = "font-size: 13px; color: #cdd6f4; margin: 0px"
+
+                    div("panel") {
+                        style = "width: 66%; align: middle; margin-left: auto; margin-right: auto;"
+                        h4 {
+                            a {
+                                href = "https://kr1v.net/libs/facts"
+                                +"Go to all facts"
+                            }
+                        }
+                        h4 {
+                            a {
+                                href = "https://kr1v.net/libs"
+                                +"Go to index"
+                            }
+                        }
+                    }
+
+                    div("panel") {
+                        id = "day-$day"
+                        style = "width: 66%; align: middle; margin-left: auto; margin-right: auto;"
+                        div {
+                            style = "opacity: 0.75; margin-bottom: 6px;"
+                            h3 {
                                 style = "margin: 0;"
                                 +"Day $day ("
                                 time {
@@ -541,7 +658,7 @@ fun main() {
                 }
             }
         }
-    }
 
-    Files.writeString(Path.of("generated", "facts.html"), factOfTheDayHtml)
+        Files.writeString(Path.of("generated", "facts", "$day.html"), factOfTheDayHtml)
+    }
 }
