@@ -87,6 +87,20 @@ Bonus bonus fact: The only config libraries that provide a ui and are server-onl
 """
 	);
 
+	public static final Fact day_8 = of(
+			"30/03/2026",
+"""
+Only a couple libraries support all versions: Gson, Kaleido config, MaLiLib, MaLiLib API, and OffsetUtils538. Out of these, only MaLiLib and MaLiLib API are actual mods. Gson, Kaleido config and OffsetUtils538 are all pure java, and are thus automatically compatible with all minecraft versions (Given that they are compiled with the proper java version, of course).<br>
+MaLiLib is compatible from 1.14 to 26.1 because of how important mods like tweakeroo and litematica are.<br>
+MaLiLib API is compatible from 1.14 to 26.1 because it really does not interface with minecraft a lot; the only classes used are MinecraftClient (Yarn for the win!), Screen, Click, DrawContext, and MatrixStack. That's it! Only 5 classes!<br>
+<br>
+Bonus fact: You may ask, what is even the point of MaLiLib API if it doesn't interact with minecraft a lot? Well, as you can see in the index, MaLiLib requires an absurd amount of code to get started with, and its stupid "double declaration" of each config option is annoying too. MaLiLib API fixes all of these issues.<br>
+Bonus bonus fact: That still doesn't answer why MaLiLib API is on 1.14 of all versions. Well, I first ported to 1.20.x, and thought, "Hmm... surely 1.19.x can't be that hard right?", and I was right! It only took a few days. This continued, all the way down to 1.14, at which point I stopped, because having 15 stonecutter branches was getting kind of ridiculous.<br>
+Bonus bonus bonus fact: I wanted to port MaLiLib API (It is my mod) to other versions (1.12, 1.13), but due to 1.13 not having an official ornithe release, and due to 1.12 being in a massive rewrite, there was no point. Apart from this, I believe that MaLiLib API will become obsolete when Post Rewrite™ finally finishes, but since 2020 its to-do list has grown by more than 5 times, so for the foreseeable future I will continue to have a job.<br>
+I could ramble on about MaLiLib API for a while longer, but that's enough bonus facts for one day.
+"""
+	);
+
 	public static List<Fact> facts() {
 		return Arrays.stream(Facts.class.getFields())
 				.filter(f -> Fact.class.isAssignableFrom(f.getType()))
