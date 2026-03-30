@@ -599,6 +599,11 @@ fun main() {
                     meta {
                         attributes["property"] = "og:description"
                         content = fact.fact()
+                            .replace("<br>", "\n")
+                            .replace("<code>", "`")
+                            .replace("</code>", "`")
+                            .replace("<samp><pre class='codeSamp'>", "```")
+                            .replace("</pre></samp>", "```")
                     }
                     meta {
                         attributes["property"] = "og:url"
