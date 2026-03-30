@@ -300,9 +300,7 @@ fun FlowContent.ConfigLibraryPanel(library: ConfigLibrary) {
                             }
                             +"."
                         } else {
-                            unsafe {
-                                +library.exampleConfigClass.replace("\t", "    ")
-                            }
+                            +library.exampleConfigClass.replace("\t", "    ")
                         }
                     }
                 }
