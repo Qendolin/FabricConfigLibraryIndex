@@ -83,7 +83,7 @@ QoMC is a config library designed to auto-generate commands based on existing Ka
 MonkeyLib538 (Mentioned in day 6) does a similar thing, except works with OffsetUtils538 instead of Kaleido Config, though unlike QoMC does need manual initialization.<br>
 <br>
 Bonus fact: The only pure-java config libraries are OffsetUtils538, Kaleido Config, and Gson!<br>
-Bonus bonus fact: The only config libraries that provide a ui and are server-only are MonkeyLib538 and QoMC, because why would you write a config library that is server-only, but doesn't have a ui. Guess you'd make a library to mixin into options.txt :clueless:<br>
+Bonus bonus fact: The only config libraries that provide a ui and are server-only are MonkeyLib538 and QoMC, because why would you write a config library that is server-only, but doesn't have a ui. Guess you'd make a library to mixin into options.txt :clueless:
 """
 	);
 
