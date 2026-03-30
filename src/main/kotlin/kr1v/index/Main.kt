@@ -599,6 +599,7 @@ fun main() {
                     meta {
                         attributes["property"] = "og:description"
                         content = fact.fact()
+                            .replace("<br>\n", "\n")
                             .replace("<br>", "\n")
                             .replace("<code>", "`")
                             .replace("</code>", "`")
