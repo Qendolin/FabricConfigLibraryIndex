@@ -101,6 +101,45 @@ I could ramble on about MaLiLib API for a while longer, but that's enough bonus 
 """
 	);
 
+	public static final Fact day_9 = of(
+			"31/03/2026",
+"""
+In day 8 I said that I could "ramble on about MaLiLib API for a while longer". Well, here goes.<br>
+In day 8's bonus bonus fact I said that I had 15 stonecutter versions. That's actually a lie! I have 23 in the code, its just that some of them are unused: 1.19.3 and 1.19.2 (Test versions for some dumb issue), 1.18, 1.17, 1.14.4 and 1.14 (to check if my versions (like for example <code>>=1.14 <=1.15.2</code>) set actually work), and lastly 1.13.2 and 1.12.2 (Test ports to see if the grade setup is correct, et cetera)<br>
+With that out of the way, I can begin to talk about the magic, and try to explain how it works (I tried a while ago, and failed miserably)<br>
+At compile time, an annotation processor is used to remember the exact layout of a class (Specifically methods, fields and inner classes). This is done so I could have support for sections and <code>@Extras</code> annotations (I'll explain later what those are), and because reflection doesn't guarantee source order of fields, inner classes and methods. Not even the bytecode guarantees (And, as far as I've seen, this doesn't happen with any compiler) that the exact order/layout as defined in the source code is saved. I need this, because whatever order you put in your config class, that is the order that will show up in-game and in the file. The annotation processor writes the class layouts to <code>META-INF/kr1v/index.json</code> in your .jar file.<br>
+Then, at runtime, first mod initialization runs. There, you can register your mod manually if you want a different name from mod id, or a custom config handler, or a custom input handler, or a custom config screen. Then, right after that, MaLiLib API reads all <code>META-INF/kr1v/index.json</code> files, reads each class, and handles them. To handle a class, it checks if there's a @Config annotation, and checks its mod id. If the mod id isn't registered yet, it registers the mod with a default config handler, input handler and config screen supplier. Then, it generates the list of configs, and registers a new tab to that mod id with the generated list of configs.<br>
+To generate the list of configs, that's a whole different can of worms I will open right now:<br>
+<br>
+First, it gets the class' layout from the <code>META-INF/kr1v/index.json</code> (Not really, it's a little more complicated, but this is already gonna be way too long, so whatever), and goes through every one of them. For each element, it handles the annotations (Regardless of type), then checks if its a field that is static and of type <code>IConfigBase</code> (Which is the interface that all configs should implement) (Doesn't have to be public! (Or final! I guess! That's a bug!)), and if so, adds it to the list. At the end, it returns the list<br>
+To handle the annotations, it goes through every annotation. For every annotation, it checks if the annotation is of type:<br>
+<br>
+Bonus fact 1: Due to a config entry only having to extend IConfigBase for it to get picked up, custom config types are implicitly supported by MaLiLib (And by extension MaLiLib API) (MaLiLib base requires you to provide a list of IConfigBases to use as the config entries for your config)<br>
+<br>
+<code>PopupConfig</code> (For sections): it... does a lot of validating, then generates a new list from the inner class, creates a ConfigObject (Which to be honest deserves its own entire day) (Really I should split this up into multiple days, but eh whatever no one reads these anyways) with a bunch of settings, registers it as a PopupConfig tab (Because otherwise it will not get saved) adds it to the list.<br>
+<code>Label</code> (For a label above a config entry): adds a new ConfigLabel with the <code>Label</code>s value<br>
+<code>Extras</code>: Here, it is assumed that the method annotated has a <code>List<IConfigBase></code> as its only argument. If one of its entrypoints (Its <code>runAt</code> argument) is an empty string, or if <code>runAt</code> is empty, it is invoked with the list as it is currently, to allow for programmatically adding/removing/whatever a config entry, or well, it allows you to do anything. It is your method, after all. What happens if <code>runAt</code> is not empty?<br>
+<code>Marker</code> (To mark a point in the list): It will go through every method in the class (From top to bottom), check if the method is annotated with <code>Extras</code>, and if so, checks if any of its <code>runAt</code> values match the value of the <code>Marker</code> annotation, and if so, runs the method with the current list again (I actually lie in the javadoc for <code>Extras</code> so its easier to make sense of).<br>
+<code>Hide</code>: Simply prevents the config entry from showing up in the gui, but it will still save.<br>
+If it is not any of these, simply ignores the annotation. In the future, I may add a way for developers to add their own annotation that they can process in the end.<br>
+<br>
+And that's it! At least, for generating the config list.<br>
+<br>
+Then, when you open the config screen it grabs the list of visible configs (Accounting for <code>Hide</code> annotations and ConfigLabel config entries), and delegates (Most of) the rest to MaLiLib.<br>
+<br>
+Bonus fact 2: in the "Vanilla" MaLiLib config screen, it uses the screen class for the mod switcher widget (>=1.21) for deciding which mod this config belongs to. Obviously this is very brittle, but okay. Whatever.<br>
+Bonus fact 3: In the config screens render method, it has *eight* stonecutter branches, *just* so I could render a fancy background (And later for setting/saving the active tab and scroll wheel position). First, below 1.16, MatrixStack wasn't invented yet. Then, below 1.20.1, MatrixStack was invented. Then, in 1.20.1 and above, DrawContext was invented. In 1.20.1, <code>renderBackground()</code> did not have mouseX, mouseY and partialTicks as arguments. Then, from 1.20.2 to 1.20.5, aforementioned arguments were accounted for. Then, in 1.20.6 and above, it was renamed, and mouseX and mouseY were removed again. Lastly, in 1.21 to 1.21.1, applyBlur took in partialTicks, then in 1.21.3 to 1.21.5, <code>applyBlur()</code> did not take in any arguments. Then, finally, in 1.21.8 and above, drawContext was added as an argument.<br>
+<br>
+I said "most of" for "the rest", so what is that "Most of", you may ask? Well, MaLiLib handles drawing the config list themselves (Not even completely, I'll elaborate in a second), rendering the config switcher, and... well... that's it actually. When I say that MaLiLib is a Pain in the Ass to set up, I mean it. There's a reason MaLiLib API exists.<br>
+MaLiLib API makes a mixin into WidgetConfigOptionMixin to allow for custom config types.<br>
+Bonus fact 4: MaLiLib APIs own new config types (ConfigList, ConfigButton, ConfigObject and ConfigPair) all use MaLiLib APIs way of registering custom config types (Well, actually widgets for custom config types), both to provide an example for other mods to do the same, and to make sure that my way of making custom config types actually *works*.<br>
+<br>
+Bonus fact 5: Below (If I recall correctly) 1.19, ConfigBooleanHotkeyed displays as just a ConfigBoolean in the screen. This is not my fault, it is MaLiLibs fault. I could fix it, but decided against it. I could not be asked.<br>
+<br>
+Wow. That took a while. 1 hour and 30 minutes. And I did not even cover half of the things I wanted to (I still wanted to cover ConfigObject, some of the struggles I've had developing this mod, some statistics about MaLiLib API, why I have 3 injects all responsible for "executing after mod initialization", and so much more), but I am running out of time (Who could have guessed, with 1.5 hours of writing in a row). I hope, to whoever read all of this, you learnt something, or at least had fun. I will probably not make another "Fact" *this* big, but who knows. I surprised myself too the second day in a row I managed to write up a config fact.<br>
+"""
+	);
+
 	public static List<Fact> facts() {
 		return Arrays.stream(Facts.class.getFields())
 				.filter(f -> Fact.class.isAssignableFrom(f.getType()))
