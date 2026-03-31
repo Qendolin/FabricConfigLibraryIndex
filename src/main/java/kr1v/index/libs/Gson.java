@@ -12,8 +12,8 @@ public class Gson extends ConfigLibrary {
         versions = Versions.ALL_LIST;
         type = Type.LOADER;
         dependencies = List.of();
-		extraConfigTypes = ConfigType.UNKNOWN;
-		extraFeatures = Feature.UNKNOWN;
+		extraConfigTypes = List.of();
+		extraFeatures = List.of();
         configFormats = List.of(ConfigFormat.JSON);
         manualInitialization = InitMode.YES;
         configMethod = ConfigMethod.of(ConfigMethod.TypeOfClass.NORMAL, true, ConfigMethod.Waaa.PRIMITIVE);
@@ -24,6 +24,25 @@ public class Gson extends ConfigLibrary {
 		exampleConfigClass = """
 public class ConfigClass {
     public boolean exampleBoolean = false;
+	
+	// could be anywhere
+	public static ConfigClass config = new ConfigClass();
+	public static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
+	public static final Path PATH = FabricLoader.getInstance().getConfigDir().resolve("gson-example");
+	public static save() {
+		try {
+			Files.writeString(PATH, GSON.toJson(CONFIG));
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	public static load() {
+		try {
+			CONFIG = GSON.fromJson(Files.readString(PATH));
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+	}
 }""";
     }
 }
