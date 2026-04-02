@@ -140,6 +140,13 @@ Wow. That took a while. 1 hour and 30 minutes. And I did not even cover half of 
 """
 	);
 
+	public static final Fact day_10 = of(
+			"02/04/2026",
+"""
+Fabric API is by far the most popular dependency, with 8 config libraries using it: ConfigToolKit, Configurable, Fzzy Config, MidnightLib, MonkeyLib538, oωo, QoMC, and YetAnotherConfigLib. The rest of the dependencies are one-offs: Fabric Language Kotlin (used by Fzzy Config), MaLiLib (used by MaLiLib API), UI Lib (used by YAML Config), Mod Menu (note: as a required dependency) (used by McQoy), YetAnotherConfigLib (used by McQoy), and lastly adventure-platform-mod (used by MonkeyLib538).
+"""
+	);
+
 	public static List<Fact> facts() {
 		return Arrays.stream(Facts.class.getFields())
 				.filter(f -> Fact.class.isAssignableFrom(f.getType()))
