@@ -147,6 +147,15 @@ Fabric API is by far the most popular dependency, with 8 config libraries using 
 """
 	);
 
+	public static final Fact day_11 = of(
+			"03/04/2026",
+"""
+I switched to kotlin for generating the html at first just so I could do <code>${someVariable}</code>, but after a few minutes I discovered kotlinx html, so started using that instead.<br>
+Bonus fact 1: I don't know any kotlin! I just googled some kotlin code, and just continued to do whatever it did. I don't know how those <code>{ it.someThing }</code> things work, or anything kotlin specific. Despite that, I've managed to write a total of 683 lines of kotlin code.<br>
+Bonus fact 2: I don't know any html, css, or javascript either! I've just been kind of guessing, googling how to make text italic in html, and stuff like it. Literally just "throwing stuff at the wall and seeing what sticks".
+"""
+	);
+
 	public static List<Fact> facts() {
 		return Arrays.stream(Facts.class.getFields())
 				.filter(f -> Fact.class.isAssignableFrom(f.getType()))
