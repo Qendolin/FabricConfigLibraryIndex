@@ -535,7 +535,7 @@ fun main() {
                             style = "opacity: 0.75; margin-bottom: 6px;"
                             h3 {
                                 style = "display: inline-block; margin: 0;"
-                                +"Day $day ("
+                                +"Day $day: ${fact.title} ("
                                 time {
                                     dateTime = fact.date().toString()
                                     +fact.date().format(dateFormatter)
@@ -587,12 +587,12 @@ fun main() {
                         }
                     }
                     title {
-                        +"Fabric Config Library Fact Day $day"
+                        +"Fabric Config Library Fact Day $day: ${fact.title}"
                     }
 
                     meta {
                         attributes["property"] = "og:title"
-                        content = "Fabric Config Library Fact Day $day"
+                        content = "Fabric Config Library Fact Day $day: ${fact.title}"
                     }
                     meta {
                         attributes["property"] = "og:description"
@@ -640,7 +640,7 @@ fun main() {
                             style = "opacity: 0.75; margin-bottom: 6px;"
                             h3 {
                                 style = "margin: 0;"
-                                +"Day $day ("
+                                +"Day $day: ${fact.title} ("
                                 time {
                                     dateTime = fact.date().toString()
                                     +fact.date().format(dateFormatter)

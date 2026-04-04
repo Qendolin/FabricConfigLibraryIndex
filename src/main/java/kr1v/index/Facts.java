@@ -13,6 +13,7 @@ public class Facts {
 
 	public static final Fact day_1 = of(
 			"13/03/2026",
+			"Creativity",
 """
 Gson is the only config library that doesn't have "config" or "lib" in its name. be more creative!
 """
@@ -20,6 +21,7 @@ Gson is the only config library that doesn't have "config" or "lib" in its name.
 
 	public static final Fact day_2 = of(
 			"14/03/2026",
+			"Language is hard",
 """
 YAMLConfig doesn't mean "YAML (as in the file format) Config". it actually means "YAML (as in the file format) And More Languages Config"! it supports YAML, JSON5, TOML and HOCON, and is the only config library to support HOCON, as far as i am aware.
 """
@@ -27,6 +29,7 @@ YAMLConfig doesn't mean "YAML (as in the file format) Config". it actually means
 
 	public static final Fact day_3 = of(
 			"21/03/2026",
+			"File formats",
 """
 There are a couple of file formats that only have one library supporting them: hocon (YAMLConfig, as seen in day two), .ini (Configuration), and .properties (Configuration). Bonus fact: if you check the index right now, you would see that the json5 ConfigFormat only has one usage. this is because when i made the first 8 or so entries to the index, i didn't know there was a difference in between json and json5, so only libraries added post-java-port are labeled as json5 correctly. and by chance, only one library added post-java-port supports json5.
 """
@@ -34,6 +37,7 @@ There are a couple of file formats that only have one library supporting them: h
 
 	public static final Fact day_4 = of(
 			"26/03/2026",
+			"Client only configs",
 """
 There are only 4 indexed config libraries that are marked as "client only". These are MaLiLib (because its developer is not interested in server-side), MaLiLib API (because it expands upon MaLiLib), McQoy (because its purpose is making a YACL gui for Kaleido configs automatically), and ukulib. Bonus fact: ukulib is the only library where its id matches its name! Bonus bonus fact: ukulib recently updated its readme to mention its [docs](https://uku3lig.github.io/ukulib/config/), which only concern 26.1. That means its in active development! yay!
 """
@@ -41,6 +45,7 @@ There are only 4 indexed config libraries that are marked as "client only". Thes
 
 	public static final Fact day_5 = of(
 			"27/03/2026",
+			"Configurable comments",
 """
 Configurable is the only config library supporting javadocs for adding comments. for example:<br>
 <br>
@@ -70,6 +75,7 @@ Despite Configurable being the only one supporting this awesome feature, numerou
 
 	public static final Fact day_6 = of(
 			"28/03/2026",
+			"Language is hard 2",
 """
 Recently, I switched from saying "Gui" to "Ui" on the website and in the index. This is because numerous config libraries would provide command as a way to edit the config values in-game, and I would have to add a note to the config library stating that in fact this library does have a way to edit them in game. Now, there are 2 libraries doing this: MonkeyLib538 (Recent addition!) and BetterConfig. Bonus fact: MonkeyLib538 and its pure java JIJ dependency OffsetUtils538 are the only config libraries with numbers in their name! Bonus bonus fact: <code>oωo</code> is the only config library with a character in its name that isn't part of ASCII, making it the only config library whose name doesn't display correctly in the (or just mine) IntelliJ output, showing up as <code>o?o</code>. This isn't an issue on the website, because why would it be an issue in the first place.
 """
@@ -77,6 +83,7 @@ Recently, I switched from saying "Gui" to "Ui" on the website and in the index. 
 
 	public static final Fact day_7 = of(
 			"29/03/2026",
+			"Server only configs",
 """
 In day 4 I mentioned that only 4 indexed config libraries are marked as "client only". This seems like not a lot, but only two config libraries I know of would be marked as "server only"; QoMC and MonkeyLib538 (I know, both of these work in singleplayer too, but neither of them have any functionality for client side).<br>
 QoMC is a config library designed to auto-generate commands based on existing Kaleido Config configs. Just like McQoy, Integration is implicit; you don't need to do anything to get it to work.<br>
@@ -89,6 +96,7 @@ Bonus bonus fact: The only config libraries that provide a ui and are server-onl
 
 	public static final Fact day_8 = of(
 			"30/03/2026",
+			"All versions",
 """
 Only a couple libraries support all versions: Gson, Kaleido config, MaLiLib, MaLiLib API, and OffsetUtils538. Out of these, only MaLiLib and MaLiLib API are actual mods. Gson, Kaleido config and OffsetUtils538 are all pure java, and are thus automatically compatible with all minecraft versions (Given that they are compiled with the proper java version, of course).<br>
 MaLiLib is compatible from 1.14 to 26.1 because of how important mods like tweakeroo and litematica are.<br>
@@ -103,6 +111,7 @@ I could ramble on about MaLiLib API for a while longer, but that's enough bonus 
 
 	public static final Fact day_9 = of(
 			"31/03/2026",
+			"MaLiLib API rambling",
 """
 In day 8 I said that I could "ramble on about MaLiLib API for a while longer". Well, here goes.<br>
 In day 8's bonus bonus fact I said that I had 15 stonecutter versions. That's actually a lie! I have 23 in the code, its just that some of them are unused: 1.19.3 and 1.19.2 (Test versions for some dumb issue), 1.18, 1.17, 1.14.4 and 1.14 (to check if my versions (like for example <code>>=1.14 <=1.15.2</code>) set actually work), and lastly 1.13.2 and 1.12.2 (Test ports to see if the grade setup is correct, et cetera)<br>
@@ -142,6 +151,7 @@ Wow. That took a while. 1 hour and 30 minutes. And I did not even cover half of 
 
 	public static final Fact day_10 = of(
 			"02/04/2026",
+			"Dependencies",
 """
 Fabric API is by far the most popular dependency, with 8 config libraries using it: ConfigToolKit, Configurable, Fzzy Config, MidnightLib, MonkeyLib538, oωo, QoMC, and YetAnotherConfigLib. The rest of the dependencies are one-offs: Fabric Language Kotlin (used by Fzzy Config), MaLiLib (used by MaLiLib API), UI Lib (used by YAML Config), Mod Menu (note: as a required dependency) (used by McQoy), YetAnotherConfigLib (used by McQoy), and lastly adventure-platform-mod (used by MonkeyLib538).
 """
@@ -149,6 +159,7 @@ Fabric API is by far the most popular dependency, with 8 config libraries using 
 
 	public static final Fact day_11 = of(
 			"03/04/2026",
+			"Language problems",
 """
 I switched to kotlin for generating the html at first just so I could do <code>${someVariable}</code>, but after a few minutes I discovered kotlinx html, so started using that instead.<br>
 Bonus fact 1: I don't know any kotlin! I just googled some kotlin code, and just continued to do whatever it did. I don't know how those <code>{ it.someThing }</code> things work, or anything kotlin specific. Despite that, I've managed to write a total of 683 lines of kotlin code.<br>
@@ -158,6 +169,7 @@ Bonus fact 2: I don't know any html, css, or javascript either! I've just been k
 
 	public static final Fact day_12 = of(
 			"04/04/2026",
+			"Versions",
 """
 The most supported version is 1.21.0 (Note: <em>not</em> 1.21.1) with 23 usages. This is because BetterConfig, on Modrinth, does not support 1.21.1, and CompleteConfig is the only library to not support 1.21.0.<br>
 After that, 1.21.1, with 22 libraries supporting it, and at third place a 7 way tie between 1.21.11, 1.21.9, 1.21.8, 1.21.7, 1.21.6, 1.21.5, and 1.20.1, each with 21 usages<br>
@@ -200,9 +212,9 @@ I could continue, but I'll just put the entire list here (Note: I will assume th
 				.map(Util::<Fact>get)
 				.toList();
 	}
-	private static Fact of(String date, @Language("HTML") String fact) {
-		return new Fact(LocalDate.parse(date, INPUT), fact);
+	private static Fact of(String date, String title, @Language("HTML") String fact) {
+		return new Fact(LocalDate.parse(date, INPUT), title, fact);
 	}
 
-	public record Fact(LocalDate date, String fact) {}
+	public record Fact(LocalDate date, String title, String fact) {}
 }
