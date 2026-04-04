@@ -9,7 +9,7 @@ public class Ukulib extends ConfigLibrary {
         id = "ukulib";
         name = "ukulib";
         side = Side.CLIENT;
-        versions = Versions.versions("1.15.2", "1.16.5", "1.17.1", "1.18.2", "1.19", "1.19.2", "1.19.3", "1.19.4", Versions.MC_1_20_X, Versions.MC_1_21_X);
+        versions = Versions.versions("1.15.2", "1.16.5", "1.17.1", "1.18.2", "1.19.0", "1.19.2", "1.19.3", "1.19.4", Versions.MC_1_20_X, Versions.MC_1_21_X);
         type = Type.BOTH;
         dependencies = List.of();
         extraConfigTypes = List.of(ConfigType.COLOR, ConfigType.BUTTON);
