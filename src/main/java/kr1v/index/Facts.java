@@ -156,6 +156,44 @@ Bonus fact 2: I don't know any html, css, or javascript either! I've just been k
 """
 	);
 
+	public static final Fact day_12 = of(
+			"04/04/2026",
+"""
+The most supported version is 1.21.0 (Note: <em>not</em> 1.21.1) with 23 usages. This is because BetterConfig, on Modrinth, does not support 1.21.1, and CompleteConfig is the only library to not support 1.21.0.<br>
+After that, 1.21.1, with 22 libraries supporting it, and at third place a 7 way tie between 1.21.11, 1.21.9, 1.21.8, 1.21.7, 1.21.6, 1.21.5, and 1.20.1, each with 21 usages<br>
+Then, 1.21.10, 1.21.4 and 1.21.3 have 20 usages (YAML Config does not support these, hence why they have one less supported lib than the other 1.21 versions)<br>
+At 19 supported libs are 1.21.2 and 1.20.6 (Forge Config API Port does not support 1.21.2) (I couldn't figure out the sole library not supporting 1.20.6)<br>
+I could continue, but I'll just put the entire list here (Note: I will assume that the 26.1 versions are off, because I don't know they are updated yet):<br>
+
+<div class='panel' style='width: fit-content; margin: 2px;'>
+<table style='font-size: 100%;'> <!--for some reason without this 100% it is bigger-->
+
+<tr>
+  <th>Versions</th>
+  <th>Count</th>
+</tr>
+
+<tr><td>1.21.0</td>									<td style='text-align: center;'>23</td></tr>
+<tr><td>1.21.1</td>									<td style='text-align: center;'>22</td></tr>
+<tr><td>1.20.1, 1.21.5-1.21.9, 1.21.11</td>			<td style='text-align: center;'>21</td></tr>
+<tr><td>1.21.3, 1.21.4, 1.21.10</td>				<td style='text-align: center;'>20</td></tr>
+<tr><td>1.20.6, 1.21.2</td>							<td style='text-align: center;'>19</td></tr>
+<tr><td>1.19.2-1.19.4, 1.20.0, 1.20.2, 1.20.4</td>	<td style='text-align: center;'>18</td></tr>
+<tr><td>1.18.2, 1.19.0, 1.20.5</td>					<td style='text-align: center;'>16</td></tr>
+<tr><td>1.19.1, 1.20.3</td>							<td style='text-align: center;'>15</td></tr>
+<tr><td>1.18.0, 1.18.1</td>							<td style='text-align: center;'>13</td></tr>
+<tr><td>1.16.5, 1.17.1</td>							<td style='text-align: center;'>12</td></tr>
+<tr><td>1.17.0</td>									<td style='text-align: center;'>11</td></tr>
+<tr><td>1.16.0-1.16.4</td>							<td style='text-align: center;'>8</td> </tr>
+<tr><td>26.1.x</td>									<td style='text-align: center;'>7</td> </tr>
+<tr><td>1.15.2</td>									<td style='text-align: center;'>6</td> </tr>
+<tr><td>1.14.x, 1.15.0, 1.15.1</td>					<td style='text-align: center;'>5</td> </tr>
+
+</table>
+</div>
+"""
+	);
+
 	public static List<Fact> facts() {
 		return Arrays.stream(Facts.class.getFields())
 				.filter(f -> Fact.class.isAssignableFrom(f.getType()))
