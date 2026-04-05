@@ -435,6 +435,13 @@ fun main() {
                                 tag(waaa.name, waaa.exampleText, "toggleFilter('configMethod.waaas', '$waaa')")
                             }
                         }
+
+                        h4 {
+                            +"UI Method"
+                        }
+                        for (uiMethod in UiMethod.entries) {
+                            tag(uiMethod.name, uiMethod.description, "toggleFilter('uiMethod', '$uiMethod')")
+                        }
                     }
 
                     div("panel") {
