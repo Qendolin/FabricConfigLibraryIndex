@@ -58,6 +58,10 @@ span.tag.active h6 {
     padding: 3px;
 }
 
+p {
+    margin-bottom: 0
+}
+
 .sidebar {
 }
 

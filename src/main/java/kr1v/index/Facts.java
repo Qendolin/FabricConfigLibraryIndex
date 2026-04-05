@@ -206,6 +206,25 @@ I could continue, but I'll just put the entire list here (Note: I will assume th
 """
 	);
 
+	public static final Fact day_13 = of(
+			"05/04/2026",
+			"Config types",
+"""
+<p>A few config types have <em>more</em> than one supporting library: Color (Cloth config, MaLiLib, MaLiLib API, ukulib), Hotkey (MaLiLib, MaLiLib API), and Button (MaLiLib API, ukulib, YetAnotherConfigLib). (note: this does not include libraries that support codec based configs)<br>
+The other ones are all one-offs:<br>
+<ul>
+	<li>Dropdown (Cloth config)</li>
+	<li>File (MidnightLib)</li>
+	<li>Pair (MaLiLib API)</li>
+	<li>Registry entry (YAML Config)</li>
+	<li>Identifier (YAML Config)</li>
+	<li>Date Time (YAML Config)</li>
+</ul>
+</p>
+<p>Bonus fact: The config library supporting the most extra config types is MaLiLib API, with 4: Color, Hotkey, Pair and Button. After that, YAML Config at 3, and MaLiLib, Cloth config and ukulib all at 2.</p>
+"""
+	);
+
 	public static List<Fact> facts() {
 		return Arrays.stream(Facts.class.getFields())
 				.filter(f -> Fact.class.isAssignableFrom(f.getType()))
