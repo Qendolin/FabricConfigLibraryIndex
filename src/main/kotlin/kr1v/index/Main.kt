@@ -606,10 +606,21 @@ fun main() {
                         content = fact.fact()
                             .replace("<br>\n", "\n")
                             .replace("<br>", "\n")
+
                             .replace("<code>", "`")
                             .replace("</code>", "`")
+
                             .replace("<samp><pre class='codeSamp'>", "```")
                             .replace("</pre></samp>", "```")
+
+                            .replace("<ul>", "")
+                            .replace("</ul>", "")
+
+                            .replace("<li>", " - ")
+                            .replace("</li>", "")
+
+                            .replace("<p>", "")
+                            .replace("</p>", "\n\n")
                     }
                     meta {
                         attributes["property"] = "og:url"
