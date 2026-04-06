@@ -286,6 +286,24 @@ Bonus fact: The config library supporting the most extra config types is MaLiLib
 """
 	);
 
+	public static final Fact day_14 = of(
+			"06/04/2026",
+			"Features",
+"""
+<p>
+Surprisingly, being able to add custom config types is the most supported feature, supported by 8 libraries: BetterConfig, Carbon Config, CompleteConfig, Configurable, Configuration, MaLiLib API, OffsetUtils538, and YAML Config<br>
+After that, the one I expected to be first: automatic mod menu integration, at 6 libraries supporting it: Carbon Config, Cloth config, Configuration, MaLiLib API, McQoy, MidnightLib<br>
+Then, a three-way tie between sliders (Configurable, Configuration, oωo, and YAML Config), sections (CompleteConfig, Configuration, Fzzy Config, and MaLiLib API), and constraints (Configurable, Configuration, oωo, and YAML Config)
+</p>
+
+<p>
+Bonus fact: The config library with the most extra features is a tie between Configuration and MaLiLib API:<br>
+Configuration, with custom config types, constraints, mod menu integration, and config sections.<br>
+MaLiLib API, with sliders, custom config types, mod menu integration and config sections.
+</p>
+"""
+	);
+
 	public static List<Fact> facts() {
 		return Arrays.stream(Facts.class.getFields())
 				.filter(f -> Fact.class.isAssignableFrom(f.getType()))
