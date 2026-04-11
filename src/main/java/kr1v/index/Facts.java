@@ -303,6 +303,18 @@ MaLiLib API, with sliders, custom config types, mod menu integration and config 
 </p>
 """
 	);
+	public static final Fact day_15 = of(
+			"11/04/2026",
+			"Sources",
+"""
+<p>
+All but 3 indexed libraries use GitHub as their source. The ones that don't are:<br>
+Codec config API, hosted on the authors own git solution<br>
+OffsetUtils538, hosted on Codeberg<br>
+MonkeyLib538, also hosted on Codeberg
+</p>
+"""
+	);
 
 	public static List<Fact> facts() {
 		return Arrays.stream(Facts.class.getFields())
