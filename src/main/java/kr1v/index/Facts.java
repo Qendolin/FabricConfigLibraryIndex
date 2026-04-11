@@ -316,6 +316,26 @@ MonkeyLib538, also hosted on Codeberg
 """
 	);
 
+	public static final Fact day_16 = of(
+			"11/04/2026",
+			"Unknown",
+"""
+<p>
+In the entire index, there are 11 unknown values:<br>
+Config type, with 5: Codec config API, ConfigToolKit, Forge Config API Port, Fzzy Config, and QoMC<br>
+Features, with 2: Forge Config API Port and QoMC<br>
+Config format, with 3: Forge Config API Port, MidnightLib, and oωo<br>
+Config method, with 1: Forge Config API Port<br>
+</p>
+<p>
+Besides that, Forge Config API Port and YAML Config both don't have an example config.
+</p>
+<p>
+Bonus fact: the config library with the most unknowns is Forge Config API Port, with all 4 listed above.
+</p>
+"""
+	);
+
 	public static List<Fact> facts() {
 		return Arrays.stream(Facts.class.getFields())
 				.filter(f -> Fact.class.isAssignableFrom(f.getType()))
