@@ -18,7 +18,7 @@ public class QoMC extends ConfigLibrary {
 		manualInitialization = InitMode.NO;
 		configMethod = ConfigMethod.NOT_AVAILABLE;
 		uiMethod = UiMethod.COMMANDS;
-		notes = "";
+		notes = "Makes config commands for kaleido configs";
 		source = "https://github.com/AmberIsFrozen/qomc";
 
 		exampleConfigClass = "";

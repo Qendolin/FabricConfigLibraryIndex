@@ -9,7 +9,7 @@ public class McQoy extends ConfigLibrary {
         id = "mcqoy";
         name = "McQoy";
         side = Side.CLIENT;
-        versions = Versions.versions("1.16.5", Versions.MC_1_17_X, Versions.MC_1_18_X, Versions.MC_1_19_X, Versions.MC_1_20_X, Versions.MC_1_21_X);
+        versions = Versions.versions("1.16.5", Versions.MC_1_17_X, Versions.MC_1_18_X, Versions.MC_1_19_X, Versions.MC_1_20_X, Versions.MC_1_21_X, Versions.MC_26_X);
         type = Type.UI;
         dependencies = List.of(Dependency.MOD_MENU, Dependency.YET_ANOTHER_CONFIG_LIB);
         extraConfigTypes = List.of();
