@@ -9,7 +9,7 @@ public class AxolotlClientConfig extends ConfigLibrary {
 		id = "axolotlclientconfig";
 		name = "AxolotlClientConfig";
 		side = Side.CLIENT;
-		versions = Versions.versions("b1.7.3", "1.8.9", "1.16_combat-6", "1.16.5", "1.19.2", "1.19.3", "1.19.4", "1.20", "1.20.1", "1.21.1", "1.21.4", "1.21.6", "1.21.7", "1.21.8", "1.21.9", "1.21.10", "1.21.11", Versions.MC_26_X);
+		versions = Versions.versions("1.16.5", "1.19.2", "1.19.3", "1.19.4", "1.20", "1.20.1", "1.21.1", "1.21.4", "1.21.6", "1.21.7", "1.21.8", "1.21.9", "1.21.10", "1.21.11", Versions.MC_26_X);
 
 		type = Type.BOTH;
 		dependencies = List.of(Dependency.FABRIC_API);
@@ -44,7 +44,7 @@ public class ExampleConfig {
 			// this lambda can be used to convert old config values into new ones
 			});
 		// unversioned
-		var configManager = new JsonConfigManager(configPath, exampleCategory);
+		//var configManager = new JsonConfigManager(configPath, exampleCategory);
 		
 		// register the config
 		AxolotlClientConfig.register(configManager);
