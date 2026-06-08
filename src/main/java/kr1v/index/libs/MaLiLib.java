@@ -16,9 +16,9 @@ public class MaLiLib extends ConfigLibrary {
 		extraFeatures = List.of(Feature.SLIDER);
 		configFormats = List.of(ConfigFormat.JSON);
 		manualInitialization = InitMode.AT_MOD_INIT;
-		configMethod = ConfigMethod.of(ConfigMethod.TypeOfClass.EXTENDING, false, ConfigMethod.Waaa.SPECIAL);
+		configMethod = ConfigMethod.of(ConfigMethod.TypeOfClass.EXTENDING, ConfigMethod.MemberType.STATIC, ConfigMethod.Waaa.special("ConfigInteger", "ConfigList<ConfigString>", "FileConfig"));
 		uiMethod = UiMethod.CUSTOM_SCREEN_CLASS;
-		notes = "Hard to set up";
+		notes = List.of("Hard to set up");
 		source = "https://github.com/sakura-ryoko/malilib";
 
 		exampleConfigClass = """

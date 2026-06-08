@@ -20,7 +20,7 @@ public class ClothConfig extends ConfigLibrary {
 		manualInitialization = InitMode.NOT_AVAILABLE;
 		configMethod = ConfigMethod.NOT_AVAILABLE;
 		uiMethod = UiMethod.BUILDER;
-		notes = "";
+		notes = List.of();
 		source = "https://github.com/shedaniel/cloth-config";
 
 		exampleConfigClass = "";

@@ -16,9 +16,9 @@ public class Configuration extends ConfigLibrary {
         extraFeatures = List.of(Feature.CUSTOM_CONFIG_TYPES, Feature.CONSTRAINT, Feature.MOD_MENU_INTEGRATION, Feature.SECTIONS);
         configFormats = List.of(ConfigFormat.JSON, ConfigFormat.YAML, ConfigFormat.PROPERTIES, ConfigFormat.INI);
         manualInitialization = InitMode.YES;
-        configMethod = ConfigMethod.of(ConfigMethod.TypeOfClass.ANNOTATED, true, ConfigMethod.Waaa.ANNOTATED_PRIMITIVE);
+        configMethod = ConfigMethod.of(ConfigMethod.TypeOfClass.ANNOTATED, ConfigMethod.MemberType.INSTANCE, ConfigMethod.Waaa.ANNOTATED_PRIMITIVE);
         uiMethod = UiMethod.AUTOMATIC;
-        notes = "";
+        notes = List.of();
         source = "https://github.com/Toma1O6/Configuration";
 
 		exampleConfigClass = """

@@ -77,7 +77,7 @@ h4 {
     background-color: #11111b;
     padding: 3px;
     margin: 2px;
-    width: fit-content;
     padding-right: 1em;
     border-left: 3px solid #cba6f7;
+    overflow: scroll;
 }

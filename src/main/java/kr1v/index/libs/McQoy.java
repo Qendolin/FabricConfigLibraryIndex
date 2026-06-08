@@ -18,7 +18,7 @@ public class McQoy extends ConfigLibrary {
         manualInitialization = InitMode.NOT_AVAILABLE;
         configMethod = ConfigMethod.NOT_AVAILABLE;
         uiMethod = UiMethod.AUTOMATIC;
-        notes = "Makes a YACL config screen for kaleido configs";
+        notes = List.of("Makes a YACL config screen for kaleido configs");
         source = "https://github.com/sisby-folk/mcqoy";
 
 		exampleConfigClass = "";

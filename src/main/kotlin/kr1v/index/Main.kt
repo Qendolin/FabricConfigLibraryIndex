@@ -144,18 +144,14 @@ fun FlowContent.ConfigLibraryPanel(library: ConfigLibrary) {
                         +"either "
                     }
                     for (waaa in method.waaas) {
-                        if (waaa == Waaa.ANNOTATED_PRIMITIVE) {
-                            +"annotated "
+                        val isPrimitive = waaa == Waaa.ANNOTATED_PRIMITIVE
+                        if (isPrimitive) {
+                            +"annotated"
                         }
-                        if (method.instance) {
-                            +"instance members"
-                        } else {
-                            +"static members"
-                        }
-                        when (waaa) {
-                            Waaa.PRIMITIVE, Waaa.ANNOTATED_PRIMITIVE -> +(", of primitive type")
-                            Waaa.WRAPPER -> +(", typed with wrappers")
-                            Waaa.SPECIAL -> +(", typed with special classes")
+                        +method.memberType.description
+                        if (!isPrimitive) {
+                            +", "
+                            +waaa.methodDescription
                         }
 
                         if (method.waaas.indexOf(waaa) < method.waaas.size-1) {
@@ -262,7 +258,15 @@ fun FlowContent.ConfigLibraryPanel(library: ConfigLibrary) {
             }
             h5 {
                 style = "margin: 0;"
-                +library.notes
+                if (library.notes.isNotEmpty()) {
+                    ul {
+                        library.notes.forEach {
+                            li {
+                                +it
+                            }
+                        }
+                    }
+                }
             }
         }
 
@@ -335,7 +339,6 @@ fun main() {
     }
 
     Files.writeString(Path.of("generated", "libs.json"), gson.toJson(obj))
-
 
     val libsHtml = buildString {
         appendHTML().html {
@@ -431,8 +434,8 @@ fun main() {
                         h5 {
                             style = "margin: 0;"
                             +"Type of fields"
-                            for (waaa in Waaa.entries) {
-                                tag(waaa.name, waaa.exampleText, "toggleFilter('configMethod.waaas', '$waaa')")
+                            for (waaa in Waaa.ENTRIES) {
+                                tag(waaa.key, "Examples: ${waaa.value.joinToString(", ")}", "toggleFilter('configMethod.waaas', '$waaa')")
                             }
                         }
 

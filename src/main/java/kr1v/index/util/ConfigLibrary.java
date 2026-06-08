@@ -19,7 +19,7 @@ public class ConfigLibrary {
 	public InitMode manualInitialization;
 	public ConfigMethod configMethod;
 	public UiMethod uiMethod;
-	public String notes;
+	public List<String> notes;
 	public String source;
 
 	@Language("java")

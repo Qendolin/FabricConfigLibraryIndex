@@ -16,9 +16,9 @@ public class CryonicConfig extends ConfigLibrary {
 		extraFeatures = List.of();
 		configFormats = List.of(ConfigFormat.JSON);
 		manualInitialization = InitMode.AT_MOD_INIT;
-		configMethod = ConfigMethod.of(ConfigMethod.TypeOfClass.NORMAL, true, ConfigMethod.Waaa.PRIMITIVE);
+		configMethod = ConfigMethod.of(ConfigMethod.TypeOfClass.NORMAL, ConfigMethod.MemberType.INSTANCE, ConfigMethod.Waaa.PRIMITIVE);
 		uiMethod = UiMethod.NONE;
-		notes = "";
+		notes = List.of();
 		source = "https://github.com/matthewperiut/cryonicconfig";
 
 		exampleConfigClass = """
