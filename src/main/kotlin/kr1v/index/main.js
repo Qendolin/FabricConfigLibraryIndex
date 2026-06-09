@@ -1,8 +1,8 @@
 const activeFilters = new Map();
 let libraryData = {};
 
-//fetch('https://kr1v.net/libs/libs.json').then(r => r.json()).then(data => { libraryData = data; });
-fetch('libs.json').then(r => r.json()).then(data => { libraryData = data; });
+fetch('https://kr1v.net/libs/libs.json').then(r => r.json()).then(data => { libraryData = data; });
+//fetch('libs.json').then(r => r.json()).then(data => { libraryData = data; });
 
 function toggleFilter(category, value) {
     const span = event.currentTarget;
