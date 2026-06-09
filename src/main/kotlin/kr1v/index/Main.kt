@@ -435,7 +435,7 @@ fun main() {
                             style = "margin: 0;"
                             +"Type of fields"
                             for (waaa in Waaa.ENTRIES) {
-                                tag(waaa.key, "Examples: ${waaa.value.joinToString(", ")}", "toggleFilter('configMethod.waaas', '$waaa')")
+                                tag(waaa.key, "Examples: ${waaa.value.joinToString(", ")}", "toggleFilter('configMethod.waaas', '${waaa.key}')")
                             }
                         }
 

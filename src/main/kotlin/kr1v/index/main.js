@@ -1,8 +1,8 @@
 const activeFilters = new Map();
 let libraryData = {};
 
-fetch('https://kr1v.net/libs/libs.json').then(r => r.json()).then(data => { libraryData = data; });
-//fetch('libs.json').then(r => r.json()).then(data => { libraryData = data; });
+//fetch('https://kr1v.net/libs/libs.json').then(r => r.json()).then(data => { libraryData = data; });
+fetch('libs.json').then(r => r.json()).then(data => { libraryData = data; });
 
 function toggleFilter(category, value) {
     const span = event.currentTarget;
@@ -49,11 +49,16 @@ function panelMatches(lib, category, values) {
 
         case 'configMethod.instance':
             if (!lib.configMethod) return false;
-            return values.has(String(lib.configMethod.instance));
+            const memberType = String(lib.configMethod.memberType);
+            if (!memberType) return false;
+            if (memberType === "EITHER") return true;
+            if (values.has("true")) return memberType === "INSTANCE";
+            return memberType === "STATIC";
 
-        case 'configMethod.waaas':
-            return [...values].some(v => lib.configMethod?.waaas?.includes(v));
-
+        case 'configMethod.waaas': {
+            if (!Array.isArray(lib.configMethod?.waaas)) return false;
+            return [...values].some(v => lib.configMethod?.waaas.some(s => s.name === v));
+        }
         case 'uiMethod':
             return [...values].some(v => lib.uiMethod === v)
 
