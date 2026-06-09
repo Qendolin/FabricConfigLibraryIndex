@@ -16,9 +16,9 @@ public class CarbonConfig extends ConfigLibrary {
 		extraFeatures = List.of(Feature.CUSTOM_CONFIG_TYPES, Feature.MOD_MENU_INTEGRATION);
 		configFormats = List.of(ConfigFormat.JSON);
 		manualInitialization = InitMode.YES;
-		configMethod = ConfigMethod.of(ConfigMethod.TypeOfClass.NORMAL, true, ConfigMethod.Waaa.PRIMITIVE); // TODO: this is wrong actually. they use a builder
+		configMethod = ConfigMethod.of(ConfigMethod.TypeOfClass.NORMAL, ConfigMethod.MemberType.INSTANCE, ConfigMethod.Waaa.builder("section.addBool()", "section.addInt()", "section.addString()"));
 		uiMethod = UiMethod.NONE;
-		notes = "";
+		notes = List.of();
 		source = "https://github.com/Carbon-Config-Project/CarbonConfigLib";
 
 		exampleConfigClass = """

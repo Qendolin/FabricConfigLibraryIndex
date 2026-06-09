@@ -16,9 +16,9 @@ public class Configurable extends ConfigLibrary {
         extraFeatures = List.of(Feature.CONSTRAINT, Feature.CUSTOM_CONFIG_TYPES);
         configFormats = List.of(ConfigFormat.JSON, ConfigFormat.TOML);
         manualInitialization = InitMode.NO;
-        configMethod = ConfigMethod.of(ConfigMethod.TypeOfClass.NONE, false, ConfigMethod.Waaa.ANNOTATED_PRIMITIVE);
+        configMethod = ConfigMethod.of(ConfigMethod.TypeOfClass.NONE, ConfigMethod.MemberType.STATIC, ConfigMethod.Waaa.ANNOTATED_PRIMITIVE);
         uiMethod = UiMethod.NONE;
-        notes = "";
+        notes = List.of();
         source = "https://github.com/Bawnorton/Configurable";
 
 		exampleConfigClass = "/** Example comment */ @Configurable boolean exampleBoolean = false;";

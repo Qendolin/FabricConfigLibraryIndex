@@ -16,9 +16,9 @@ public class OffsetUtils538 extends ConfigLibrary {
 		extraFeatures = List.of(Feature.CUSTOM_CONFIG_TYPES);
 		configFormats = List.of(ConfigFormat.JSON);
 		manualInitialization = InitMode.AT_MOD_INIT;
-		configMethod = ConfigMethod.of(ConfigMethod.TypeOfClass.EXTENDING, true, ConfigMethod.Waaa.ANNOTATED_PRIMITIVE);
+		configMethod = ConfigMethod.of(ConfigMethod.TypeOfClass.EXTENDING, ConfigMethod.MemberType.INSTANCE, ConfigMethod.Waaa.ANNOTATED_PRIMITIVE);
 		uiMethod = UiMethod.NONE;
-		notes = "";
+		notes = List.of();
 		source = "https://codeberg.org/OffsetMods538/OffsetUtils538";
 
 		exampleConfigClass = """

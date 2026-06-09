@@ -16,9 +16,9 @@ public class YAMLConfig extends ConfigLibrary {
         extraFeatures = List.of(Feature.CUSTOM_CONFIG_TYPES, Feature.CONSTRAINT);
         configFormats = List.of(ConfigFormat.YAML, ConfigFormat.JSON5, ConfigFormat.TOML, ConfigFormat.HOCON);
         manualInitialization = InitMode.YES;
-        configMethod = ConfigMethod.of(ConfigMethod.TypeOfClass.NORMAL, false, ConfigMethod.Waaa.SPECIAL); // TODO: I believe this is wrong, they use a builder
+        configMethod = ConfigMethod.of(ConfigMethod.TypeOfClass.NORMAL, ConfigMethod.MemberType.STATIC, ConfigMethod.Waaa.builder("builder.defineString()", "builder.defineBoolean()", "builder.push()"));
         uiMethod = UiMethod.AUTOMATIC;
-        notes = "";
+        notes = List.of();
         source = "https://github.com/DAQEM/YamlConfig";
 
 		// TODO: example config for this

@@ -18,7 +18,7 @@ public class ForgeConfigAPIPort extends ConfigLibrary {
         manualInitialization = InitMode.YES;
         configMethod = ConfigMethod.UNKNOWN;
         uiMethod = UiMethod.NONE;
-        notes = "";
+        notes = List.of();
         source = "https://github.com/Fuzss/forgeconfigapiport";
 
 		// TODO: I tried for ~15 minutes, I can't find a coherent example, maybe later

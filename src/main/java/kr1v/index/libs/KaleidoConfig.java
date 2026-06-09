@@ -16,9 +16,9 @@ public class KaleidoConfig extends ConfigLibrary {
 		extraFeatures = List.of();
 		configFormats = List.of(ConfigFormat.TOML);
 		manualInitialization = InitMode.YES;
-		configMethod = ConfigMethod.of(ConfigMethod.TypeOfClass.EXTENDING, true, ConfigMethod.Waaa.ANNOTATED_PRIMITIVE);
+		configMethod = ConfigMethod.of(ConfigMethod.TypeOfClass.EXTENDING, ConfigMethod.MemberType.INSTANCE, ConfigMethod.Waaa.ANNOTATED_PRIMITIVE);
 		uiMethod = UiMethod.NONE;
-		notes = "Not made with minecraft in mind";
+		notes = List.of("Not made with minecraft in mind");
 		source = "https://github.com/sisby-folk/kaleido-config";
 
 		exampleConfigClass = """

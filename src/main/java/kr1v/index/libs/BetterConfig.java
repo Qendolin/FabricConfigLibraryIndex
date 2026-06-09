@@ -16,9 +16,9 @@ public class BetterConfig extends ConfigLibrary {
         extraFeatures = List.of(Feature.CUSTOM_CONFIG_TYPES);
         configFormats = List.of();
         manualInitialization = InitMode.YES;
-        configMethod = ConfigMethod.of(ConfigMethod.TypeOfClass.NORMAL, false, ConfigMethod.Waaa.ANNOTATED_PRIMITIVE);
+        configMethod = ConfigMethod.of(ConfigMethod.TypeOfClass.NORMAL, ConfigMethod.MemberType.STATIC, ConfigMethod.Waaa.ANNOTATED_PRIMITIVE);
         uiMethod = UiMethod.COMMANDS;
-        notes = "";
+        notes = List.of();
         source = "https://github.com/xpple/BetterConfig";
 
 		exampleConfigClass = """

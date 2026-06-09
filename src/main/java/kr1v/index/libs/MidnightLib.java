@@ -16,9 +16,9 @@ public class MidnightLib extends ConfigLibrary {
         extraFeatures = List.of(Feature.SLIDER, Feature.MOD_MENU_INTEGRATION);
         configFormats = ConfigFormat.UNKNOWN;
         manualInitialization = InitMode.YES;
-        configMethod = ConfigMethod.of(ConfigMethod.TypeOfClass.EXTENDING, false, ConfigMethod.Waaa.ANNOTATED_PRIMITIVE);
+        configMethod = ConfigMethod.of(ConfigMethod.TypeOfClass.EXTENDING, ConfigMethod.MemberType.STATIC, ConfigMethod.Waaa.ANNOTATED_PRIMITIVE);
         uiMethod = UiMethod.AUTOMATIC;
-        notes = "";
+        notes = List.of();
         source = "https://github.com/TeamMidnightDust/MidnightLib";
 
 		exampleConfigClass = """

@@ -16,9 +16,9 @@ public class CodecConfigApi extends ConfigLibrary {
         extraFeatures = List.of(Feature.CODEC_BASED_CONFIGS, Feature.AUTO_UPGRADING);
         configFormats = List.of(ConfigFormat.JSON);
         manualInitialization = InitMode.YES;
-        configMethod = ConfigMethod.of(ConfigMethod.TypeOfClass.EXTENDING, true, ConfigMethod.Waaa.PRIMITIVE);
+        configMethod = ConfigMethod.of(ConfigMethod.TypeOfClass.EXTENDING, ConfigMethod.MemberType.INSTANCE, ConfigMethod.Waaa.PRIMITIVE);
         uiMethod = UiMethod.NONE;
-        notes = "";
+        notes = List.of();
         source = "https://code.mschae23.de/mschae23/codec-config-api";
 
         exampleConfigClass = """

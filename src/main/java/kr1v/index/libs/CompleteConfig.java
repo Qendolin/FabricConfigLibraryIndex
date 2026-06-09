@@ -16,9 +16,9 @@ public class CompleteConfig extends ConfigLibrary {
         extraFeatures = List.of(Feature.CUSTOM_CONFIG_TYPES, Feature.SECTIONS);
         configFormats = List.of(ConfigFormat.JSON);
         manualInitialization = InitMode.YES;
-        configMethod = ConfigMethod.of(ConfigMethod.TypeOfClass.EXTENDING, true, ConfigMethod.Waaa.ANNOTATED_PRIMITIVE);
+        configMethod = ConfigMethod.of(ConfigMethod.TypeOfClass.EXTENDING, ConfigMethod.MemberType.INSTANCE, ConfigMethod.Waaa.ANNOTATED_PRIMITIVE);
         uiMethod = UiMethod.BUILDER;
-        notes = "";
+        notes = List.of();
         source = "https://github.com/Lortseam/completeconfig";
 
 		exampleConfigClass = """
