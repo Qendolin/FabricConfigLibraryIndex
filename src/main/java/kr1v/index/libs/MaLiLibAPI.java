@@ -16,7 +16,7 @@ public class MaLiLibAPI extends ConfigLibrary {
         extraFeatures = List.of(Feature.SLIDER, Feature.CUSTOM_CONFIG_TYPES, Feature.MOD_MENU_INTEGRATION, Feature.SECTIONS);
         configFormats = List.of(ConfigFormat.JSON);
         manualInitialization = InitMode.OPTIONAL;
-        configMethod = ConfigMethod.of(ConfigMethod.TypeOfClass.ANNOTATED, ConfigMethod.MemberType.STATIC, ConfigMethod.Waaa.special("ConfigInteger", "ConfigList<ConfigString>", "FileConfig"));
+        configMethod = ConfigMethod.of(ConfigMethod.TypeOfClass.ANNOTATED, ConfigMethod.MemberType.STATIC, ConfigMethod.Waaa.special("ConfigInteger", "ConfigList<ConfigString>", "ConfigCycle"));
         uiMethod = UiMethod.AUTOMATIC;
         notes = List.of();
         source = "https://github.com/kr1viah/malilib-api";
