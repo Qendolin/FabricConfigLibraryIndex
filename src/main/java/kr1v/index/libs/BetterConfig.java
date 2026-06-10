@@ -6,7 +6,7 @@ import java.util.List;
 
 public class BetterConfig extends ConfigLibrary {
     public BetterConfig() {
-        id = "better-config";
+        id = "betterconfig";
         name = "BetterConfig";
         side = Side.BOTH;
         versions = Versions.versions("1.19.3", "1.19.4", "1.20.0", "1.20.1", "1.21.0");
