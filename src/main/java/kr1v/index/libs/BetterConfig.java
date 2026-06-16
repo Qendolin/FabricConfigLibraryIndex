@@ -9,7 +9,7 @@ public class BetterConfig extends ConfigLibrary {
         id = "better-config";
         name = "BetterConfig";
         side = Side.BOTH;
-        versions = Versions.versions("1.19.3", "1.19.4", "1.20.0", "1.20.1", "1.21.0");
+		modrinthSlug = "betterconfig";
         type = Type.LOADER;
         dependencies = List.of();
         extraConfigTypes = List.of();

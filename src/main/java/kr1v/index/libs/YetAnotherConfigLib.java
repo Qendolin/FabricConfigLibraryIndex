@@ -9,7 +9,7 @@ public class YetAnotherConfigLib extends ConfigLibrary {
         id = "yacl";
         name = "YetAnotherConfigLib";
         side = Side.BOTH;
-        versions = Versions.versions(Versions.MC_1_19_X, Versions.MC_1_20_X, Versions.MC_1_21_X, Versions.MC_26_X);
+		modrinthSlug = "yacl";
         type = Type.BOTH;
         dependencies = List.of(Dependency.FABRIC_API);
         extraConfigTypes = List.of(ConfigType.BUTTON);

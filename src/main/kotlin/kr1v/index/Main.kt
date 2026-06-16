@@ -227,19 +227,9 @@ fun FlowContent.ConfigLibraryPanel(library: ConfigLibrary) {
             var isFirst = true
             +"Available for versions: "
 
-            val set = Versions.ALL_SET
-            val versions = ArrayList(library.versions)
+            var versions: List<String> = ArrayList(library.versions)
 
-            for (versionRange in set) {
-                if (versions.containsAll(versionRange)) {
-                    val version = versionRange.first().substring(0, versionRange.first().length-2) + ".x"
-                    versions.replaceAll {
-                        if (it.equals(versionRange.first())) version
-                        else it
-                    }
-                    versions.removeAll(versionRange)
-                }
-            }
+            versions = Versions.condensVersions(versions)
 
             for (version in versions) {
                 if (!isFirst) {
@@ -379,7 +369,7 @@ fun main() {
                         for (versionSet in Versions.ALL_SET.reversed()) {
                             h5 {
                                 style = "margin-left: 2px; margin: 0"
-                                +versionSet.first().substring(0, versionSet.first().length-2)
+                                +versionSet.first()
                             }
                             for (version in versionSet) {
                                 tag(version, onClickStr = "toggleFilter('versions', '$version')", h6Style = "margin-left: 4px; margin: 2px;")

@@ -21,6 +21,7 @@ public class ConfigLibrary {
 	public UiMethod uiMethod;
 	public List<String> notes;
 	public String source;
+	public String modrinthSlug;
 
 	@Language("java")
 	public String exampleConfigClass;

@@ -9,7 +9,7 @@ public class CompleteConfig extends ConfigLibrary {
         id = "complete-config";
         name = "CompleteConfig";
         side = Side.BOTH;
-        versions = Versions.versions(Versions.MC_1_17_X, Versions.MC_1_18_X, Versions.MC_1_19_X, "1.20.0", "1.20.1", "1.20.2", "1.20.3", "1.20.4", "1.20.6");
+        versions = Versions.versions("1.17", "1.17.1", "1.18", "1.18.1", "1.18.2", "1.19", "1.19.1", "1.19.2", "1.19.3", "1.19.4", "1.20", "1.20.1", "1.20.2", "1.20.3", "1.20.4", "1.20.6");
         type = Type.BOTH;
         dependencies = List.of();
         extraConfigTypes = List.of(); // TODO: unsure. it says things like UUID and File and Path and Color on its wiki, but it also says "Note: Not all types are supported for the config screen."

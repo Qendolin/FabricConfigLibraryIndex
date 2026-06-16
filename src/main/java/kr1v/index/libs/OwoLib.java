@@ -9,7 +9,7 @@ public class OwoLib extends ConfigLibrary {
         id = "owo-lib";
         name = "oωo";
         side = Side.BOTH;
-        versions = Versions.versions(Versions.MC_1_17_X, Versions.MC_1_18_X, Versions.MC_1_19_X, Versions.MC_1_20_X, Versions.MC_1_21_X);
+		modrinthSlug = "owo-lib";
         type = Type.BOTH;
         dependencies = List.of(Dependency.FABRIC_API);
         extraConfigTypes = List.of();

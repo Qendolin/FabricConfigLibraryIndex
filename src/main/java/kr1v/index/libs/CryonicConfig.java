@@ -9,7 +9,7 @@ public class CryonicConfig extends ConfigLibrary {
 		id = "cryonic-config";
 		name = "Cryonic Config";
 		side = Side.BOTH;
-		versions = Versions.versions(Versions.MC_1_18_X, Versions.MC_1_19_X, Versions.MC_1_20_X, Versions.MC_1_21_X);
+		modrinthSlug = "cryonicconfig";
 		type = Type.LOADER;
 		dependencies = List.of();
 		extraConfigTypes = List.of();

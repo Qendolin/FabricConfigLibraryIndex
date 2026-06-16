@@ -9,7 +9,7 @@ public class YAMLConfig extends ConfigLibrary {
         id = "yaml-config";
         name = "YAML Config";
         side = Side.BOTH;
-        versions = Versions.versions("1.21.0", "1.21.1", "1.21.5", "1.21.6", "1.21.7", "1.21.8", "1.21.9", "1.21.11");
+		modrinthSlug = "yaml-config";
         type = Type.BOTH;
         dependencies = List.of(Dependency.UI_LIB);
         extraConfigTypes = List.of(ConfigType.IDENTIFIER, ConfigType.REGISTRY_ENTRY, ConfigType.DATE_TIME);

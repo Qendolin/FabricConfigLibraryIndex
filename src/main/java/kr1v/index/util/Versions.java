@@ -1,31 +1,86 @@
 package kr1v.index.util;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URI;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Stream;
 
 public class Versions {
-	public static final String[] MC_1_14_X = ver("1.14.0", "1.14.1", "1.14.2", "1.14.3", "1.14.4");
-	public static final String[] MC_1_15_X = ver("1.15.0", "1.15.1", "1.15.2");
-	public static final String[] MC_1_16_X = ver("1.16.0", "1.16.1", "1.16.2", "1.16.3", "1.16.4", "1.16.5");
-	public static final String[] MC_1_17_X = ver("1.17.0", "1.17.1");
-	public static final String[] MC_1_18_X = ver("1.18.0", "1.18.1", "1.18.2");
-	public static final String[] MC_1_19_X = ver("1.19.0", "1.19.1", "1.19.2", "1.19.3", "1.19.4");
-	public static final String[] MC_1_20_X = ver("1.20.0", "1.20.1", "1.20.2", "1.20.3", "1.20.4", "1.20.5", "1.20.6");
-	public static final String[] MC_1_21_X = ver("1.21.0", "1.21.1", "1.21.2", "1.21.3", "1.21.4", "1.21.5", "1.21.6", "1.21.7", "1.21.8", "1.21.9", "1.21.10", "1.21.11");
-	public static final String[] MC_26_X = ver("26.1.0", "26.1.1", "26.1.2");
+	public static final List<String> ALL_LIST;
+	public static final List<List<String>> ALL_SET;
+	public static final List<String> ALL_MAJOR;
 
-	public static final String[] ALL = ver(MC_1_14_X, MC_1_15_X, MC_1_16_X, MC_1_17_X, MC_1_18_X, MC_1_19_X, MC_1_20_X, MC_1_21_X, MC_26_X);
-	public static final List<String> ALL_LIST = List.of(ALL);
-	public static final List<List<String>> ALL_SET = Stream.of(MC_1_14_X, MC_1_15_X, MC_1_16_X, MC_1_17_X, MC_1_18_X, MC_1_19_X, MC_1_20_X, MC_1_21_X, MC_26_X).map(Versions::versions).toList();
+	static {
+		String metaUrl = "https://piston-meta.mojang.com/mc/game/version_manifest_v2.json";
+		Gson gson = new Gson();
 
-	public static String[] ver(String... strings) {
-		return strings;
+		URI url = URI.create(metaUrl);
+		JsonObject json;
+
+		try (InputStreamReader reader = new InputStreamReader(
+				url.toURL().openStream(), StandardCharsets.UTF_8)) {
+
+			json = gson.fromJson(reader, JsonObject.class);
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+
+		JsonArray versions = json.get("versions").getAsJsonArray();
+
+		List<String> allVersionsStrings = versions.asList().stream()
+				.map(JsonElement::getAsJsonObject)
+				.filter(version -> version.get("type").getAsString().equals("release"))
+				.map(version -> version.get("id").getAsString())
+				.toList()
+				.reversed();
+
+		ALL_LIST = allVersionsStrings
+				.subList(55, allVersionsStrings.size())
+				.reversed();
+
+		List<List<String>> allSet = new ArrayList<>();
+
+		for (String version : ALL_LIST.reversed()) {
+			String[] parts = version.split("\\.");
+			if (parts.length == 2) {
+				allSet.add(new ArrayList<>());
+			}
+			allSet.getLast().add(version);
+		}
+		ALL_SET = allSet.reversed();
+		ALL_MAJOR = ALL_SET.stream().map(List::getFirst).toList();
 	}
-	public static String[] ver(String[]... strings) {
-		return Arrays.stream(strings).flatMap(Arrays::stream).toArray(String[]::new);
+
+	public static List<String> condensVersions(List<String> versions) {
+		List<String> newVersions = new ArrayList<>();
+		List<String> currentMajor = new ArrayList<>();
+		String lastMajor = "0";
+		String lastMinor = "0";
+		for (String version : versions.reversed()) {
+			String[] parts = version.split("\\.");
+			if (!(lastMajor.equals(parts[0]) && lastMinor.equals(parts[1]))) {
+				if (ALL_SET.contains(currentMajor)) {
+					newVersions.add(currentMajor.getFirst() + ".x");
+				} else {
+					newVersions.addAll(currentMajor);
+				}
+				currentMajor = new ArrayList<>();
+			}
+			currentMajor.add(version);
+			lastMajor = parts[0];
+			lastMinor = parts[1];
+		}
+		return newVersions;
 	}
+
 	public static List<String> versions(Object... vers) {
 		List<String> list = new ArrayList<>();
 		for (Object o : vers) {

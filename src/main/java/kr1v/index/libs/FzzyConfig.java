@@ -9,7 +9,7 @@ public class FzzyConfig extends ConfigLibrary {
         id = "fzzy-config";
         name = "Fzzy Config";
         side = Side.BOTH;
-        versions = Versions.versions("1.20.1", "1.20.4", "1.20.5", "1.20.6", Versions.MC_1_21_X);
+		modrinthSlug = "fzzy-config";
         type = Type.BOTH;
         dependencies = List.of(Dependency.FABRIC_API, Dependency.FABRIC_LANGUAGE_KOTLIN);
         extraConfigTypes = ConfigType.UNKNOWN;

@@ -9,7 +9,7 @@ public class MonkeyLib538 extends ConfigLibrary {
 		id = "monkeylib538";
 		name = "MonkeyLib538";
 		side = Side.SERVER;
-		versions = Versions.versions((Object) Versions.MC_1_21_X);
+		modrinthSlug = "monkeylib538";
 		type = Type.UI;
 		dependencies = List.of(Dependency.FABRIC_API, Dependency.ADVENTURE_PLATFORM_MOD);
 		extraConfigTypes = List.of();
