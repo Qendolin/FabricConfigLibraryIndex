@@ -6,7 +6,7 @@ import java.util.List;
 
 public class BetterConfig extends ConfigLibrary {
     public BetterConfig() {
-        id = "better-config";
+        id = "betterconfig";
         name = "BetterConfig";
         side = Side.BOTH;
 		modrinthSlug = "betterconfig";
