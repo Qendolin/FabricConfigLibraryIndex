@@ -19,6 +19,9 @@ import kotlin.math.abs
 import kotlin.random.Random
 import kotlin.text.ifEmpty
 
+val CSS_PATH: Path = Path.of("src/resources/main.css")
+val JS_PATH: Path = Path.of("src/resources/main.js")
+
 fun ConfigLibrary.tags(): List<Pair<String, String>> {
     val tags = arrayListOf<Pair<String, String>>()
 
@@ -337,7 +340,7 @@ fun main() {
                 meta(charset = "UTF-8")
                 style {
                     unsafe {
-                        +Files.readString(Path.of("src/main/kotlin/kr1v/index/main.css"))
+                        +Files.readString(CSS_PATH)
                     }
                 }
                 title {
@@ -465,7 +468,7 @@ fun main() {
 
                 script {
                     unsafe {
-                        +Files.readString(Path.of("src/main/kotlin/kr1v/index/main.js"))
+                        +Files.readString(JS_PATH)
                     }
                 }
             }
@@ -483,7 +486,7 @@ fun main() {
                 meta(charset = "UTF-8")
                 style {
                     unsafe {
-                        +Files.readString(Path.of("src/main/kotlin/kr1v/index/main.css"))
+                        +Files.readString(CSS_PATH)
                     }
                 }
                 title {
@@ -583,7 +586,7 @@ fun main() {
                     meta(charset = "UTF-8")
                     style {
                         unsafe {
-                            +Files.readString(Path.of("src/main/kotlin/kr1v/index/main.css"))
+                            +Files.readString(CSS_PATH)
                         }
                     }
                     title {
