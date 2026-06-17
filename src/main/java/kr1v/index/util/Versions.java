@@ -78,6 +78,9 @@ public class Versions {
 			lastMajor = parts[0];
 			lastMinor = parts[1];
 		}
+		if (!currentMajor.isEmpty()) {
+			newVersions.addAll(currentMajor);
+		}
 		return newVersions;
 	}
 
