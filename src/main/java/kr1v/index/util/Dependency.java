@@ -7,7 +7,7 @@ public enum Dependency {
     UI_LIB("UI Lib", "https://github.com/DAQEM/UILib"),
     MOD_MENU("Mod Menu", "https://github.com/TerraformersMC/ModMenu"),
     YET_ANOTHER_CONFIG_LIB("Yacl", "https://github.com/isXander/YetAnotherConfigLib"),
-	ADVENTURE_PLATFORM_MOD("adventure-platform-mod", "https://github.com/PaperMC/adventure-platform-mod");
+	PLACEHOLDER_API("Text Placeholder API", "https://github.com/Patbox/TextPlaceholderAPI");
 
     public final String name;
     public final String url;

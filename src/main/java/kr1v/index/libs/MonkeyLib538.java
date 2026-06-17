@@ -11,7 +11,7 @@ public class MonkeyLib538 extends ConfigLibrary {
 		side = Side.SERVER;
 		modrinthSlug = "monkeylib538";
 		type = Type.UI;
-		dependencies = List.of(Dependency.FABRIC_API, Dependency.ADVENTURE_PLATFORM_MOD);
+		dependencies = List.of(Dependency.FABRIC_API, Dependency.PLACEHOLDER_API);
 		extraConfigTypes = List.of();
 		extraFeatures = List.of();
 		configFormats = List.of();
