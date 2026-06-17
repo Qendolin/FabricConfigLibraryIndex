@@ -7,7 +7,7 @@ import java.util.List;
 public class OneConfig extends ConfigLibrary {
 	public OneConfig() {
 		id = "oneconfig";
-		name = "OneConfig API";
+		name = "OneConfig";
 		side = Side.CLIENT;
 		modrinthSlug = "oneconfig";
 		type = Type.BOTH;
