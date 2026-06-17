@@ -142,7 +142,7 @@ fun FlowContent.ConfigLibraryPanel(library: ConfigLibrary) {
                             for (waaa in method.waaas) {
                                 val isPrimitive = waaa == Waaa.ANNOTATED_PRIMITIVE
                                 if (isPrimitive) {
-                                    +"annotated"
+                                    +"annotated "
                                 }
                                 +method.memberType.description
                                 if (!isPrimitive) {
