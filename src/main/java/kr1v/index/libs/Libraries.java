@@ -37,6 +37,7 @@ public class Libraries {
 	public static final ConfigLibrary MidnightLib = new MidnightLib();
 	public static final ConfigLibrary MonkeyLib538 = new MonkeyLib538();
 	public static final ConfigLibrary OffsetUtils538 = new OffsetUtils538();
+	public static final ConfigLibrary OneConfig = new OneConfig();
 	public static final ConfigLibrary OwoLib = new OwoLib();
 	public static final ConfigLibrary QoMC = new QoMC();
 	public static final ConfigLibrary Ukulib = new Ukulib();
