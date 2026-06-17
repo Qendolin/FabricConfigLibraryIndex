@@ -235,6 +235,26 @@ fun FlowContent.ConfigLibraryPanel(library: ConfigLibrary) {
                         isFirst = false
                     }
                 }
+
+                div { style = "height: 5px" }
+
+                if (library.notes.isNotEmpty()) {
+                    h4 {
+                        +"Notes:"
+                    }
+                    h5 {
+                        style = "margin: 0;"
+                        if (library.notes.isNotEmpty()) {
+                            ul {
+                                library.notes.forEach {
+                                    li {
+                                        +it
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
 
             // screenshot
@@ -247,26 +267,6 @@ fun FlowContent.ConfigLibraryPanel(library: ConfigLibrary) {
                         src = "data:image/png;base64,$base64"
                         width = (1920 / 4).toString()
                         height = (1080 / 4).toString()
-                    }
-                }
-            }
-        }
-
-        div { style = "height: 5px" }
-
-        if (library.notes.isNotEmpty()) {
-            h4 {
-                +"Notes:"
-            }
-            h5 {
-                style = "margin: 0;"
-                if (library.notes.isNotEmpty()) {
-                    ul {
-                        library.notes.forEach {
-                            li {
-                                +it
-                            }
-                        }
                     }
                 }
             }
@@ -327,6 +327,13 @@ fun FlowContent.ConfigLibraryPanel(library: ConfigLibrary) {
             // links
             div {
                 style = "margin-right: 2px"
+                if (library.modrinthSlug != null) {
+                    a {
+                        href = "https://modrinth.com/mod/${library.modrinthSlug}"
+                        +"Modrinth"
+                    }
+                    +" "
+                }
                 a {
                     href = "https://github.com/kr1viah/FabricConfigLibraryIndex/blob/master/src/main/java/kr1v/index/libs/" + library.javaClass.simpleName + ".java"
                     +"View entry"
@@ -489,7 +496,7 @@ fun main() {
 
                 div("library_grid") {
                     style = "flex: 2; overflow-y: auto; padding: 10px;"
-                    Libraries.CONFIG_LIBRARIES().shuffled(Random(2131)).forEach {
+                    Libraries.CONFIG_LIBRARIES().shuffled(Random(Libraries.CONFIG_LIBRARIES().hashCode())).forEach {
                         ConfigLibraryPanel(it)
                     }
                 }
