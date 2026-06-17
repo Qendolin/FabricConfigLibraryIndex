@@ -79,7 +79,11 @@ public class Versions {
 			lastMinor = parts[1];
 		}
 		if (!currentMajor.isEmpty()) {
-			newVersions.addAll(currentMajor);
+			if (ALL_SET.contains(currentMajor)) {
+				newVersions.add(currentMajor.getFirst() + ".x");
+			} else {
+				newVersions.addAll(currentMajor);
+			}
 		}
 		return newVersions;
 	}
