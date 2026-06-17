@@ -14,13 +14,22 @@ import kr1v.index.util.ConfigMethod.Waaa
 import java.nio.file.Files
 import java.nio.file.Path
 import java.time.format.DateTimeFormatter
+import java.util.Base64
 import java.util.Locale
 import kotlin.math.abs
 import kotlin.random.Random
 import kotlin.text.ifEmpty
 
-val CSS_PATH: Path = Path.of("src/resources/main.css")
-val JS_PATH: Path = Path.of("src/resources/main.js")
+fun readResource(path: String): String {
+    return object {}.javaClass
+        .getResourceAsStream(path)
+        ?.bufferedReader()
+        ?.use { it.readText() }
+        ?: error("Resource not found: $path")
+}
+
+val css = readResource("/main.css")
+val js = readResource("/main.js")
 
 fun ConfigLibrary.tags(): List<Pair<String, String>> {
     val tags = arrayListOf<Pair<String, String>>()
@@ -89,157 +98,157 @@ fun FlowContent.ConfigLibraryPanel(library: ConfigLibrary) {
                     style = "display: inline-block; margin: 0;"
                     +")"
                 }
-            }
 
-            // links
-            div {
-                style = "margin-right: 2px"
-                a {
-                    href = "https://github.com/kr1viah/FabricConfigLibraryIndex/blob/master/src/main/java/kr1v/index/libs/" + library.javaClass.simpleName + ".java"
-                    +"View entry"
-                }
-                br
-                a {
-                    href = library.source
-                    +"Source code"
-                }
-            }
-        }
-
-        // dependencies
-        if (library.dependencies.isNotEmpty()) {
-            h4 {
-                var isFirst = true
-                +"Dependencies: "
-                for (dep in library.dependencies) {
-                    if (!isFirst) {
-                        +", "
-                    }
-                    a {
-                        href = dep.url
-                        +dep.name
-                    }
-                    isFirst = false
-                }
-            }
-        }
-
-        // init mode
-        h4 {
-            +"Manual initialization: "
-            +library.manualInitialization.name
-        }
-
-        // config format
-        if (library.configMethod != ConfigMethod.NOT_AVAILABLE) {
-            h4 {
-                +"Config method: "
-                if (library.configMethod == ConfigMethod.UNKNOWN) {
-                    +"Unknown"
-                } else {
-                    val method = library.configMethod
-                    if (method.typeOfClass != TypeOfClass.NONE) {
-                        +"a"
-                        if (method.typeOfClass == TypeOfClass.EXTENDING || method.typeOfClass == TypeOfClass.ANNOTATED) +"n"
-                        +" ${method.typeOfClass.name.lowercase(Locale.ROOT)} class with "
-                    }
-                    if (method.waaas.size != 1) {
-                        +"either "
-                    }
-                    for (waaa in method.waaas) {
-                        val isPrimitive = waaa == Waaa.ANNOTATED_PRIMITIVE
-                        if (isPrimitive) {
-                            +"annotated"
-                        }
-                        +method.memberType.description
-                        if (!isPrimitive) {
-                            +", "
-                            +waaa.methodDescription
-                        }
-
-                        if (method.waaas.indexOf(waaa) < method.waaas.size-1) {
-                            +", or "
+                // dependencies
+                if (library.dependencies.isNotEmpty()) {
+                    h4 {
+                        var isFirst = true
+                        +"Dependencies: "
+                        for (dep in library.dependencies) {
+                            if (!isFirst) {
+                                +", "
+                            }
+                            a {
+                                href = dep.url
+                                +dep.name
+                            }
+                            isFirst = false
                         }
                     }
+                }
 
-                    br()
+                // init mode
+                h4 {
+                    +"Manual initialization: "
+                    +library.manualInitialization.name
+                }
 
-                    +"Examples: "
+                // config format
+                if (library.configMethod != ConfigMethod.NOT_AVAILABLE) {
+                    h4 {
+                        +"Config method: "
+                        if (library.configMethod == ConfigMethod.UNKNOWN) {
+                            +"Unknown"
+                        } else {
+                            val method = library.configMethod
+                            if (method.typeOfClass != TypeOfClass.NONE) {
+                                +"a"
+                                if (method.typeOfClass == TypeOfClass.EXTENDING || method.typeOfClass == TypeOfClass.ANNOTATED) +"n"
+                                +" ${method.typeOfClass.name.lowercase(Locale.ROOT)} class with "
+                            }
+                            if (method.waaas.size != 1) {
+                                +"either "
+                            }
+                            for (waaa in method.waaas) {
+                                val isPrimitive = waaa == Waaa.ANNOTATED_PRIMITIVE
+                                if (isPrimitive) {
+                                    +"annotated"
+                                }
+                                +method.memberType.description
+                                if (!isPrimitive) {
+                                    +", "
+                                    +waaa.methodDescription
+                                }
 
-                    val random = Random(library.name.hashCode())
-                    val length = method.waaas.size
+                                if (method.waaas.indexOf(waaa) < method.waaas.size-1) {
+                                    +", or "
+                                }
+                            }
 
-                    val examples = HashSet<String>()
-                    while (examples.size < 3) {
-                        val exampless = method.waaas[abs(random.nextInt() % length)].examples
-                        examples.add(exampless[abs(random.nextInt() % exampless.size)])
-                    }
-                    for (example in examples) {
-                        span {
-                            style = "display: inline-block; margin: 1px;"
-                            code {
+                            br()
+
+                            +"Examples: "
+
+                            val random = Random(library.name.hashCode())
+                            val length = method.waaas.size
+
+                            val examples = HashSet<String>()
+                            while (examples.size < 3) {
+                                val exampless = method.waaas[abs(random.nextInt() % length)].examples
+                                examples.add(exampless[abs(random.nextInt() % exampless.size)])
+                            }
+                            for (example in examples) {
                                 span {
-                                    style = "margin: 5px;"
-                                    +example
+                                    style = "display: inline-block; margin: 1px;"
+                                    code {
+                                        span {
+                                            style = "margin: 5px;"
+                                            +example
+                                        }
+                                    }
                                 }
                             }
                         }
                     }
                 }
-            }
-        }
 
-        // config types
-        if (library.extraConfigTypes.isNotEmpty()) {
-            h4 {
-                var isFirst = true
-                +"Extra config type(s) supported: "
-                for (type in library.extraConfigTypes) {
-                    if (!isFirst) {
-                        +", "
-                    }
-                    span {
-                        if (type.description.isNotEmpty()) {
-                            classes = setOf("hoverable")
-                            title = type.description
+                // config types
+                if (library.extraConfigTypes.isNotEmpty()) {
+                    h4 {
+                        var isFirst = true
+                        +"Extra config type(s) supported: "
+                        for (type in library.extraConfigTypes) {
+                            if (!isFirst) {
+                                +", "
+                            }
+                            span {
+                                if (type.description.isNotEmpty()) {
+                                    classes = setOf("hoverable")
+                                    title = type.description
+                                }
+                                +type.name
+                            }
+                            isFirst = false
                         }
-                        +type.name
                     }
-                    isFirst = false
+                }
+
+                if (library.type.ui) {
+                    h4 {
+                        span {
+                            if (library.uiMethod.description.isNotEmpty()) {
+                                classes = setOf("hoverable")
+                                title = library.uiMethod.description
+                            }
+                            +"Ui method: "
+                            +library.uiMethod.name
+                        }
+                    }
+                }
+
+                div { style = "height: 5px" }
+
+                // versions
+                h4 {
+                    var isFirst = true
+                    +"Available for versions: "
+
+                    var versions: List<String> = ArrayList(library.versions)
+
+                    versions = Versions.condensVersions(versions)
+
+                    for (version in versions) {
+                        if (!isFirst) {
+                            +", "
+                        }
+                        +version
+                        isFirst = false
+                    }
                 }
             }
-        }
 
-        if (library.type.ui) {
-            h4 {
-                span {
-                    if (library.uiMethod.description.isNotEmpty()) {
-                        classes = setOf("hoverable")
-                        title = library.uiMethod.description
+            // screenshot
+            div {
+                val stream = object {}.javaClass.getResourceAsStream("/screenshots/${library.modrinthSlug}.png")
+                if (stream != null) {
+                    val bytes = stream.readBytes()
+                    val base64 = Base64.getEncoder().encodeToString(bytes)
+                    img {
+                        src = "data:image/png;base64,$base64"
+                        width = (1920 / 4).toString()
+                        height = (1080 / 4).toString()
                     }
-                    +"Ui method: "
-                    +library.uiMethod.name
                 }
-            }
-        }
-
-        div { style = "height: 5px" }
-
-        // versions
-        h4 {
-            var isFirst = true
-            +"Available for versions: "
-
-            var versions: List<String> = ArrayList(library.versions)
-
-            versions = Versions.condensVersions(versions)
-
-            for (version in versions) {
-                if (!isFirst) {
-                    +", "
-                }
-                +version
-                isFirst = false
             }
         }
 
@@ -306,9 +315,28 @@ fun FlowContent.ConfigLibraryPanel(library: ConfigLibrary) {
 
         div { style = "height: 5px" }
 
-        // tags
-        library.tags().forEach {
-            tag(it.first, it.second)
+        div {
+            style = "display: flex; justify-content: space-between;"
+            div {
+                style = "margin-bottom: 2px;"
+                // tags
+                library.tags().forEach {
+                    tag(it.first, it.second)
+                }
+            }
+            // links
+            div {
+                style = "margin-right: 2px"
+                a {
+                    href = "https://github.com/kr1viah/FabricConfigLibraryIndex/blob/master/src/main/java/kr1v/index/libs/" + library.javaClass.simpleName + ".java"
+                    +"View entry"
+                }
+                +" "
+                a {
+                    href = library.source
+                    +"Source code"
+                }
+            }
         }
     }
 }
@@ -340,7 +368,7 @@ fun main() {
                 meta(charset = "UTF-8")
                 style {
                     unsafe {
-                        +Files.readString(CSS_PATH)
+                        +css
                     }
                 }
                 title {
@@ -468,7 +496,7 @@ fun main() {
 
                 script {
                     unsafe {
-                        +Files.readString(JS_PATH)
+                        +js
                     }
                 }
             }
@@ -486,7 +514,7 @@ fun main() {
                 meta(charset = "UTF-8")
                 style {
                     unsafe {
-                        +Files.readString(CSS_PATH)
+                        +css
                     }
                 }
                 title {
@@ -586,7 +614,7 @@ fun main() {
                     meta(charset = "UTF-8")
                     style {
                         unsafe {
-                            +Files.readString(CSS_PATH)
+                            +css
                         }
                     }
                     title {
