@@ -2,6 +2,8 @@ name: Deploy
 
 on:
   push:
+    branches:
+      - master
 
 # Concurrency group ensures only one deployment to Pages runs at a time
 concurrency:
@@ -14,49 +16,21 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
+      # 1. Install & configure Deno v2.x
       - uses: denoland/setup-deno@v2
         with:
           deno-version: v2.x
 
-      - run: deno task build
+      # 2. Install npm dependencies listed in package.json
+      - run: deno install
 
-      # Upload standard artifact for the downstream custom deploy job
-      - uses: actions/upload-artifact@v7
-        with:
-          name: generated-assets
-          path: generated
+      # 3. Execute the SSG build step configured in deno.json
+      - run: deno task build
 
       # Packaging and uploading the artifact specifically for GitHub Pages
       - uses: actions/upload-pages-artifact@v3
         with:
           path: generated
-
-  # 1. Your existing custom commit deploy pipeline
-  deploy-custom:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out repository
-        uses: actions/checkout@v6
-        with:
-          repository: kr1viah/site
-          ssh-key: '${{ secrets.SITE_DEPLOY_KEY }}'
-      - name: Set up user for commit
-        run: |
-          git config user.name github-actions[bot]
-          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-      - name: Delete old libraries index
-        run: rm -rf public/libs
-      - name: Download new libraries index
-        uses: actions/download-artifact@v8
-        with:
-          name: generated-assets
-          path: public/libs
-      - name: Commit changes
-        run: |
-          git add public/libs/*
-          git commit -m 'Libraries index update'
-          git push
 
   # 2. Parallel job to publish directly to GitHub Pages
   deploy-pages:
