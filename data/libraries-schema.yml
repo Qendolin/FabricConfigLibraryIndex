@@ -1,0 +1,168 @@
+$schema: 'http://json-schema.org/draft-07/schema#'
+title: 'Fabric Config Library Schema'
+description: 'Validation schema supporting Jekyll-style multi-document frontmatter and UNKNOWN fallback states'
+oneOf:
+  # ----------------------------------------------------
+  # Branch A: Validate the Frontmatter Document (Document 1)
+  # ----------------------------------------------------
+  - type: 'object'
+    required:
+      - version
+      - description
+      - created
+    additionalProperties: false
+    properties:
+      version:
+        type: 'string'
+        description: 'The version of the YAML schema being used'
+      description:
+        type: 'string'
+        description: "A description of the file's contents"
+      created:
+        type: 'string'
+        pattern: "^\\d{4}-\\d{2}-\\d{2}$"
+        description: 'The creation date of this file in YYYY-MM-DD format'
+
+  # ----------------------------------------------------
+  # Branch B: Validate the Library Body (Document 2)
+  # ----------------------------------------------------
+  - type: 'object'
+    required:
+      - id
+      - name
+      - side
+      - type
+      - manualInitialization
+      - configMethod
+      - uiMethod
+      - source
+    properties:
+      id:
+        type: 'string'
+        pattern: '^[a-z0-9-_]+$'
+        description: 'Unique library identifier (lowercase, hyphens and underscores allowed)'
+      name:
+        type: 'string'
+        description: 'Display name of the library'
+      side:
+        type: 'string'
+        enum: ['CLIENT', 'SERVER', 'BOTH', 'UNKNOWN']
+        description: 'Supported side for the library'
+      modrinthSlug:
+        type: 'string'
+        description: 'Optional Modrinth project slug used to fetch dynamic versions'
+      type:
+        type: 'string'
+        enum: ['LOADER', 'UI', 'BOTH', 'UNKNOWN']
+        description: 'The primary purpose/category of the library'
+      versions:
+        description: 'List of supported Minecraft versions. Set to ALL_LIST to map to all known release versions.'
+        oneOf:
+          - type: 'array'
+            items:
+              type: 'string'
+          - type: 'string'
+            enum: ['ALL_LIST', 'UNKNOWN']
+      dependencies:
+        type: 'array'
+        description: 'Required library dependencies'
+        items:
+          type: 'object'
+          required:
+            - name
+          properties:
+            name:
+              type: 'string'
+              description: 'ID of the dependency corresponding to data/dependencies.yml keys (e.g. FABRIC_API)'
+            url:
+              type: 'string'
+              format: 'uri'
+              description: 'Optional URL override for the dependency link'
+      extraConfigTypes:
+        description: "Extra config type classifications supported by this library (or 'UNKNOWN')"
+        oneOf:
+          - type: 'array'
+            items:
+              type: 'object'
+              required:
+                - name
+              properties:
+                name:
+                  type: 'string'
+                  description: 'Name of the config type corresponding to data/config-types.yml keys (e.g. COLOR)'
+                description:
+                  type: 'string'
+                  description: 'Optional custom description override'
+          - type: 'string'
+            enum: ['UNKNOWN']
+      extraFeatures:
+        description: "List of extra features corresponding to data/features.yml keys (or 'UNKNOWN')"
+        oneOf:
+          - type: 'array'
+            items:
+              type: 'string'
+          - type: 'string'
+            enum: ['UNKNOWN']
+      configFormats:
+        description: "Supported serialization formats corresponding to data/config-formats.yml keys (or 'UNKNOWN')"
+        oneOf:
+          - type: 'array'
+            items:
+              type: 'string'
+          - type: 'string'
+            enum: ['UNKNOWN']
+      manualInitialization:
+        type: 'string'
+        enum: ['YES', 'AT_MOD_INIT', 'OPTIONAL', 'NO', 'NOT_AVAILABLE', 'UNKNOWN']
+        description: 'Whether the config must be initialized manually'
+      configMethod:
+        description: 'Access and structure definition for config fields within the mod'
+        oneOf:
+          - type: 'string'
+            enum: ['NOT_AVAILABLE', 'UNKNOWN']
+          - type: 'object'
+            required:
+              - typeOfClass
+              - memberType
+              - waaas
+            properties:
+              typeOfClass:
+                type: 'string'
+                enum: ['NORMAL', 'EXTENDING', 'ANNOTATED', 'RECORD', 'NONE', 'NOT_AVAILABLE']
+              memberType:
+                type: 'string'
+                enum: ['INSTANCE', 'STATIC', 'EITHER', 'NONE', 'NOT_AVAILABLE']
+              waaas:
+                type: 'array'
+                items:
+                  type: 'object'
+                  required:
+                    - name
+                  properties:
+                    name:
+                      type: 'string'
+                      description: 'Name of the field type/wrapper category'
+                    methodDescription:
+                      type: 'string'
+                      description: 'Custom description override for this method'
+                    examples:
+                      type: 'array'
+                      items:
+                        type: 'string'
+                      description: 'List of code examples showing this config field structure'
+      uiMethod:
+        type: 'string'
+        enum: ['BUILDER', 'AUTOMATIC', 'MANUAL', 'COMMANDS', 'NONE', 'CUSTOM_SCREEN_CLASS']
+        description: 'How UI screen generation is implemented'
+      notes:
+        type: 'array'
+        items:
+          type: 'string'
+        description: 'Miscellaneous notes and caveats'
+      source:
+        type: 'string'
+        format: 'uri'
+        description: 'URL to the library source code repository'
+      exampleConfigClass:
+        type: 'string'
+        description: 'Multi-line Java string showing an example configuration implementation'
