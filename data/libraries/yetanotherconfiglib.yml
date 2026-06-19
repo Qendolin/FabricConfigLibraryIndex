@@ -1,0 +1,47 @@
+---
+# YAML frontmatter with library metadata
+version: '1.0.0'
+description: 'YetAnotherConfigLib configuration library'
+created: '2026-06-19'
+---
+# YetAnotherConfigLib library definition
+
+id: yacl
+name: YetAnotherConfigLib
+side: BOTH
+modrinthSlug: yacl
+type: BOTH
+dependencies:
+  - name: FABRIC_API
+    url: https://github.com/FabricMC/fabric-api
+extraConfigTypes:
+  - name: BUTTON
+    description: 'Button configuration values'
+extraFeatures: []
+configFormats:
+  - JSON
+manualInitialization: YES
+configMethod:
+  typeOfClass: NORMAL
+  memberType: INSTANCE
+  waaas:
+    - name: Annotated primitive
+      methodDescription: 'of primitive types'
+      examples:
+        - '@SerialEntry boolean'
+        - '@SerialEntry int'
+        - '@SerialEntry String'
+uiMethod: BUILDER
+notes: []
+source: https://github.com/isXander/YetAnotherConfigLib
+exampleConfigClass: |
+  public class ConfigClass {
+      public static final ConfigClassHandler<ConfigClass> GSON = ConfigClassHandler.createBuilder(ConfigClass.class)
+              .serializer(config -> GsonConfigSerializerBuilder.create(config)
+                      .setPath(YACLPlatform.getConfigDir().resolve("yacl-example.json"))
+                      .build())
+              .build();
+
+      @SerialEntry
+      public boolean exampleBoolean = false;
+  }

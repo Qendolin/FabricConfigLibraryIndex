@@ -8,10 +8,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - run: ./gradlew run --no-daemon
+
+      # 1. Install & configure Deno v2.x
+      - uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+
+      # 2. Execute the SSG build step configured in deno.json
+      - run: deno task build
+
       - uses: actions/upload-artifact@v7
         with:
           path: generated
+
   deploy:
     needs: build
     runs-on: ubuntu-latest

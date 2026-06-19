@@ -1,0 +1,10 @@
+{
+	"name": "fabric-config-index",
+	"version": "1.0.0",
+	"type": "module",
+	"dependencies": {
+		"gray-matter": "^4.0.3",
+		"handlebars": "^4.7.8",
+		"js-yaml": "^4.1.0"
+	}
+}

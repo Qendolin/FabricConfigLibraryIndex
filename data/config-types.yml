@@ -1,0 +1,45 @@
+---
+# YAML frontmatter with library metadata
+version: "1.0.0"
+description: "Configuration data type definitions"
+created: "2026-06-19"
+---
+
+# Configuration data type definitions
+# Specifies what types of configuration values can be stored
+
+COLOR:
+  description: "Color configuration values"
+  name: "Color"
+
+HOTKEY:
+  description: "Hotkey configuration values"
+  name: "Hotkey"
+
+DROPDOWN:
+  description: "Dropdown selection configuration values"
+  name: "Dropdown"
+
+BUTTON:
+  description: "A button in the list of configs that does something when pressed"
+  name: "Button"
+
+FILE:
+  description: "File path configuration values"
+  name: "File"
+
+PAIR:
+  description: "A pair of configs next to each other"
+  name: "Pair"
+
+REGISTRY_ENTRY:
+  description: "Registry entry configuration values"
+  name: "Registry entry"
+
+IDENTIFIER:
+  description: "Identifier configuration values"
+  name: "Identifier"
+
+DATE_TIME:
+  description: "Date and time configuration values"
+  name: "Date Time"

@@ -1,0 +1,47 @@
+---
+# YAML frontmatter with library metadata
+version: '1.0.0'
+description: 'OffsetUtils538 configuration library'
+created: '2026-06-19'
+---
+# OffsetUtils538 library definition
+
+id: offsetutils538
+name: OffsetUtils538
+side: BOTH
+versions: ALL_LIST
+type: LOADER
+dependencies: []
+extraConfigTypes: []
+extraFeatures:
+  - CUSTOM_CONFIG_TYPES
+configFormats:
+  - JSON
+manualInitialization: AT_MOD_INIT
+configMethod:
+  typeOfClass: EXTENDING
+  memberType: INSTANCE
+  waaas:
+    - name: Annotated primitive
+      methodDescription: 'of primitive types'
+      examples:
+        - '@Config int'
+        - '@Config String'
+        - '@Config boolean'
+uiMethod: NONE
+notes: []
+source: https://codeberg.org/OffsetMods538/OffsetUtils538
+exampleConfigClass: |
+  public final class ConfigClass implements Config {
+    public boolean exampleBoolean = false;
+
+    @Override
+    public Path getConfigDirPath() {
+      return FabricLoader.getInstance().getConfigDir().resolve("offsetutils538-example");
+    }
+
+    @Override
+    public String getId() {
+        return "offsetutils538-example/main";
+    }
+  }

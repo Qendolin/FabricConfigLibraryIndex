@@ -1,0 +1,45 @@
+---
+# YAML frontmatter with library metadata
+version: "1.0.0"
+description: "Supported configuration file formats"
+created: "2026-06-19"
+---
+
+# Supported configuration file formats
+# Specifies what configuration file formats the library supports
+
+JSON:
+  description: "JSON format for configuration files"
+  name: "Json"
+
+TOML:
+  description: "TOML format for configuration files"
+  name: "Toml"
+
+YAML:
+  description: "YAML format for configuration files"
+  name: "Yaml"
+
+NOT_AVAILABLE:
+  description: "No specific format support"
+  name: "n/a"
+
+PROPERTIES:
+  description: ".properties format for configuration files"
+  name: ".properties"
+
+INI:
+  description: ".ini format for configuration files"
+  name: ".ini"
+
+JSON5:
+  description: "JSON5 format for configuration files"
+  name: "Json5"
+
+HOCON:
+  description: "HOCON format for configuration files"
+  name: "Hocon"
+
+JSONC:
+  description: "JSONC format for configuration files"
+  name: "JsonC"

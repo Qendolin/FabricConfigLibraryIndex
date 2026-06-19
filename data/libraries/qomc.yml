@@ -1,0 +1,27 @@
+---
+# YAML frontmatter with library metadata
+version: "1.0.0"
+description: "QoMC configuration library"
+created: "2026-06-19"
+---
+
+# QoMC library definition
+
+id: qomc
+name: QoMC
+side: SERVER
+modrinthSlug: qomc
+type: UI
+dependencies:
+  - name: FABRIC_API
+    url: https://github.com/FabricMC/fabric-api
+extraConfigTypes: UNKNOWN
+extraFeatures: UNKNOWN
+configFormats: []
+manualInitialization: NO
+configMethod: NOT_AVAILABLE
+uiMethod: COMMANDS
+notes:
+  - "Makes config commands for kaleido configs"
+source: https://github.com/AmberIsFrozen/qomc
+exampleConfigClass: ""

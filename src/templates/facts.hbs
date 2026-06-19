@@ -1,0 +1,21 @@
+{{#> layout}}
+    <div class="facts-content">
+        <div class="panel flex-between">
+            <a href="index.html">Go to index</a>
+            <span>Have a suggestion? DM <code>.kr1v</code></span>
+        </div>
+        
+        {{#each facts as |fact|}}
+            <div class="panel" id="day-{{fact.day}}">
+                <div class="mb-2 text-muted">
+                    <h3 class="inline-block mt-0">Day {{fact.day}}: {{fact.title}} ({{fact.date}})</h3>
+                    <div class="flex-gap mt-0">
+                        <span class="help filter-tag" onclick="navigator.clipboard.writeText(new URL('facts/{{fact.day}}.html', document.baseURI).href)">Copy permalink</span>
+                        <a href="facts/{{fact.day}}.html">Open permalink</a>
+                    </div>
+                </div>
+                <div>{{{fact.content}}}</div>
+            </div>
+        {{/each}}
+    </div>
+{{/layout}}

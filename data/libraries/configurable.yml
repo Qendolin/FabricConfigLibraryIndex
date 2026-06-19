@@ -1,0 +1,52 @@
+---
+# YAML frontmatter with library metadata
+version: '1.0.0'
+description: 'Configurable configuration library'
+created: '2026-06-19'
+---
+# Configurable library definition
+
+id: configurable
+name: Configurable
+side: BOTH
+versions:
+  - '1.20.1'
+  - '1.21'
+  - '1.21.1'
+  - '1.21.2'
+  - '1.21.3'
+  - '1.21.4'
+  - '1.21.5'
+  - '1.21.6'
+  - '1.21.7'
+  - '1.21.8'
+  - '1.21.9'
+  - '1.21.10'
+  - '1.21.11'
+type: LOADER
+dependencies:
+  - name: FABRIC_API
+    url: https://github.com/FabricMC/fabric-api
+extraConfigTypes: []
+extraFeatures:
+  - CONSTRAINT
+  - CUSTOM_CONFIG_TYPES
+configFormats:
+  - JSON
+  - TOML
+manualInitialization: NO
+configMethod:
+  typeOfClass: NONE
+  memberType: STATIC
+  waaas:
+    - name: Annotated primitive
+      methodDescription: 'of primitive types'
+      examples:
+        - '@Configurable boolean'
+        - '@Configurable int'
+        - '@Configurable String'
+uiMethod: NONE
+notes: []
+source: https://github.com/Bawnorton/Configurable
+exampleConfigClass: |
+  /** Example comment */ @Configurable boolean exampleBoolean = false;

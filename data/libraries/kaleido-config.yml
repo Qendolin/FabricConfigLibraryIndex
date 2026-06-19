@@ -1,0 +1,37 @@
+---
+# YAML frontmatter with library metadata
+version: '1.0.0'
+description: 'KaleidoConfig configuration library'
+created: '2026-06-19'
+---
+# KaleidoConfig library definition
+
+id: kaleido-config
+name: Kaleido config
+side: BOTH
+versions: ALL_LIST
+type: LOADER
+dependencies: []
+extraConfigTypes: []
+extraFeatures: []
+configFormats:
+  - TOML
+manualInitialization: YES
+configMethod:
+  typeOfClass: EXTENDING
+  memberType: INSTANCE
+  waaas:
+    - name: Annotated primitive
+      methodDescription: 'of primitive types'
+      examples:
+        - '@Config int'
+        - '@Config String'
+        - '@Config boolean'
+uiMethod: NONE
+notes:
+  - 'Not made with minecraft in mind'
+source: https://github.com/sisby-folk/kaleido-config
+exampleConfigClass: |
+  public class ExampleModConfig extends ReflectiveConfig {
+      public final TrackedValue<Boolean> exampleBoolean = this.value("Example boolean");
+  }

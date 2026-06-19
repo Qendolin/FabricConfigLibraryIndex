@@ -1,0 +1,40 @@
+---
+# YAML frontmatter with library metadata
+version: '1.0.0'
+description: 'OwoLib configuration library'
+created: '2026-06-19'
+---
+# OwoLib library definition
+
+id: owo-lib
+name: oωo
+side: BOTH
+modrinthSlug: owo-lib
+type: BOTH
+dependencies:
+  - name: FABRIC_API
+    url: https://github.com/FabricMC/fabric-api
+extraConfigTypes: []
+extraFeatures:
+  - CONSTRAINT
+configFormats: UNKNOWN
+manualInitialization: YES
+configMethod:
+  typeOfClass: ANNOTATED
+  memberType: INSTANCE
+  waaas:
+    - name: Primitive
+      methodDescription: 'of primitive types'
+      examples:
+        - '@Config(name = "owo-lib-example", wrapperName = "ConfigClassModel") boolean'
+        - '@Config(name = "owo-lib-example", wrapperName = "ConfigClassModel") int'
+        - '@Config(name = "owo-lib-example", wrapperName = "ConfigClassModel") String'
+uiMethod: AUTOMATIC
+notes:
+  - 'Comes with a lot of additional, sometimes problematic, features.'
+source: https://github.com/wisp-forest/owo-lib
+exampleConfigClass: |
+  @Config(name = "owo-lib-example", wrapperName = "ConfigClassModel")
+  public class ConfigClassModel {
+      public boolean exampleBoolean = false;
+  }

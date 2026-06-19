@@ -1,0 +1,13 @@
+{
+	"tasks": {
+		"build": "deno run --allow-net --allow-read --allow-write src/build.ts",
+		"dev": "deno run --allow-net --allow-read --allow-write --watch src/build.ts"
+	},
+	"imports": {
+		"js-yaml": "npm:js-yaml@^4.1.0",
+		"gray-matter": "npm:gray-matter@^4.0.3",
+		"handlebars": "npm:handlebars@^4.7.8",
+		"@std/fs": "jsr:@std/fs@^1.0.0",
+		"@std/path": "jsr:@std/path@^1.0.0"
+	}
+}

@@ -1,0 +1,47 @@
+---
+# YAML frontmatter with library metadata
+version: '1.0.0'
+description: 'YAMLConfig configuration library'
+created: '2026-06-19'
+---
+# YAMLConfig library definition
+
+id: yaml-config
+name: YAML Config
+side: BOTH
+modrinthSlug: yaml-config
+type: BOTH
+dependencies:
+  - name: UI_LIB
+    url: https://github.com/ukulib/ukulib
+extraConfigTypes:
+  - name: IDENTIFIER
+    description: 'Identifier configuration values'
+  - name: REGISTRY_ENTRY
+    description: 'Registry entry configurations'
+  - name: DATE_TIME
+    description: 'Date-time configuration values'
+extraFeatures:
+  - CUSTOM_CONFIG_TYPES
+  - CONSTRAINT
+configFormats:
+  - YAML
+  - JSON5
+  - TOML
+  - HOCON
+manualInitialization: YES
+configMethod:
+  typeOfClass: NORMAL
+  memberType: STATIC
+  waaas:
+    - name: Builder
+      methodDescription: 'typed using builder methods'
+      examples:
+        - builder.defineString("key", "value")
+        - builder.defineBoolean("key", false)
+        - builder.push("category")
+uiMethod: AUTOMATIC
+notes: []
+source: https://github.com/DAQEM/YamlConfig
+exampleConfigClass: |
+  # TODO: example config for this

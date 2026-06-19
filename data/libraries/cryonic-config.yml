@@ -1,0 +1,39 @@
+---
+# YAML frontmatter with library metadata
+version: '1.0.0'
+description: 'CryonicConfig configuration library'
+created: '2026-06-19'
+---
+# CryonicConfig library definition
+
+id: cryonic-config
+name: Cryonic Config
+side: BOTH
+modrinthSlug: cryonicconfig
+type: LOADER
+dependencies: []
+extraConfigTypes: []
+extraFeatures: []
+configFormats:
+  - JSON
+manualInitialization: AT_MOD_INIT
+configMethod:
+  typeOfClass: NORMAL
+  memberType: INSTANCE
+  waaas:
+    - name: Primitive
+      methodDescription: 'of primitive types'
+      examples:
+        - bool
+        - int
+        - String
+uiMethod: NONE
+notes: []
+source: https://github.com/matthewperiut/cryonicconfig
+exampleConfigClass: |
+  public class ConfigClass {
+    static final ConfigStorage config = CryonicConfig.getConfig("mod_id");
+
+    public static boolean getExampleBoolean() {
+      config.getBoolean("exampleBoolean", false);
+    }

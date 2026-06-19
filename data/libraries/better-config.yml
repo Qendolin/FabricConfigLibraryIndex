@@ -1,0 +1,37 @@
+---
+# YAML frontmatter with library metadata
+version: '1.0.0'
+description: 'BetterConfig configuration library'
+created: '2026-06-19'
+---
+# BetterConfig library definition
+
+id: betterconfig
+name: BetterConfig
+side: BOTH
+modrinthSlug: betterconfig
+type: LOADER
+dependencies: []
+extraConfigTypes: []
+extraFeatures:
+  - CUSTOM_CONFIG_TYPES
+configFormats: []
+manualInitialization: YES
+configMethod:
+  typeOfClass: NORMAL
+  memberType: STATIC
+  waaas:
+    - name: Primitive
+      methodDescription: 'of primitive types'
+      examples:
+        - '@Config int'
+        - '@Config String'
+        - '@Config boolean'
+uiMethod: COMMANDS
+notes: []
+source: https://github.com/xpple/BetterConfig
+exampleConfigClass: |
+  public class ConfigClass {
+      @Config
+      public static boolean exampleBoolean = false;
+  }

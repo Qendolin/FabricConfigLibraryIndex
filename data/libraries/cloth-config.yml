@@ -1,0 +1,29 @@
+---
+# YAML frontmatter with library metadata
+version: "1.0.0"
+description: "Cloth config configuration library"
+created: "2026-06-19"
+---
+
+# ClothConfig library definition
+
+id: cloth-config
+name: Cloth config
+side: BOTH
+modrinthSlug: cloth-config
+type: UI
+dependencies: []
+extraConfigTypes:
+  - name: COLOR
+    description: "Color configuration values"
+  - name: DROPDOWN
+    description: "Dropdown selection values"
+extraFeatures:
+  - MOD_MENU_INTEGRATION
+configFormats: []
+manualInitialization: NOT_AVAILABLE
+configMethod: NOT_AVAILABLE
+uiMethod: BUILDER
+notes: []
+source: https://github.com/shedaniel/cloth-config
+exampleConfigClass: ""

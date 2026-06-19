@@ -1,0 +1,78 @@
+---
+# YAML frontmatter with library metadata
+version: '1.0.0'
+description: 'MaLiLib configuration library'
+created: '2026-06-19'
+---
+# MaLiLib library definition
+
+id: malilib
+name: MaLiLib
+side: CLIENT
+modrinthSlug: malilib
+type: BOTH
+dependencies: []
+extraConfigTypes:
+  - name: COLOR
+    description: 'Color configuration values'
+  - name: HOTKEY
+    description: 'Hotkey configuration values'
+extraFeatures:
+  - SLIDER
+configFormats:
+  - JSON
+manualInitialization: AT_MOD_INIT
+configMethod:
+  typeOfClass: EXTENDING
+  memberType: STATIC
+  waaas:
+    - name: ConfigInteger
+      methodDescription: 'Integer configuration values'
+      examples:
+        - ConfigInteger
+    - name: ConfigOptionList
+      methodDescription: 'Option list configurations'
+      examples:
+        - ConfigList<ConfigString>
+    - name: ConfigDouble
+      methodDescription: 'Double configuration values'
+      examples:
+        - ConfigDouble
+uiMethod: CUSTOM_SCREEN_CLASS
+notes:
+  - 'Hard to set up'
+source: https://github.com/sakura-ryoko/malilib
+exampleConfigClass: |
+  public class Configs implements IConfigHandler {
+    private static final Path CONFIG_FILE = FabricLoader.getInstance().getConfigDir(CONFIG_FILE_NAME);
+    public class ConfigClass {
+      public static final ConfigBoolean EXAMPLE_BOOLEAN = new ConfigBoolean("Example boolean", false);
+      public static final ImmutableList<IConfigBase> OPTIONS = ImmutableList.of(
+          EXAMPLE_BOOLEAN
+      );
+    }
+
+      @Override
+      public void load() {
+          if (Files.exists(CONFIG_FILE) && Files.isReadable(CONFIG_FILE)) {
+              JsonElement element = JsonUtils.parseJsonFile(CONFIG_FILE);
+
+              if (element != null && element.isJsonObject()) {
+                  JsonObject root = element.getAsJsonObject();
+
+                  ConfigUtils.readConfigBase(root, "main", Configs.ConfigClass.OPTIONS);
+              }
+          } else {
+              System.err.println("load(): Failed to load config file " + CONFIG_FILE.toAbsolutePath());
+          }
+      }
+
+      @Override
+      public void save() {
+      JsonObject root = new JsonObject();
+
+      ConfigUtils.writeConfigBase(root, "main", Configs.ConfigClass.OPTIONS);
+
+      JsonUtils.writeJsonToFile(root, CONFIG_FILE);
+      }
+  }

@@ -1,0 +1,29 @@
+---
+# YAML frontmatter with library metadata
+version: "1.0.0"
+description: "UI method for configuration screens"
+created: "2026-06-19"
+---
+
+# UI method for configuration screens
+# Specifies how configuration values are displayed and edited
+
+BUILDER:
+  description: "Build a config screen using a builder class"
+  name: "Builder"
+
+AUTOMATIC:
+  description: "You don't need to think about the config screen; it is done automatically"
+  name: "Automatic"
+
+MANUAL:
+  description: "You build the entire config screen, with helpers"
+  name: "Manual"
+
+COMMANDS:
+  description: "Commands are used to edit the config values"
+  name: "Commands"
+
+NONE:
+  description: "(G)uis are not officially supported"
+  name: "None"

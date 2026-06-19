@@ -1,0 +1,24 @@
+---
+# YAML frontmatter with library metadata
+version: '1.0.0'
+description: 'ForgeConfigAPIPort configuration library'
+created: '2026-06-19'
+---
+# ForgeConfigAPIPort library definition
+
+id: forge-config-api-port
+name: Forge Config API Port
+side: BOTH
+modrinthSlug: forge-config-api-port
+type: LOADER
+dependencies: []
+extraConfigTypes: UNKNOWN
+extraFeatures: UNKNOWN
+configFormats: UNKNOWN
+manualInitialization: YES
+configMethod: UNKNOWN
+uiMethod: NONE
+notes: []
+source: https://github.com/Fuzss/forgeconfigapiport
+exampleConfigClass: |
+  # TODO: I tried for ~15 minutes, I can't find a coherent example, maybe later

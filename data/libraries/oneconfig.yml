@@ -1,0 +1,61 @@
+---
+# YAML frontmatter with library metadata
+version: '1.0.0'
+description: 'OneConfig configuration library'
+created: '2026-06-19'
+---
+# OneConfig library definition
+
+id: oneconfig
+name: OneConfig
+side: CLIENT
+modrinthSlug: oneconfig
+type: BOTH
+dependencies:
+  - name: FABRIC_LANGUAGE_KOTLIN
+    url: https://github.com/FabricMC/fabric-language-kotlin
+extraConfigTypes:
+  - name: BUTTON
+    description: 'Button configuration values'
+  - name: HOTKEY
+    description: 'Hotkey configuration values'
+  - name: COLOR
+    description: 'Color configuration values'
+extraFeatures:
+  - SLIDER
+  - CUSTOM_CONFIG_TYPES
+  - SECTIONS
+configFormats:
+  - JSON
+  - YAML
+  - TOML
+manualInitialization: AT_MOD_INIT
+configMethod:
+  typeOfClass: EXTENDING
+  memberType: STATIC
+  waaas:
+    - name: Annotated primitive
+      methodDescription: 'of primitive types'
+      examples:
+        - '@Checkbox title = "checkbox" description = "I do checkboxes" category = "bob" boolean'
+        - '@Slider title = "Slide" min = 10.0f max = 110.0f icon = "assets/oneconfig/ico/paintbrush.svg" description = "I do sliding" category = "bob" float'
+        - '@Text title = "Text" String'
+uiMethod: AUTOMATIC
+notes:
+  - 'Currently in beta'
+source: https://github.com/Polyfrost/OneConfig
+exampleConfigClass: |
+  public class TestConfig extends Config {
+      public static TestConfig INSTANCE = new TestConfig();
+
+      @Checkbox(title = "checkbox", description = "I do checkboxes", category = "bob")
+      public static boolean checkbox = false;
+      @Slider(title = "Slide", min = 10f, max = 110f, icon = "assets/oneconfig/ico/paintbrush.svg", description = "I do sliding", category = "bob")
+      public static float p = 50f;
+      @Text(title = "Text")
+      public static String text = "Hello world!";
+
+      public TestConfig() {
+          super("test_mod.json", "Test Mod", Category.QOL);
+      }
+  }

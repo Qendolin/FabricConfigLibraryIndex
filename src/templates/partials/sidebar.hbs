@@ -1,0 +1,81 @@
+<div class="panel">
+    <div class="flex-between">
+        <h4 class="mt-0">Versions</h4>
+        <span class="tag filter-tag" onclick="resetFilters()">Reset filters</span>
+    </div>
+    {{#each allSet as |versionSet|}}
+        <h5 class="mb-2">{{versionSet.[0]}}</h5>
+        <div class="flex-wrap mb-2">
+            {{#each versionSet as |version|}}
+                <span class="tag filter-tag" onclick="toggleFilter('versions', '{{version}}', this)">{{version}}</span>
+            {{/each}}
+        </div>
+    {{/each}}
+
+    <h4>Side</h4>
+    <div class="flex-wrap">
+        <span class="tag filter-tag" onclick="toggleFilter('side', 'CLIENT', this)">Client</span>
+        <span class="tag filter-tag" onclick="toggleFilter('side', 'SERVER', this)">Server</span>
+    </div>
+
+    <h4>Config types</h4>
+    <div class="flex-wrap">
+        {{#each configTypes as |type|}}
+            <span class="tag filter-tag {{#if type.description}}help{{/if}}" title="{{type.description}}" onclick="toggleFilter('extraConfigTypes', '{{type.id}}', this)">{{type.name}}</span>
+        {{/each}}
+    </div>
+
+    <h4>Features</h4>
+    <div class="flex-wrap">
+        {{#each features as |feature|}}
+            <span class="tag filter-tag {{#if feature.description}}help{{/if}}" title="{{feature.description}}" onclick="toggleFilter('extraFeatures', '{{feature.id}}', this)">{{feature.name}}</span>
+        {{/each}}
+    </div>
+
+    <h4>Config formats</h4>
+    <div class="flex-wrap">
+        {{#each configFormats as |format|}}
+            {{#if (notEq format.id "NOT_AVAILABLE")}}
+                <span class="tag filter-tag" onclick="toggleFilter('configFormats', '{{format.id}}', this)">{{format.name}}</span>
+            {{/if}}
+        {{/each}}
+    </div>
+
+    <h4>Init mode</h4>
+    <div class="flex-wrap">
+        {{#each initModes as |mode|}}
+            {{#if (and (notEq mode.id "NOT_AVAILABLE") (notEq mode.id "UNKNOWN"))}}
+                <span class="tag filter-tag" onclick="toggleFilter('manualInitialization', '{{mode.id}}', this)">{{mode.name}}</span>
+            {{/if}}
+        {{/each}}
+    </div>
+
+    <h4>Config method</h4>
+    <h5 class="mb-2 mt-0">Field kind</h5>
+    <div class="flex-wrap mb-2">
+        <span class="tag filter-tag" onclick="toggleFilter('configMethod.instance', 'true', this)">instance</span>
+        <span class="tag filter-tag" onclick="toggleFilter('configMethod.instance', 'false', this)">static</span>
+    </div>
+    
+    <h5 class="mb-2 mt-0">Type of fields</h5>
+    <div class="flex-wrap mb-2">
+        {{#each configMethodWaaas as |waaa|}}
+            <span class="tag filter-tag help" title="Examples: {{join waaa.examples ', '}}" onclick="toggleFilter('configMethod.waaas', '{{waaa.id}}', this)">{{waaa.name}}</span>
+        {{/each}}
+    </div>
+
+    <h4>UI Method</h4>
+    <div class="flex-wrap">
+        {{#each uiMethods as |method|}}
+            <span class="tag filter-tag {{#if method.description}}help{{/if}}" title="{{method.description}}" onclick="toggleFilter('uiMethod', '{{method.id}}', this)">{{method.name}}</span>
+        {{/each}}
+    </div>
+</div>
+
+<div class="panel flex-between">
+    <div>
+        <a href="libs.json">View json</a><br>
+        <a href="facts.html">View facts</a>
+    </div>
+    <div>Total libraries: {{libraries.length}}</div>
+</div>

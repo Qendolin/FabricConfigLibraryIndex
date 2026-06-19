@@ -1,0 +1,62 @@
+---
+# YAML frontmatter with library metadata
+version: '1.0.0'
+description: 'CompleteConfig configuration library'
+created: '2026-06-19'
+---
+# CompleteConfig library definition
+
+id: complete-config
+name: CompleteConfig
+side: BOTH
+versions:
+  - '1.17'
+  - '1.17.1'
+  - '1.18'
+  - '1.18.1'
+  - '1.18.2'
+  - '1.19'
+  - '1.19.1'
+  - '1.19.2'
+  - '1.19.3'
+  - '1.19.4'
+  - '1.20'
+  - '1.20.1'
+  - '1.20.2'
+  - '1.20.3'
+  - '1.20.4'
+  - '1.20.6'
+type: BOTH
+dependencies: []
+extraConfigTypes: []
+extraFeatures:
+  - CUSTOM_CONFIG_TYPES
+  - SECTIONS
+configFormats:
+  - JSON
+manualInitialization: YES
+configMethod:
+  typeOfClass: EXTENDING
+  memberType: INSTANCE
+  waaas:
+    - name: Annotated primitive
+      methodDescription: 'of primitive types'
+      examples:
+        - '@Config int'
+        - '@Config String'
+        - '@Config boolean'
+uiMethod: BUILDER
+notes: []
+source: https://github.com/Lortseam/completeconfig
+exampleConfigClass: |
+  @ConfigEntries(includeAll = true)
+  public class ConfigClass extends Config {
+      public ConfigClass() {
+          super(ConfigOptions
+                  .mod("complete-config-example")
+                  .fileHeader("This is an example config")
+          );
+      }
+
+      private boolean exampleBoolean;
+  }

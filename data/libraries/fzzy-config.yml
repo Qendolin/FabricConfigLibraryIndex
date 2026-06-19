@@ -1,0 +1,54 @@
+---
+# YAML frontmatter with library metadata
+version: '1.0.0'
+description: 'FzzyConfig configuration library'
+created: '2026-06-19'
+---
+# FzzyConfig library definition
+
+id: fzzy-config
+name: Fzzy Config
+side: BOTH
+modrinthSlug: fzzy-config
+type: BOTH
+dependencies:
+  - name: FABRIC_API
+    url: https://github.com/FabricMC/fabric-api
+  - name: FABRIC_LANGUAGE_KOTLIN
+    url: https://github.com/FabricMC/fabric-language-kotlin
+extraConfigTypes: UNKNOWN
+extraFeatures:
+  - SECTIONS
+configFormats:
+  - JSON5
+  - TOML
+  - JSON
+  - JSONC
+manualInitialization: YES
+configMethod:
+  typeOfClass: EXTENDING
+  memberType: INSTANCE
+  waaas:
+    - name: Annotated primitive
+      methodDescription: 'of primitive types'
+      examples:
+        - '@Config int'
+        - '@Config String'
+        - '@Config boolean'
+    - name: Wrapper
+      methodDescription: 'typed with special classes'
+      examples:
+        - Config<Integer>
+        - Config<String>
+        - Config<File>
+uiMethod: AUTOMATIC
+notes: []
+source: https://github.com/fzzyhmstrs/fconfig
+exampleConfigClass: |
+  public class ConfigClass extends Config {
+    public MyConfig() {
+      super(Identifier.of("fzzy-config-example", "example"));
+    }
+
+      public boolean exampleBoolean = false;
+  }

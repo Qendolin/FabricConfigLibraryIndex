@@ -1,0 +1,83 @@
+---
+# YAML frontmatter with library metadata
+version: "1.0.0"
+description: "Configuration method specifications"
+created: "2026-06-19"
+---
+
+# Configuration method specifications
+# How configuration values are accessed within mod classes
+
+TypeOfClass:
+  NORMAL:
+    description: "Normal class member methods"
+    name: "Normal"
+  EXTENDING:
+    description: "Methods inherited from parent classes"
+    name: "Extending"
+  ANNOTATED:
+    description: "Methods using configuration annotations"
+    name: "Annotated"
+  RECORD:
+    description: "Record pattern methods"
+    name: "Record"
+  NONE:
+    description: "No type of class member"
+    name: "None"
+
+MemberType:
+  INSTANCE:
+    description: "Instance members"
+    name: "instance members"
+    slug: "instance"
+  STATIC:
+    description: "Static members"
+    name: "static members"
+    slug: "static"
+  EITHER:
+    description: "Static or instance members"
+    name: "static or instance members"
+    slug: "either"
+  NONE:
+    description: "No member type"
+    name: ""
+    slug: "none"
+
+Waaa:
+  PRIMITIVE:
+    description: "Configuration methods for primitive types"
+    name: "Primitive"
+    slug: "primitive"
+    methodDescription: "of primitive types"
+    examples:
+      - "int"
+      - "List<String>"
+      - "File"
+  ANNOTATED_PRIMITIVE:
+    description: "Configuration methods for annotated primitive types"
+    name: "Annotated primitive"
+    slug: "annotated-primitive"
+    methodDescription: "of primitive types"
+    examples:
+      - "@Config int"
+      - "@Comment(\"This is a string list\") List<String>"
+      - "@Config File"
+  WRAPPER:
+    description: "Configuration methods for wrapper types"
+    name: "Wrapper"
+    slug: "wrapper"
+    methodDescription: "typed with special classes"
+    examples:
+      - "Config<Integer>"
+      - "Config<List<String>>"
+      - "Config<File>"
+  SPECIAL:
+    description: "Configuration methods for special typed classes"
+    name: "Special"
+    slug: "special"
+    methodDescription: "typed with special classes"
+  BUILDER:
+    description: "Configuration methods using builder patterns"
+    name: "Builder"
+    slug: "builder"
+    methodDescription: "typed using builder methods"

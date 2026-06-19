@@ -1,0 +1,11 @@
+{{#> layout}}
+    <div class="sidebar">
+        {{> sidebar}}
+    </div>
+    <div class="main-content library-grid">
+		{{#each libraries as |lib|}}
+<!-- Has to be un-indented -->
+{{> library_card lib=lib}}
+		{{/each}}
+    </div>
+{{/layout}}

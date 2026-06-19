@@ -1,0 +1,57 @@
+---
+# YAML frontmatter with library metadata
+version: '1.0.0'
+description: 'MaLiLibAPI configuration library'
+created: '2026-06-19'
+---
+# MaLiLibAPI library definition
+
+id: malilib-api
+name: MaLiLib API
+side: CLIENT
+modrinthSlug: malilib-api
+type: BOTH
+dependencies:
+  - name: MALILIB
+    url: https://github.com/sakura-ryoko/malilib
+extraConfigTypes:
+  - name: COLOR
+    description: 'Color configuration values'
+  - name: HOTKEY
+    description: 'Hotkey configuration values'
+  - name: PAIR
+    description: 'Pair configuration values'
+  - name: BUTTON
+    description: 'Button configuration values'
+extraFeatures:
+  - SLIDER
+  - CUSTOM_CONFIG_TYPES
+  - MOD_MENU_INTEGRATION
+  - SECTIONS
+configFormats:
+  - JSON
+manualInitialization: OPTIONAL
+configMethod:
+  typeOfClass: ANNOTATED
+  memberType: STATIC
+  waaas:
+    - name: ConfigInteger
+      methodDescription: 'Integer configuration values'
+      examples:
+        - ConfigInteger
+    - name: ConfigList<ConfigString>
+      methodDescription: 'String list configurations'
+      examples:
+        - ConfigList<ConfigString>
+    - name: ConfigCycle
+      methodDescription: 'Cyclic configuration values'
+      examples:
+        - ConfigCycle
+uiMethod: AUTOMATIC
+notes: []
+source: https://github.com/kr1viah/malilib-api
+exampleConfigClass: |
+  @Config("malilib-api-example")
+  public class ConfigClass {
+    public static final ConfigBooleanPlus EXAMPLE_BOOLEAN = new ConfigBooleanHotkeyedPlus("Example boolean");
+  }

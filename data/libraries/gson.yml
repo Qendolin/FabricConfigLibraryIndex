@@ -1,0 +1,56 @@
+---
+# YAML frontmatter with library metadata
+version: '1.0.0'
+description: 'Gson configuration library'
+created: '2026-06-19'
+---
+# Gson library definition
+
+id: gson
+name: Gson
+side: BOTH
+versions: ALL_LIST
+type: LOADER
+dependencies: []
+extraConfigTypes: []
+extraFeatures: []
+configFormats:
+  - JSON
+manualInitialization: YES
+configMethod:
+  typeOfClass: NORMAL
+  memberType: INSTANCE
+  waaas:
+    - name: Primitive
+      methodDescription: 'of primitive types'
+      examples:
+        - bool
+        - int
+        - String
+uiMethod: NONE
+notes:
+  - 'Not really a config library, but still useful for some'
+source: https://github.com/google/gson
+exampleConfigClass: |
+  public class ConfigClass {
+    public boolean exampleBoolean = false;
+
+    // could be anywhere
+    public static ConfigClass config = new ConfigClass();
+    public static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
+    public static final Path PATH = FabricLoader.getInstance().getConfigDir().resolve("gson-example");
+    public static save() {
+      try {
+        Files.writeString(PATH, GSON.toJson(CONFIG));
+      } catch (IOException e) {
+        throw new RuntimeException(e);
+      }
+    }
+    public static load() {
+      try {
+        CONFIG = GSON.fromJson(Files.readString(PATH));
+      } catch (IOException e) {
+        throw new RuntimeException(e);
+      }
+    }
+  }

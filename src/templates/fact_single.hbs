@@ -1,0 +1,15 @@
+{{#> layout}}
+    <div class="facts-content">
+        <div class="panel flex-between">
+            <a href="facts.html">Go to all facts</a>
+            <a href="index.html">Go to index</a>
+        </div>
+
+        <div class="panel" id="day-{{fact.day}}">
+            <div class="mb-2 text-muted">
+                <h3 class="mt-0">Day {{fact.day}}: {{fact.title}} ({{fact.date}})</h3>
+            </div>
+            <div>{{{fact.content}}}</div>
+        </div>
+    </div>
+{{/layout}}

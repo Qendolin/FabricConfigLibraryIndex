@@ -1,0 +1,41 @@
+---
+# YAML frontmatter with library metadata
+version: '1.0.0'
+description: 'MidnightLib configuration library'
+created: '2026-06-19'
+---
+# MidnightLib library definition
+
+id: midnight-lib
+name: MidnightLib
+side: BOTH
+modrinthSlug: midnightlib
+type: BOTH
+dependencies:
+  - name: FABRIC_API
+    url: https://github.com/FabricMC/fabric-api
+extraConfigTypes:
+  - name: FILE
+    description: 'File configuration values'
+extraFeatures:
+  - SLIDER
+  - MOD_MENU_INTEGRATION
+configFormats: UNKNOWN
+manualInitialization: YES
+configMethod:
+  typeOfClass: EXTENDING
+  memberType: STATIC
+  waaas:
+    - name: Annotated primitive
+      methodDescription: 'of primitive types'
+      examples:
+        - '@Entry category = "Example category" boolean'
+        - '@Entry category = "Example category" int'
+        - '@Entry category = "Example category" String'
+uiMethod: AUTOMATIC
+notes: []
+source: https://github.com/TeamMidnightDust/MidnightLib
+exampleConfigClass: |
+  public class ConfigClass extends MidnightConfig {
+    @Entry(category = "Example category") public static boolean exampleBoolean = false;
+  }

@@ -1,0 +1,30 @@
+---
+# YAML frontmatter with library metadata
+version: "1.0.0"
+description: "McQoy configuration library"
+created: "2026-06-19"
+---
+
+# McQoy library definition
+
+id: mcqoy
+name: McQoy
+side: CLIENT
+modrinthSlug: mcqoy
+type: UI
+dependencies:
+  - name: MOD_MENU
+    url: https://github.com/MinecraftModders/MinecraftModders
+  - name: YET_ANOTHER_CONFIG_LIB
+    url: https://github.com/isXander/YetAnotherConfigLib
+extraConfigTypes: []
+extraFeatures:
+  - MOD_MENU_INTEGRATION
+configFormats: []
+manualInitialization: NOT_AVAILABLE
+configMethod: NOT_AVAILABLE
+uiMethod: AUTOMATIC
+notes:
+  - "Makes a YACL config screen for kaleido configs"
+source: https://github.com/sisby-folk/mcqoy
+exampleConfigClass: ""

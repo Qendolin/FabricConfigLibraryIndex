@@ -1,0 +1,45 @@
+---
+# YAML frontmatter with library metadata
+version: '1.0.0'
+description: 'Configuration configuration library'
+created: '2026-06-19'
+---
+# Configuration library definition
+
+id: configuration
+name: Configuration
+side: BOTH
+modrinthSlug: configuration
+type: BOTH
+dependencies: []
+extraConfigTypes: []
+extraFeatures:
+  - CUSTOM_CONFIG_TYPES
+  - CONSTRAINT
+  - MOD_MENU_INTEGRATION
+  - SECTIONS
+configFormats:
+  - JSON
+  - YAML
+  - PROPERTIES
+  - INI
+manualInitialization: YES
+configMethod:
+  typeOfClass: ANNOTATED
+  memberType: INSTANCE
+  waaas:
+    - name: Annotated primitive
+      methodDescription: 'of primitive types'
+      examples:
+        - '@Config int'
+        - '@Config String'
+        - '@Config boolean'
+uiMethod: AUTOMATIC
+notes: []
+source: https://github.com/Toma1O6/Configuration
+exampleConfigClass: |
+  @Config(id = "configuration-example")
+  public class ConfigClass {
+    @Configurable
+    public boolean exampleBoolean = false;
+  }

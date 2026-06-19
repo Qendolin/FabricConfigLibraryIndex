@@ -1,0 +1,91 @@
+---
+# YAML frontmatter with library metadata
+version: '1.0.0'
+description: 'AxolotlClientConfig configuration library'
+created: '2026-06-19'
+---
+# AxolotlClientConfig library definition
+
+id: axolotlclientconfig
+name: AxolotlClientConfig
+side: CLIENT
+modrinthSlug: axolotlclient
+type: BOTH
+dependencies:
+  - name: FABRIC_API
+    url: https://github.com/FabricMC/fabric-api
+extraConfigTypes:
+  - name: COLOR
+    description: 'Color configuration values'
+extraFeatures:
+  - AUTO_UPGRADING
+  - CUSTOM_CONFIG_TYPES
+  - MOD_MENU_INTEGRATION
+  - SLIDER
+  - SECTIONS
+configFormats:
+  - JSON
+manualInitialization: AT_MOD_INIT
+configMethod:
+  typeOfClass: NONE
+  memberType: EITHER
+  waaas:
+    - name: IntegerOption
+      methodDescription: 'Integer options'
+      examples:
+        - int
+        - int[]
+        - List<int>
+    - name: StringArrayOption
+      methodDescription: 'String array options'
+      examples:
+        - String[]
+        - List<String>
+        - String[][]
+    - name: EnumOption
+      methodDescription: 'Enumeration options'
+      examples:
+        - enum Option { A, B, C }
+        - enum Color { RED, GREEN, BLUE }
+        - enum Direction { NORTH, SOUTH, EAST, WEST }
+    - name: BooleanOption
+      methodDescription: 'Boolean toggle options'
+      examples:
+        - bool
+        - Boolean
+        - Boolean[]
+uiMethod: AUTOMATIC
+notes:
+  - 'Not all available Minecraft versions are actively maintained.'
+  - 'Custom config formats are possible.'
+  - 'Custom UI implementations are supported (partial & full).'
+  - 'Only the GUI depends on Minecraft, the common module is independent.'
+  - 'Supports graphical options (when used with Minecraft).'
+  - 'Annotation-based configs are possible with an add-on.'
+source: https://codeberg.org/AxolotlClient/AxolotlClient-config
+exampleConfigClass: |
+  public class ExampleConfig {
+    public final BooleanOption exampleBoolean = new BooleanOption("exampleBoolean", false);
+    public ExampleConfig() {
+      var configPath = FabricLoader.getInstance().getConfigDir().resolve("example-config.json");
+      // create a root category. For automatic modmenu integration this must be named the same as your mod's modid.
+      var exampleCategory = OptionCategory.of("example-category");
+      exampleCategory.add(exampleBoolean);
+
+      // versioned
+      var currentVersion = 1;
+      var configManager = new VersionedJsonConfigManager(configPath, exampleCategory, currentVersion,
+        (oldVersion, newVersion, config, json) => {
+        // this lambda can be used to convert old config values into new ones
+        });
+      // unversioned
+      //var configManager = new JsonConfigManager(configPath, exampleCategory);
+
+      // register the config
+      AxolotlClientConfig.register(configManager);
+      // The config will not load automatically.
+      // Similarly, you can also manually save the config using .save() but the GUI will do that
+      // for you after an option is changed as well.
+      configManager.load();
+    }
+  }

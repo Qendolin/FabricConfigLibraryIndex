@@ -1,0 +1,37 @@
+---
+# YAML frontmatter with library metadata
+version: "1.0.0"
+description: "Configuration library features"
+created: "2026-06-19"
+---
+
+# Configuration library features
+# Capabilities and features offered by configuration libraries
+
+SLIDER:
+  description: "Slider configuration values"
+  name: "Slider"
+
+CONSTRAINT:
+  description: "Constraints for configs. For example, only allowing string configs that matches a certain regex"
+  name: "Constraint"
+
+MOD_MENU_INTEGRATION:
+  description: "Integration with mod menu for displaying configurations"
+  name: "Mod menu integration"
+
+CUSTOM_CONFIG_TYPES:
+  description: "Allows you to add your own config types"
+  name: "Custom config types"
+
+CODEC_BASED_CONFIGS:
+  description: "Configuration values based on codec support"
+  name: "Codec based configs"
+
+SECTIONS:
+  description: "Config section - Sections of configs. May also be referred to as a 'config object'"
+  name: "Config section"
+
+AUTO_UPGRADING:
+  description: "Configurations are versioned and can be upgraded automatically"
+  name: "Automatic upgrading"

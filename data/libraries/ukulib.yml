@@ -1,0 +1,42 @@
+---
+# YAML frontmatter with library metadata
+version: '1.0.0'
+description: 'Ukulib configuration library'
+created: '2026-06-19'
+---
+# Ukulib library definition
+
+id: ukulib
+name: ukulib
+side: CLIENT
+modrinthSlug: ukulib
+type: BOTH
+dependencies: []
+extraConfigTypes:
+  - name: COLOR
+    description: 'Color configuration values'
+  - name: BUTTON
+    description: 'Button configuration values'
+extraFeatures:
+  - SLIDER
+configFormats:
+  - JSON
+  - TOML
+manualInitialization: YES
+configMethod:
+  typeOfClass: EXTENDING
+  memberType: INSTANCE
+  waaas:
+    - name: Primitive
+      methodDescription: 'of primitive types'
+      examples:
+        - boolean
+        - int
+        - String
+uiMethod: BUILDER
+notes: []
+source: https://github.com/uku3lig/ukulib
+exampleConfigClass: |
+  public class ConfigClass implements Serializable {
+      public boolean exampleBoolean = false;
+  }

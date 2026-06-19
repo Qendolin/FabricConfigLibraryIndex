@@ -1,0 +1,98 @@
+<div class="panel library-card" id="{{lib.id}}" data-lib="{{json lib}}">
+    <div class="card-layout">
+        <div class="card-content">
+            <div class="title-row">
+                <h1>{{lib.name}}</h1>
+                <span class="title-id">{{lib.id}}</span>
+            </div>
+
+            {{#if lib.dependencies}}
+                <div class="meta-row">
+                    <span class="meta-label">Dependencies:</span>
+                    <span class="meta-value">
+                        {{#each lib.dependencies as |dep|}}
+                            <a href="{{dep.url}}">{{dep.name}}</a>{{#unless @last}}, {{/unless}}
+                        {{/each}}
+                    </span>
+                </div>
+            {{/if}}
+
+            <div class="meta-row">
+                <span class="meta-label">Manual init:</span>
+                <span class="meta-value">{{lib.manualInitName}}</span>
+            </div>
+
+			{{#if (notEq lib.configMethod "NOT_AVAILABLE")}}
+				<div class="meta-row align-top">
+					<span class="meta-label">Config method:</span>
+					<span class="meta-value">
+						{{#if (eq lib.configMethod "UNKNOWN")}} 
+							Unknown 
+						{{else}}
+							{{lib.configMethodFormatted}}
+							
+							<div style="margin-top: 6px; display: flex; gap: 6px; align-items: center; flex-wrap: wrap;">
+								<span class="text-muted" style="font-size: 0.9em;">Examples: </span>
+								{{#each lib.configMethod.randomExamples as |ex|}}
+									<code>{{ex}}</code>
+								{{/each}}
+							</div>
+						{{/if}}
+					</span>
+				</div>
+			{{/if}}
+
+            {{#if (or (eq lib.type "UI") (eq lib.type "BOTH"))}}
+                <div class="meta-row">
+                    <span class="meta-label">Ui method:</span>
+                    <span class="meta-value">{{lib.uiMethodName}}</span>
+                </div>
+            {{/if}}
+
+            <div class="meta-row">
+                <span class="meta-label">Versions:</span>
+                <span class="meta-value">{{join lib.condensedVersions ", "}}</span>
+            </div>
+
+            {{#if lib.notes}}
+                <div class="meta-row align-top">
+                    <span class="meta-label">Notes:</span>
+                    <span class="meta-value">
+                        <ul class="mt-0 mb-0">
+                            {{#each lib.notes}}<li>{{this}}</li>{{/each}}
+                        </ul>
+                    </span>
+                </div>
+            {{/if}}
+
+            {{#if (or (eq lib.type "LOADER") (eq lib.type "BOTH"))}}
+                <div class="meta-row">
+                    <span class="meta-label">Example config:</span>
+                    <span class="meta-value">
+                        <span class="tag filter-tag" onclick="toggleCode('{{lib.id}}')">Show/Hide code</span>
+                    </span>
+                </div>
+                <pre class="codeSamp hidden" id="example-config-{{lib.id}}"><samp>{{#if lib.exampleConfigClass}}
+{{lib.exampleConfigClass}}{{else}}None yet! Contribute by providing an example <a href="{{lib.source}}">here</a>.{{/if}}</samp></pre>
+            {{/if}}
+        </div>
+        
+        {{#if lib.hasScreenshot}}
+        <div class="card-image">
+            <img src="screenshots/{{lib.modrinthSlug}}.png" alt="Screenshot of {{lib.name}}">
+        </div>
+        {{/if}}
+    </div>
+
+    <div class="card-footer flex-between" style="margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border);">
+        <div class="flex-wrap">
+            {{#each lib.tags as |tag|}}
+                <span class="tag {{#if tag.tooltip}}help{{/if}}" title="{{tag.tooltip}}">{{tag.name}}</span>
+            {{/each}}
+        </div>
+        <div class="flex-gap">
+            {{#if lib.modrinthSlug}}<a href="https://modrinth.com/mod/{{lib.modrinthSlug}}">Modrinth</a>{{/if}}
+            <a href="{{lib.source}}">Source</a>
+        </div>
+    </div>
+</div>

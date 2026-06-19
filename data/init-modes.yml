@@ -1,0 +1,27 @@
+---
+# YAML frontmatter with library metadata
+version: "1.0.0"
+description: "Initialization mode for configurations"
+created: "2026-06-19"
+---
+
+# Initialization mode for configurations
+# Specifies when and how configuration values are initialized in Fabric mods
+
+YES:
+  description: "Config values are initialized when created"
+
+AT_MOD_INIT:
+  description: "Config values are initialized at mod initialization time"
+
+OPTIONAL:
+  description: "Config initialization is optional"
+
+NO:
+  description: "Config values are not initialized"
+
+NOT_AVAILABLE:
+  description: "Config initialization is not available"
+
+UNKNOWN:
+  description: "Initialization mode is unknown"
