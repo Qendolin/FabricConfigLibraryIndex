@@ -22,9 +22,6 @@ function normalizeCodeIndentation(code: string): string {
 	if (indents.length === 0) return code;
 	const minIndent = Math.min(...indents);
 
-	// A standard Java class body should be indented by 4 spaces.
-	// If the actual minimum indent is greater than 4 spaces (e.g. 18 spaces),
-	// we slice off the excess indentation so it looks beautiful.
 	const targetIndent = 0;
 	if (minIndent > targetIndent) {
 		const excess = minIndent - targetIndent;
@@ -58,6 +55,24 @@ async function main(): Promise<void> {
 	};
 
 	for (const lib of libraries) {
+		// 1. Sanitize "UNKNOWN" and missing properties to empty arrays for safe frontend processing
+		if ((lib.extraConfigTypes as unknown) === 'UNKNOWN' || !lib.extraConfigTypes) {
+			lib.extraConfigTypes = [];
+		}
+		if ((lib.extraFeatures as unknown) === 'UNKNOWN' || !lib.extraFeatures) {
+			lib.extraFeatures = [];
+		}
+		if ((lib.configFormats as unknown) === 'UNKNOWN' || !lib.configFormats) {
+			lib.configFormats = [];
+		}
+		if ((lib.versions as unknown) === 'UNKNOWN' || !lib.versions) {
+			lib.versions = [];
+		}
+		if (!lib.dependencies) {
+			lib.dependencies = [];
+		}
+
+		// 2. Resolve Versions
 		if (lib.modrinthSlug) {
 			lib.versions = await fetchModrinthVersions(lib.modrinthSlug, ALL_LIST);
 			try {
@@ -68,30 +83,28 @@ async function main(): Promise<void> {
 			}
 		} else if (lib.versions === 'ALL_LIST') {
 			lib.versions = [...ALL_LIST];
-		} else if (!lib.versions) {
-			lib.versions = [];
 		}
 		lib.condensedVersions = condenseVersions(lib.versions as string[], ALL_SET);
 
-		if (lib.dependencies) {
-			lib.dependencies = lib.dependencies.map((dep) => {
-				const meta = getMeta('dependencies', dep.name);
-				return {
-					id: dep.name,
-					name: meta.name || dep.name,
-					url: meta.url || dep.url || '',
-				};
-			});
-		}
+		// 3. Hydrate Dependencies
+		lib.dependencies = lib.dependencies.map((dep) => {
+			const meta = getMeta('dependencies', dep.name);
+			return {
+				id: dep.name,
+				name: meta.name || dep.name,
+				url: meta.url || dep.url || '',
+			};
+		});
 
-		if (lib.exampleConfigClass) {
-			const cleanCode = lib.exampleConfigClass.replace(/\t/g, '  ');
-			lib.exampleConfigClass = normalizeCodeIndentation(cleanCode);
-		}
 		lib.manualInitName = getMeta('init-modes', lib.manualInitialization).name;
 		lib.uiMethodName = getMeta('ui-methods', lib.uiMethod).name;
 
-		if (lib.configMethod && lib.configMethod !== 'NOT_AVAILABLE' && lib.configMethod !== 'UNKNOWN') {
+		// Replace tabs with 4 spaces for the code block rendering
+		if (lib.exampleConfigClass) {
+			lib.exampleConfigClass = lib.exampleConfigClass.replace(/\t/g, '    ').trim();
+		}
+
+		if (typeof lib.configMethod === 'object' && lib.configMethod !== null) {
 			const cm = lib.configMethod as ConfigMethod;
 			const rootMeta = metadata['config-methods'] || [];
 
@@ -106,19 +119,16 @@ async function main(): Promise<void> {
 			cm.typeOfClassName = tocMeta[cm.typeOfClass]?.name || cm.typeOfClass;
 			cm.memberTypeDesc = mtMeta[cm.memberType]?.description || cm.memberType;
 
-			// 1. Build class prefix (e.g. "a normal class with ")
 			let formatted = '';
 			if (cm.typeOfClass && cm.typeOfClass !== 'NONE') {
 				const article = ['EXTENDING', 'ANNOTATED'].includes(cm.typeOfClass) ? 'an' : 'a';
 				formatted += `${article} ${(cm.typeOfClassName || '').toLowerCase()} class with `;
 			}
 
-			// 2. Add member scope (e.g. "static or instance members")
 			if (cm.memberTypeDesc && cm.memberType !== 'NONE') {
 				formatted += cm.memberTypeDesc;
 			}
 
-			// 3. Collect & dynamically format multiple Waaas with proper grammatical joins
 			if (Array.isArray(cm.waaas) && cm.waaas.length > 0) {
 				const allExamples: string[] = [];
 
@@ -136,7 +146,6 @@ async function main(): Promise<void> {
 
 				cm.randomExamples = allExamples.sort(() => 0.5 - Math.random()).slice(0, 3);
 
-				// Join items with "either", commas, and "or" depending on count
 				if (parts.length === 1) {
 					formatted += `, ${parts[0]}`;
 				} else if (parts.length === 2) {
@@ -156,30 +165,16 @@ async function main(): Promise<void> {
 		if (lib.type === 'UI' || lib.type === 'BOTH') tags.push({ name: 'UI' });
 		if (lib.type === 'LOADER' || lib.type === 'BOTH') tags.push({ name: 'Loader' });
 
-		const extraFeatures = Array.isArray(lib.extraFeatures)
-			? lib.extraFeatures
-			: lib.extraFeatures
-				? [lib.extraFeatures]
-				: [];
-		const configFormats = Array.isArray(lib.configFormats)
-			? lib.configFormats
-			: lib.configFormats
-				? [lib.configFormats]
-				: [];
+		// Since lib.extraFeatures and lib.configFormats are now guaranteed to be clean arrays,
+		// we can loop over them safely without complex type-checking or filters.
+		lib.extraFeatures.forEach((f) => {
+			const meta = getMeta('features', f);
+			tags.push({ name: meta.name || f, tooltip: meta.description || meta.name || f });
+		});
 
-		// Ignore "UNKNOWN" values so they don't generate generic tags
-		extraFeatures
-			.filter((f) => f !== 'UNKNOWN')
-			.forEach((f) => {
-				const meta = getMeta('features', f);
-				tags.push({ name: meta.name || f, tooltip: meta.description || meta.name || f });
-			});
-
-		configFormats
-			.filter((f) => f !== 'UNKNOWN')
-			.forEach((f) => {
-				tags.push({ name: getMeta('config-formats', f).name || f });
-			});
+		lib.configFormats.forEach((f) => {
+			tags.push({ name: getMeta('config-formats', f).name || f });
+		});
 
 		lib.tags = tags;
 	}
