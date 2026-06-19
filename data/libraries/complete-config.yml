@@ -39,8 +39,7 @@ configMethod:
   typeOfClass: EXTENDING
   memberType: INSTANCE
   waaas:
-    - name: Annotated primitive
-      methodDescription: 'of primitive types'
+    - name: ANNOTATED_PRIMITIVE
       examples:
         - '@Config int'
         - '@Config String'

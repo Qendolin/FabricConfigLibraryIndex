@@ -25,8 +25,7 @@ configMethod:
   typeOfClass: NORMAL
   memberType: INSTANCE
   waaas:
-    - name: Annotated primitive
-      methodDescription: 'of primitive types'
+    - name: ANNOTATED_PRIMITIVE
       examples:
         - '@SerialEntry boolean'
         - '@SerialEntry int'

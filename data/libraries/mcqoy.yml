@@ -1,10 +1,9 @@
 ---
 # YAML frontmatter with library metadata
-version: "1.0.0"
-description: "McQoy configuration library"
-created: "2026-06-19"
+version: '1.0.0'
+description: 'McQoy configuration library'
+created: '2026-06-19'
 ---
-
 # McQoy library definition
 
 id: mcqoy
@@ -25,6 +24,6 @@ manualInitialization: NOT_AVAILABLE
 configMethod: NOT_AVAILABLE
 uiMethod: AUTOMATIC
 notes:
-  - "Makes a YACL config screen for kaleido configs"
+  - 'Makes a YACL config screen for kaleido configs'
 source: https://github.com/sisby-folk/mcqoy
-exampleConfigClass: ""
+exampleConfigClass: ''

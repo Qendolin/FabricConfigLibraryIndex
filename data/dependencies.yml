@@ -1,37 +1,36 @@
 ---
 # YAML frontmatter with library metadata
-version: "1.0.0"
-description: "Library dependencies"
-created: "2026-06-19"
+version: '1.0.0'
+description: 'Library dependencies'
+created: '2026-06-19'
 ---
-
 # Library dependencies
 # Third-party libraries that configuration libraries depend on
 
 FABRIC_API:
-  name: "Fabric API"
-  url: "https://github.com/FabricMC/fabric-api"
+  name: 'Fabric API'
+  url: 'https://github.com/FabricMC/fabric-api'
 
 FABRIC_LANGUAGE_KOTLIN:
-  name: "Fabric Language Kotlin"
-  url: "https://github.com/FabricMC/fabric-language-kotlin"
+  name: 'Fabric Language Kotlin'
+  url: 'https://github.com/FabricMC/fabric-language-kotlin'
 
 MALILIB:
-  name: "MaLiLib"
-  url: "https://github.com/sakura-ryoko/malilib"
+  name: 'MaLiLib'
+  url: 'https://github.com/sakura-ryoko/malilib'
 
 UI_LIB:
-  name: "UI Lib"
-  url: "https://github.com/DAQEM/UILib"
+  name: 'UI Lib'
+  url: 'https://github.com/DAQEM/UILib'
 
 MOD_MENU:
-  name: "Mod Menu"
-  url: "https://github.com/TerraformersMC/ModMenu"
+  name: 'Mod Menu'
+  url: 'https://github.com/TerraformersMC/ModMenu'
 
 YET_ANOTHER_CONFIG_LIB:
-  name: "Yacl"
-  url: "https://github.com/isXander/YetAnotherConfigLib"
+  name: 'Yacl'
+  url: 'https://github.com/isXander/YetAnotherConfigLib'
 
 PLACEHOLDER_API:
-  name: "Text Placeholder API"
-  url: "https://github.com/Patbox/TextPlaceholderAPI"
+  name: 'Text Placeholder API'
+  url: 'https://github.com/Patbox/TextPlaceholderAPI'

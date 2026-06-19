@@ -34,8 +34,7 @@ configMethod:
   typeOfClass: NORMAL
   memberType: STATIC
   waaas:
-    - name: Builder
-      methodDescription: 'typed using builder methods'
+    - name: BUILDER
       examples:
         - builder.defineString("key", "value")
         - builder.defineBoolean("key", false)

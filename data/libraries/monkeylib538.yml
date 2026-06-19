@@ -1,10 +1,9 @@
 ---
 # YAML frontmatter with library metadata
-version: "1.0.0"
-description: "MonkeyLib538 configuration library"
-created: "2026-06-19"
+version: '1.0.0'
+description: 'MonkeyLib538 configuration library'
+created: '2026-06-19'
 ---
-
 # MonkeyLib538 library definition
 
 id: monkeylib538
@@ -25,4 +24,4 @@ configMethod: NOT_AVAILABLE
 uiMethod: COMMANDS
 notes: []
 source: https://codeberg.org/OffsetMods538/MonkeyLib538
-exampleConfigClass: ""
+exampleConfigClass: ''

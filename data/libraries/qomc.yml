@@ -1,10 +1,9 @@
 ---
 # YAML frontmatter with library metadata
-version: "1.0.0"
-description: "QoMC configuration library"
-created: "2026-06-19"
+version: '1.0.0'
+description: 'QoMC configuration library'
+created: '2026-06-19'
 ---
-
 # QoMC library definition
 
 id: qomc
@@ -22,6 +21,6 @@ manualInitialization: NO
 configMethod: NOT_AVAILABLE
 uiMethod: COMMANDS
 notes:
-  - "Makes config commands for kaleido configs"
+  - 'Makes config commands for kaleido configs'
 source: https://github.com/AmberIsFrozen/qomc
-exampleConfigClass: ""
+exampleConfigClass: ''

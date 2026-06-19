@@ -88,7 +88,20 @@ oneOf:
                 - name
               properties:
                 name:
-                  type: 'string'
+                  anyOf:
+                    - type: 'string'
+                      enum:
+                        [
+                          'COLOR',
+                          'HOTKEY',
+                          'DROPDOWN',
+                          'BUTTON',
+                          'FILE',
+                          'PAIR',
+                          'REGISTRY_ENTRY',
+                          'IDENTIFIER',
+                          'DATE_TIME',
+                        ]
                   description: 'Name of the config type corresponding to data/config-types.yml keys (e.g. COLOR)'
                 description:
                   type: 'string'
@@ -140,7 +153,10 @@ oneOf:
                     - name
                   properties:
                     name:
-                      type: 'string'
+                      anyOf:
+                        - type: 'string'
+                          enum: ['PRIMITIVE', 'ANNOTATED_PRIMITIVE', 'WRAPPER', 'SPECIAL', 'BUILDER']
+                        - type: 'string'
                       description: 'Name of the field type/wrapper category'
                     methodDescription:
                       type: 'string'

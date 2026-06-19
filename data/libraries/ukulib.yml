@@ -27,8 +27,7 @@ configMethod:
   typeOfClass: EXTENDING
   memberType: INSTANCE
   waaas:
-    - name: Primitive
-      methodDescription: 'of primitive types'
+    - name: PRIMITIVE
       examples:
         - boolean
         - int

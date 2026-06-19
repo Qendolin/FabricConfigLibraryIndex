@@ -32,8 +32,7 @@ function panelMatches(lib, category, values) {
 
 		case 'extraConfigTypes':
 			return [...values].every(
-				(v) =>
-					lib.extraConfigTypes?.includes(v) || lib.extraConfigTypes?.some((t) => t.id === v || t.name === v),
+				(v) => lib.extraConfigTypes?.includes(v) || lib.extraConfigTypes?.some((t) => t.id === v),
 			);
 
 		case 'extraFeatures':
@@ -56,7 +55,7 @@ function panelMatches(lib, category, values) {
 		}
 		case 'configMethod.waaas':
 			if (!lib.configMethod || !Array.isArray(lib.configMethod.waaas)) return false;
-			return [...values].some((v) => lib.configMethod.waaas.some((s) => s.name === v));
+			return [...values].some((v) => lib.configMethod.waaas.some((s) => s.id === v));
 
 		case 'uiMethod':
 			return [...values].some((v) => lib.uiMethod === v);

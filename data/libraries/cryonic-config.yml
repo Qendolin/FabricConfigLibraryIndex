@@ -21,8 +21,7 @@ configMethod:
   typeOfClass: NORMAL
   memberType: INSTANCE
   waaas:
-    - name: Primitive
-      methodDescription: 'of primitive types'
+    - name: PRIMITIVE
       examples:
         - bool
         - int

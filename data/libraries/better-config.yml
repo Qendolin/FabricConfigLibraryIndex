@@ -21,12 +21,7 @@ configMethod:
   typeOfClass: NORMAL
   memberType: STATIC
   waaas:
-    - name: Primitive
-      methodDescription: 'of primitive types'
-      examples:
-        - '@Config int'
-        - '@Config String'
-        - '@Config boolean'
+    - name: ANNOTATED_PRIMITIVE
 uiMethod: COMMANDS
 notes: []
 source: https://github.com/xpple/BetterConfig

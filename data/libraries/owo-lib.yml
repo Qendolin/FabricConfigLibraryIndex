@@ -23,8 +23,7 @@ configMethod:
   typeOfClass: ANNOTATED
   memberType: INSTANCE
   waaas:
-    - name: Primitive
-      methodDescription: 'of primitive types'
+    - name: PRIMITIVE
       examples:
         - '@Config(name = "owo-lib-example", wrapperName = "ConfigClassModel") boolean'
         - '@Config(name = "owo-lib-example", wrapperName = "ConfigClassModel") int'

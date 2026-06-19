@@ -39,8 +39,7 @@ configMethod:
   typeOfClass: NONE
   memberType: STATIC
   waaas:
-    - name: Annotated primitive
-      methodDescription: 'of primitive types'
+    - name: ANNOTATED_PRIMITIVE
       examples:
         - '@Configurable boolean'
         - '@Configurable int'

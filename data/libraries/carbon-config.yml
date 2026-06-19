@@ -23,8 +23,7 @@ configMethod:
   typeOfClass: NORMAL
   memberType: INSTANCE
   waaas:
-    - name: Builder
-      methodDescription: 'typed using builder methods'
+    - name: BUILDER
       examples:
         - section.addBool("key", false)
         - section.addInt("key", 0)

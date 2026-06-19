@@ -34,8 +34,7 @@ configMethod:
   typeOfClass: EXTENDING
   memberType: STATIC
   waaas:
-    - name: Annotated primitive
-      methodDescription: 'of primitive types'
+    - name: ANNOTATED_PRIMITIVE
       examples:
         - '@Checkbox title = "checkbox" description = "I do checkboxes" category = "bob" boolean'
         - '@Slider title = "Slide" min = 10.0f max = 110.0f icon = "assets/oneconfig/ico/paintbrush.svg" description = "I do sliding" category = "bob" float'

@@ -6,34 +6,6 @@ import { fetchModrinthVersions } from './api/modrinth.ts';
 import { loadMetadata, parseYamlFile } from './utils/parser.ts';
 import { ConfigLibrary, Fact, MetadataEntry, ConfigMethodWaaa, ConfigMethod } from './types.ts';
 
-function normalizeCodeIndentation(code: string): string {
-	const lines = code.split('\n');
-	if (lines.length <= 1) return code;
-
-	// Find the indentation level of all non-empty lines (excluding the first line)
-	const indents = lines
-		.slice(1)
-		.filter((line) => line.trim().length > 0)
-		.map((line) => {
-			const match = line.match(/^(\s*)/);
-			return match ? match[0].length : 0;
-		});
-
-	if (indents.length === 0) return code;
-	const minIndent = Math.min(...indents);
-
-	const targetIndent = 0;
-	if (minIndent > targetIndent) {
-		const excess = minIndent - targetIndent;
-		return [
-			lines[0], // Keep the first line (class declaration) as-is
-			...lines.slice(1).map((line) => (line.length >= excess ? line.slice(excess) : line)),
-		].join('\n');
-	}
-
-	return code;
-}
-
 async function main(): Promise<void> {
 	const { ALL_LIST, ALL_SET } = await fetchMojangVersions();
 	const metadata = await loadMetadata('data');
@@ -104,6 +76,17 @@ async function main(): Promise<void> {
 			lib.exampleConfigClass = lib.exampleConfigClass.replace(/\t/g, '    ').trim();
 		}
 
+		if (lib.extraConfigTypes) {
+			lib.extraConfigTypes = lib.extraConfigTypes.map((t) => {
+				const meta = getMeta('config-types', t.name);
+				return {
+					id: t.name,
+					name: meta.name || t.name,
+					description: t.description || meta.description,
+				};
+			});
+		}
+
 		if (typeof lib.configMethod === 'object' && lib.configMethod !== null) {
 			const cm = lib.configMethod as ConfigMethod;
 			const rootMeta = metadata['config-methods'] || [];
@@ -129,10 +112,11 @@ async function main(): Promise<void> {
 				formatted += cm.memberTypeDesc;
 			}
 
-			if (Array.isArray(cm.waaas) && cm.waaas.length > 0) {
+			if (Array.isArray(cm.waaas)) {
 				const allExamples: string[] = [];
 
-				const parts = cm.waaas.map((w) => {
+				// 1. Build strict, separate ConfigMethodWaaa objects
+				cm.waaas = cm.waaas.map((w) => {
 					const matchKey = Object.keys(waaaMeta).find((k) => k.toLowerCase() === w.name?.toLowerCase());
 					const wMeta: ConfigMethodWaaa = matchKey ? waaaMeta[matchKey] : ({} as any);
 
@@ -140,11 +124,21 @@ async function main(): Promise<void> {
 					allExamples.push(...examples);
 
 					const desc = w.methodDescription || wMeta.methodDescription || w.name;
-					const prefix = w.name === 'Annotated primitive' ? 'annotated ' : '';
-					return `${prefix}${desc}`;
+					return {
+						id: matchKey || w.name,
+						name: wMeta.name || w.name,
+						methodDescription: desc,
+						examples: examples,
+					};
 				});
 
 				cm.randomExamples = allExamples.sort(() => 0.5 - Math.random()).slice(0, 3);
+
+				// 2. Build the output text using the standardized waaas list
+				const parts = cm.waaas.map((w) => {
+					const prefix = w.id === 'ANNOTATED_PRIMITIVE' ? 'annotated ' : '';
+					return `${prefix}${w.methodDescription}`;
+				});
 
 				if (parts.length === 1) {
 					formatted += `, ${parts[0]}`;

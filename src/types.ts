@@ -5,6 +5,7 @@ export interface Dependency {
 }
 
 export interface ConfigMethodWaaa {
+	id: string;
 	name: string;
 	displayName?: string;
 	methodDescription?: string;
@@ -20,6 +21,12 @@ export interface ConfigMethod {
 	randomExamples?: string[];
 }
 
+export interface ExtraConfigType {
+	id: string;
+	name: string;
+	description?: string;
+}
+
 export interface ConfigLibrary {
 	id: string;
 	name: string;
@@ -28,7 +35,7 @@ export interface ConfigLibrary {
 	type: 'LOADER' | 'UI' | 'BOTH' | 'UNKNOWN';
 	versions: string[] | 'ALL_LIST';
 	dependencies?: Dependency[];
-	extraConfigTypes?: { name: string; description?: string; id?: string }[];
+	extraConfigTypes?: ExtraConfigType[];
 	extraFeatures?: string[];
 	configFormats?: string[];
 	manualInitialization: string;
