@@ -67,7 +67,7 @@ public class Versions {
 		for (String version : versions.reversed()) {
 			String[] parts = version.split("\\.");
 			if (!(lastMajor.equals(parts[0]) && lastMinor.equals(parts[1]))) {
-				if (ALL_SET.contains(currentMajor)) {
+				if (isFull(currentMajor)) {
 					newVersions.add(currentMajor.getFirst() + ".x");
 				} else {
 					newVersions.addAll(currentMajor);
@@ -86,6 +86,18 @@ public class Versions {
 			}
 		}
 		return newVersions;
+	}
+
+	private static boolean isFull(List<String> major) {
+		main:
+		for (List<String> majorVersion : ALL_SET) {
+			for (String version : major) {
+				if (!majorVersion.contains(version)) continue main;
+			}
+			if (majorVersion.size() == major.size())
+				return true;
+		}
+		return false;
 	}
 
 	public static List<String> versions(Object... vers) {
