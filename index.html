@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Fabric Config Library Index</title>
+		<link rel="stylesheet" href="main.css" />
+		<!-- Vue 3 Global Build CDN -->
+		<script src="https://unpkg.com/vue@3/dist/vue.global.prod.js" defer></script>
+		<script src="main.js" defer></script>
+		<script>
+			const savedTheme = localStorage.getItem('theme');
+			const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+			document.documentElement.dataset.theme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+		</script>
+		<link rel="preconnect" href="https://kr1v.net" />
+		<link rel="preload" href="https://kr1v.net/libs/libs.json" as="json" />
+	</head>
+	<body>
+		<div id="app" style="min-height: 100%; width: 100%">
+			<!-- Loading Spinner -->
+			<div v-if="loading" class="loading-overlay">
+				<div class="spinner"></div>
+				<span>Fetching library index...</span>
+			</div>
+
+			<div class="main-container">
+				<!-- Sidebar Filter Console -->
+				<aside class="sidebar" v-if="!loading">
+					<div
+						class="flex-wrap"
+						style="
+							border-bottom: 1px solid var(--border);
+							margin-bottom: 0.5rem;
+							padding-bottom: 0.5rem;
+							gap: 1rem;
+						"
+					>
+						<a target="_blank" href="https://kr1v.net/libs/">Original Website</a>
+						<a target="_blank" href="https://github.com/kr1viah/FabricConfigLibraryIndex"
+							>Original GitHub</a
+						>
+					</div>
+
+					<div class="flex-between">
+						<h4 class="mt-0">Versions</h4>
+						<button class="tag filter-tag" @click="resetFilters">Reset filters</button>
+					</div>
+
+					<div v-for="(versions, major) in versionGroups" :key="major" class="mb-2">
+						<h5 class="mb-2">{{ major }}</h5>
+						<div class="flex-wrap">
+							<button
+								v-for="version in versions"
+								:key="version"
+								class="tag filter-tag"
+								:class="{ active: isFilterActive('versions', version) }"
+								@click="toggleFilter('versions', version)"
+							>
+								{{ version }}
+							</button>
+						</div>
+					</div>
+
+					<h4>Side</h4>
+					<div class="flex-wrap">
+						<button
+							v-for="side in extractedSides"
+							:key="side"
+							class="tag filter-tag"
+							:class="{ active: isFilterActive('side', side) }"
+							@click="toggleFilter('side', side)"
+						>
+							{{ formatId(side) }}
+						</button>
+					</div>
+
+					<div v-if="extractedConfigTypes.length">
+						<h4>Config types</h4>
+						<div class="flex-wrap">
+							<button
+								v-for="type in extractedConfigTypes"
+								:key="type.id"
+								class="tag filter-tag"
+								:class="{ active: isFilterActive('extraConfigTypes', type.id) }"
+								@click="toggleFilter('extraConfigTypes', type.id)"
+							>
+								{{ type.name }}
+							</button>
+						</div>
+					</div>
+
+					<div v-if="extractedFeatures.length">
+						<h4>Features</h4>
+						<div class="flex-wrap">
+							<button
+								v-for="feature in extractedFeatures"
+								:key="feature.id"
+								class="tag filter-tag"
+								:class="{ active: isFilterActive('extraFeatures', feature.id) }"
+								@click="toggleFilter('extraFeatures', feature.id)"
+							>
+								{{ feature.name }}
+							</button>
+						</div>
+					</div>
+
+					<div v-if="extractedFormats.length">
+						<h4>Config formats</h4>
+						<div class="flex-wrap">
+							<button
+								v-for="format in extractedFormats"
+								:key="format.id"
+								class="tag filter-tag"
+								:class="{ active: isFilterActive('configFormats', format.id) }"
+								@click="toggleFilter('configFormats', format.id)"
+							>
+								{{ format.name }}
+							</button>
+						</div>
+					</div>
+
+					<div v-if="extractedInitModes.length">
+						<h4>Init mode</h4>
+						<div class="flex-wrap">
+							<button
+								v-for="mode in extractedInitModes"
+								:key="mode.id"
+								class="tag filter-tag"
+								:class="{ active: isFilterActive('manualInitialization', mode.id) }"
+								@click="toggleFilter('manualInitialization', mode.id)"
+							>
+								{{ mode.name }}
+							</button>
+						</div>
+					</div>
+
+					<h4>Config method</h4>
+					<h5 class="mb-2 mt-0">Field kind</h5>
+					<div class="flex-wrap mb-2">
+						<button
+							class="tag filter-tag"
+							:class="{ active: isFilterActive('configMethod.instance', 'true') }"
+							@click="toggleFilter('configMethod.instance', 'true')"
+						>
+							instance
+						</button>
+						<button
+							class="tag filter-tag"
+							:class="{ active: isFilterActive('configMethod.instance', 'false') }"
+							@click="toggleFilter('configMethod.instance', 'false')"
+						>
+							static
+						</button>
+					</div>
+
+					<div v-if="extractedWaaas.length">
+						<h5 class="mb-2 mt-0">Type of fields</h5>
+						<div class="flex-wrap mb-2">
+							<button
+								v-for="waaa in extractedWaaas"
+								:key="waaa.id"
+								class="tag filter-tag"
+								:class="{ active: isFilterActive('configMethod.waaas', waaa.id) }"
+								@click="toggleFilter('configMethod.waaas', waaa.id)"
+							>
+								{{ waaa.name }}
+							</button>
+						</div>
+					</div>
+
+					<div v-if="extractedUiMethods.length">
+						<h4>UI Method</h4>
+						<div class="flex-wrap">
+							<button
+								v-for="method in extractedUiMethods"
+								:key="method.id"
+								class="tag filter-tag"
+								:class="{ active: isFilterActive('uiMethod', method.id) }"
+								@click="toggleFilter('uiMethod', method.id)"
+							>
+								{{ method.name }}
+							</button>
+						</div>
+					</div>
+				</aside>
+
+				<!-- Main Display Panel -->
+				<main class="main-content" v-if="!loading">
+					<!-- Navigation Control Bar -->
+					<div class="flex-between libraries-header">
+						<div class="flex-wrap" style="align-items: baseline">
+							<h2 style="font-size: 1.4rem">Libraries Index</h2>
+							<div style="padding-left: 1rem; opacity: 0.7">
+								Created by kr1v. Custom frontend by Qendolin.
+							</div>
+						</div>
+						<div class="flex-gap">
+							<button class="tag filter-tag" @click="toggleTheme">
+								{{ theme === 'dark' ? '🌙 Dark' : '☀️ Light' }}
+							</button>
+							<button class="tag filter-tag" :class="{ active: isGridView }" @click="isGridView = true">
+								Grid View
+							</button>
+							<button class="tag filter-tag" :class="{ active: !isGridView }" @click="isGridView = false">
+								List View
+							</button>
+						</div>
+					</div>
+
+					<div class="main-scroll">
+						<!-- Library Entries -->
+						<div :class="isGridView ? 'library-grid' : 'library-list'">
+							<div v-for="lib in filteredLibraries" :key="lib.id" class="panel library-card">
+								<div class="card-layout">
+									<div class="card-content">
+										<div class="title-row">
+											<h1>{{ lib.name }}</h1>
+											<span class="title-id">{{ lib.id }}</span>
+										</div>
+
+										<div v-if="lib.dependencies && lib.dependencies.length" class="meta-row">
+											<span class="meta-label">Dependencies:</span>
+											<span class="meta-value">
+												<span
+													v-for="(dep, index) in lib.dependencies"
+													:key="dep.id || dep.name"
+												>
+													<a :href="dep.url" target="_blank">{{ dep.name }}</a>
+													<span v-if="index < lib.dependencies.length - 1">, </span>
+												</span>
+											</span>
+										</div>
+
+										<div class="meta-row">
+											<span class="meta-label">Manual init:</span>
+											<span class="meta-value"
+												>{{ getManualInitName(lib.manualInitialization) }}</span
+											>
+										</div>
+
+										<div v-if="isConfigMethodAvailable(lib)" class="meta-row align-top">
+											<span class="meta-label">Config method:</span>
+											<span class="meta-value">
+												<span v-if="lib.configMethod === 'UNKNOWN'">Unknown</span>
+												<span v-else>
+													{{ formatConfigMethod(lib) }}
+													<div
+														style="
+															margin-top: 6px;
+															display: flex;
+															gap: 6px;
+															align-items: baseline;
+															flex-wrap: wrap;
+														"
+													>
+														<span class="text-muted" style="font-size: 0.9em"
+															>Examples:
+														</span>
+														<code
+															v-for="ex in lib.configMethod.randomExamples || getWaaaExamples(lib)"
+															:key="ex"
+															>{{ ex }}</code
+														>
+													</div>
+												</span>
+											</span>
+										</div>
+
+										<div v-if="lib.uiMethod" class="meta-row">
+											<span class="meta-label">Ui method:</span>
+											<span class="meta-value">{{ getUiMethodName(lib.uiMethod) }}</span>
+										</div>
+
+										<div class="meta-row">
+											<span class="meta-label">Versions:</span>
+											<span class="meta-value flex-wrap">
+												<span
+													v-for="ver in getFormattedVersions(lib)"
+													:key="ver"
+													class="tag version-tag"
+												>
+													{{ ver }}
+												</span>
+											</span>
+										</div>
+
+										<div v-if="lib.notes && lib.notes.length" class="meta-row align-top">
+											<span class="meta-label">Notes:</span>
+											<span class="meta-value">
+												<ul class="mt-0 mb-0">
+													<li v-for="note in lib.notes" :key="note">{{ note }}</li>
+												</ul>
+											</span>
+										</div>
+
+										<div v-if="lib.type === 'LOADER' || lib.type === 'BOTH'" class="meta-row">
+											<span class="meta-label">Example config:</span>
+											<span class="meta-value">
+												<button class="tag filter-tag" @click="toggleCode(lib.id)">
+													Show/Hide code
+												</button>
+											</span>
+										</div>
+										<pre class="codeSamp hidden" :id="'example-config-' + lib.id">
+											<samp v-if="lib.exampleConfigClass">{{ lib.exampleConfigClass }}</samp>
+											<samp v-else>None yet! Contribute by providing an example <a :href="lib.source" target="_blank">here</a>.</samp>
+										</pre>
+									</div>
+
+									<!-- Screenshot Loader (Pulls directly from kr1v.net) [1] -->
+									<div v-if="lib.modrinthSlug" class="card-image">
+										<img
+											:src="'https://raw.githubusercontent.com/kr1viah/FabricConfigLibraryIndex/refs/heads/master/src/main/resources/screenshots/' + lib.modrinthSlug + '.png'"
+											onerror="this.parentNode.style.display = 'none'"
+											loading="lazy"
+											alt="Screenshot"
+										/>
+									</div>
+								</div>
+
+								<!-- Footer Tags -->
+								<div
+									class="card-footer flex-between"
+									style="margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border)"
+								>
+									<div class="flex-wrap">
+										<span
+											v-for="tag in lib.tags"
+											:key="tag.name"
+											class="tag"
+											:title="tag.tooltip"
+											:class="{ help: tag.tooltip }"
+										>
+											{{ tag.name }}
+										</span>
+									</div>
+									<div class="flex-gap">
+										<a
+											v-if="lib.modrinthSlug"
+											:href="'https://modrinth.com/mod/' + lib.modrinthSlug"
+											target="_blank"
+											>Modrinth</a
+										>
+										<a :href="lib.source" target="_blank">Source</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</main>
+			</div>
+		</div>
+	</body>
+</html>
